@@ -8585,11 +8585,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Robbe\\source\\repos\\PlanofAction\\PlanofAction\\PlanofAction.csproj",
+      "projectUniqueName": "C:\\Users\\Robbe\\source\\test\\PlanofAction\\PlanofAction\\PlanofAction\\PlanofAction.csproj",
       "projectName": "PlanofAction",
-      "projectPath": "C:\\Users\\Robbe\\source\\repos\\PlanofAction\\PlanofAction\\PlanofAction.csproj",
+      "projectPath": "C:\\Users\\Robbe\\source\\test\\PlanofAction\\PlanofAction\\PlanofAction\\PlanofAction.csproj",
       "packagesPath": "C:\\Users\\Robbe\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Robbe\\source\\repos\\PlanofAction\\PlanofAction\\obj\\",
+      "outputPath": "C:\\Users\\Robbe\\source\\test\\PlanofAction\\PlanofAction\\PlanofAction\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Robbe\\AppData\\Roaming\\NuGet\\NuGet.Config",
