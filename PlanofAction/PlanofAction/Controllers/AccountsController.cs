@@ -3,14 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using PlanofAction.Models;
 
 namespace PlanofAction.Controllers
 {
-    public class AccountController : Controller
+    public class AccountsController : Controller
     {
         public IActionResult Index()
         {
-            return View();
+            PoAContext context = HttpContext.RequestServices.GetService(typeof(PoAContext)) as PoAContext;
+
+            return View(context.GetAccounts());
         }
     }
 }

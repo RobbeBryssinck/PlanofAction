@@ -279,7 +279,6 @@ C:\Users\Robbe\source\test\PlanofAction\PlanofAction\PlanofAction\bin\Debug\netc
 C:\Users\Robbe\source\test\PlanofAction\PlanofAction\PlanofAction\obj\Debug\netcoreapp3.1\PlanofAction.csprojAssemblyReference.cache
 C:\Users\Robbe\source\test\PlanofAction\PlanofAction\PlanofAction\obj\Debug\netcoreapp3.1\staticwebassets\PlanofAction.StaticWebAssets.Manifest.cache
 C:\Users\Robbe\source\test\PlanofAction\PlanofAction\PlanofAction\obj\Debug\netcoreapp3.1\staticwebassets\PlanofAction.StaticWebAssets.xml
-C:\Users\Robbe\source\test\PlanofAction\PlanofAction\PlanofAction\obj\Debug\netcoreapp3.1\PlanofAction.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Robbe\source\test\PlanofAction\PlanofAction\PlanofAction\obj\Debug\netcoreapp3.1\PlanofAction.RazorAssemblyInfo.cache
 C:\Users\Robbe\source\test\PlanofAction\PlanofAction\PlanofAction\obj\Debug\netcoreapp3.1\PlanofAction.RazorAssemblyInfo.cs
 C:\Users\Robbe\source\test\PlanofAction\PlanofAction\PlanofAction\obj\Debug\netcoreapp3.1\PlanofAction.AssemblyInfoInputs.cache
@@ -287,7 +286,6 @@ C:\Users\Robbe\source\test\PlanofAction\PlanofAction\PlanofAction\obj\Debug\netc
 C:\Users\Robbe\source\test\PlanofAction\PlanofAction\PlanofAction\obj\Debug\netcoreapp3.1\PlanofAction.TagHelpers.input.cache
 C:\Users\Robbe\source\test\PlanofAction\PlanofAction\PlanofAction\obj\Debug\netcoreapp3.1\PlanofAction.TagHelpers.output.cache
 C:\Users\Robbe\source\test\PlanofAction\PlanofAction\PlanofAction\obj\Debug\netcoreapp3.1\PlanofAction.RazorCoreGenerate.cache
-C:\Users\Robbe\source\test\PlanofAction\PlanofAction\PlanofAction\obj\Debug\netcoreapp3.1\Razor\Views\Account\Index.cshtml.g.cs
 C:\Users\Robbe\source\test\PlanofAction\PlanofAction\PlanofAction\obj\Debug\netcoreapp3.1\Razor\Views\ActionPlans\Index.cshtml.g.cs
 C:\Users\Robbe\source\test\PlanofAction\PlanofAction\PlanofAction\obj\Debug\netcoreapp3.1\Razor\Views\Feedback\Index.cshtml.g.cs
 C:\Users\Robbe\source\test\PlanofAction\PlanofAction\PlanofAction\obj\Debug\netcoreapp3.1\Razor\Views\Forum\Index.cshtml.g.cs
@@ -304,3 +302,17 @@ C:\Users\Robbe\source\test\PlanofAction\PlanofAction\PlanofAction\obj\Debug\netc
 C:\Users\Robbe\source\test\PlanofAction\PlanofAction\PlanofAction\obj\Debug\netcoreapp3.1\PlanofAction.csproj.CopyComplete
 C:\Users\Robbe\source\test\PlanofAction\PlanofAction\PlanofAction\obj\Debug\netcoreapp3.1\PlanofAction.dll
 C:\Users\Robbe\source\test\PlanofAction\PlanofAction\PlanofAction\obj\Debug\netcoreapp3.1\PlanofAction.pdb
+C:\Users\Robbe\source\test\PlanofAction\PlanofAction\PlanofAction\bin\Debug\netcoreapp3.1\BouncyCastle.Crypto.dll
+C:\Users\Robbe\source\test\PlanofAction\PlanofAction\PlanofAction\bin\Debug\netcoreapp3.1\Google.Protobuf.dll
+C:\Users\Robbe\source\test\PlanofAction\PlanofAction\PlanofAction\bin\Debug\netcoreapp3.1\Microsoft.Win32.SystemEvents.dll
+C:\Users\Robbe\source\test\PlanofAction\PlanofAction\PlanofAction\bin\Debug\netcoreapp3.1\MySql.Data.dll
+C:\Users\Robbe\source\test\PlanofAction\PlanofAction\PlanofAction\bin\Debug\netcoreapp3.1\Ubiety.Dns.Core.dll
+C:\Users\Robbe\source\test\PlanofAction\PlanofAction\PlanofAction\bin\Debug\netcoreapp3.1\Renci.SshNet.dll
+C:\Users\Robbe\source\test\PlanofAction\PlanofAction\PlanofAction\bin\Debug\netcoreapp3.1\SshNet.Security.Cryptography.dll
+C:\Users\Robbe\source\test\PlanofAction\PlanofAction\PlanofAction\bin\Debug\netcoreapp3.1\System.Drawing.Common.dll
+C:\Users\Robbe\source\test\PlanofAction\PlanofAction\PlanofAction\bin\Debug\netcoreapp3.1\System.Xml.XPath.XmlDocument.dll
+C:\Users\Robbe\source\test\PlanofAction\PlanofAction\PlanofAction\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\Robbe\source\test\PlanofAction\PlanofAction\PlanofAction\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
+C:\Users\Robbe\source\test\PlanofAction\PlanofAction\PlanofAction\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
+C:\Users\Robbe\source\test\PlanofAction\PlanofAction\PlanofAction\obj\Debug\netcoreapp3.1\PlanofAction.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Robbe\source\test\PlanofAction\PlanofAction\PlanofAction\obj\Debug\netcoreapp3.1\Razor\Views\Accounts\Index.cshtml.g.cs
