@@ -12,3 +12,21 @@
     color: white;
     text-align: center;
 }
+
+.redstyle {
+    background-color: #B51515;
+}
+
+.masthead {
+    position: relative;
+    background: url(../images/fire1.jpg) no-repeat center center;
+    background-size: cover;
+}
+
+.mastheadoverlay {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
