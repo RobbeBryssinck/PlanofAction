@@ -29,19 +29,17 @@ namespace PlanofAction.Models
                 conn.Open();
                 MySqlCommand cmd = new MySqlCommand("SELECT * FROM account", conn);
 
-                using (var reader = cmd.ExecuteReader())
+                using MySqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
                 {
-                    while (reader.Read())
+                    accounts.Add(new Account()
                     {
-                        accounts.Add(new Account()
-                        {
-                            AccountID = Convert.ToInt32(reader["AccountID"]),
-                            Username = reader["Username"].ToString(),
-                            Email = reader["Email"].ToString(),
-                            Password = reader["Password"].ToString(),
-                            Role = reader["Role"].ToString()
-                        });
-                    }
+                        AccountID = Convert.ToInt32(reader["AccountID"]),
+                        Username = reader["Username"].ToString(),
+                        Email = reader["Email"].ToString(),
+                        Password = reader["Password"].ToString(),
+                        Role = reader["Role"].ToString()
+                    });
                 }
             }
             return accounts;
