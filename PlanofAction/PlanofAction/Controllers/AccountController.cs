@@ -9,13 +9,14 @@ namespace PlanofAction.Controllers
 {
     public class AccountController : Controller
     {
+        [HttpGet]
         public IActionResult Login()
         {
             return View(new Account());
         }
 
         [HttpPost]
-        public IActionResult SubmitLogin(Account model)
+        public IActionResult Login(Account model)
         {
             PoAContext context = HttpContext.RequestServices.GetService(typeof(PoAContext)) as PoAContext;
 
