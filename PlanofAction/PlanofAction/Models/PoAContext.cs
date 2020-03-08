@@ -45,6 +45,30 @@ namespace PlanofAction.Models
             return accounts;
         }
 
+        public bool LoginQuery(string password)
+        {
+            string command = "SELECT Password FROM account WHERE Username='{0}';";
+            bool flag = false;
+
+            using (MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand(string.Format(command, password), conn);
+                
+                using MySqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    string newpass = reader["Password"].ToString();
+                    if (reader["Password"].ToString() == password)
+                        flag = true;
+                    else
+                        flag = false;
+                }
+            }
+            return flag;
+        }
+
+        // TODO: write register function
         public void Register()
         {
             string command = "INSERT INTO `account` (`Username`, `Password`, `Role`) VALUES ('{0}','{1}','{2}');";
