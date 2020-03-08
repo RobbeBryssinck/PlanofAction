@@ -1,6 +1,7 @@
 ﻿body {
-    padding-top: 100px;
+    padding-top: 55px;
     padding-bottom: 85px;
+    font-family: 'Caladea', serif;
 }
 
 .footer {
@@ -13,13 +14,13 @@
     text-align: center;
 }
 
-.redstyle {
-    background-color: #B51515;
+.bluestyle {
+    background-color: lightskyblue;
 }
 
 .masthead {
     position: relative;
-    background: url(../images/fire1.jpg) no-repeat center center;
+    background: linear-gradient(to bottom, rgba(150, 150, 150, 0.55), rgba(150, 150, 150, 0.55)), url(../images/ice.jfif) no-repeat center center;
     background-size: cover;
 }
 

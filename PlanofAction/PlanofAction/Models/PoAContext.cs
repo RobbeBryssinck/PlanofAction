@@ -44,5 +44,17 @@ namespace PlanofAction.Models
             }
             return accounts;
         }
+
+        public void Register()
+        {
+            string command = "INSERT INTO `account` (`Username`, `Password`, `Role`) VALUES ('{0}','{1}','{2}');";
+
+            using (MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+
+                //MySqlCommand cmd = new MySqlCommand(string.Format(command, ));
+            }
+        }
     }
 }
