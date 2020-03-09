@@ -9254,20 +9254,27 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Robbe\\.nuget\\packages\\": {}
+    "C:\\Users\\Robbe\\.nuget\\packages\\": {},
+    "C:\\Microsoft\\Xamarin\\NuGet\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Robbe\\source\\test\\PlanofAction\\PlanofAction\\PlanofAction\\PlanofAction.csproj",
+      "projectUniqueName": "C:\\Users\\Robbe\\source\\repos\\PlanofAction\\PlanofAction\\PlanofAction\\PlanofAction.csproj",
       "projectName": "PlanofAction",
-      "projectPath": "C:\\Users\\Robbe\\source\\test\\PlanofAction\\PlanofAction\\PlanofAction\\PlanofAction.csproj",
+      "projectPath": "C:\\Users\\Robbe\\source\\repos\\PlanofAction\\PlanofAction\\PlanofAction\\PlanofAction.csproj",
       "packagesPath": "C:\\Users\\Robbe\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Robbe\\source\\test\\PlanofAction\\PlanofAction\\PlanofAction\\obj\\",
+      "outputPath": "C:\\Users\\Robbe\\source\\repos\\PlanofAction\\PlanofAction\\PlanofAction\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Microsoft\\Xamarin\\NuGet\\",
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
         "C:\\Users\\Robbe\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"

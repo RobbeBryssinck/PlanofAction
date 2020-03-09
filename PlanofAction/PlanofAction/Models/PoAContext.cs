@@ -45,7 +45,7 @@ namespace PlanofAction.Models
             return accounts;
         }
 
-        public bool LoginQuery(string password)
+        public bool LoginQuery(string username, string password)
         {
             string command = "SELECT Password FROM account WHERE Username='{0}';";
             bool flag = false;
@@ -53,7 +53,7 @@ namespace PlanofAction.Models
             using (MySqlConnection conn = GetConnection())
             {
                 conn.Open();
-                MySqlCommand cmd = new MySqlCommand(string.Format(command, password), conn);
+                MySqlCommand cmd = new MySqlCommand(string.Format(command, username), conn);
                 
                 using MySqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())

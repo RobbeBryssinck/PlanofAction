@@ -20,7 +20,7 @@ namespace PlanofAction.Controllers
         {
             PoAContext context = HttpContext.RequestServices.GetService(typeof(PoAContext)) as PoAContext;
 
-            bool loginAttempt = context.LoginQuery(model.Password);
+            bool loginAttempt = context.LoginQuery(model.Username, model.Password);
 
             if (loginAttempt)
                 return Content("Login succeeded!");
