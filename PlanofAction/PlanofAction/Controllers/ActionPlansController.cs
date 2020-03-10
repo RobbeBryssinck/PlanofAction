@@ -36,11 +36,31 @@ namespace PlanofAction.Controllers
         [HttpPost]
         public IActionResult Create(ActionPlan actionPlan)
         {
-            PoAContext context = HttpContext.RequestServices.GetService(typeof(PoAContext)) as PoAContext;
+            if (ModelState.IsValid)
+            {
+                PoAContext context = HttpContext.RequestServices.GetService(typeof(PoAContext)) as PoAContext;
 
-            int rowsAffected = context.CreateActionPlan(actionPlan);
+                int rowsAffected = context.CreateActionPlan(actionPlan);
 
-            return RedirectToAction("CreationSuccessful");
+                if (rowsAffected == 1)
+                    return RedirectToAction("CreationSuccessful");
+                else
+                    return RedirectToAction("CreationFailed");
+            }
+            else
+                return RedirectToAction("CreationFailed");
+        }
+
+        [HttpGet]
+        public IActionResult CreationSuccessful()
+        {
+            return View();
+        }
+        
+        [HttpGet]
+        public IActionResult CreationFailed()
+        {
+            return View();
         }
     }
 }

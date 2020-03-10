@@ -105,7 +105,8 @@ namespace PlanofAction.Models
             {
                 conn.Open();
                 MySqlCommand cmd = new MySqlCommand(string.Format(command, actionPlan.AccountID, actionPlan.PlanTitle,
-                                                                    actionPlan.PlanMessage, actionPlan.PlanCategory, DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")), conn);
+                                                                    actionPlan.PlanMessage, actionPlan.PlanCategory, 
+                                                                    DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")), conn);
 
                 int rowsAffected = cmd.ExecuteNonQuery();
                 return rowsAffected;

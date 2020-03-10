@@ -14,22 +14,13 @@
         <thead>
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.ActionPlanID)
+                    Title
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.AccountID)
+                    Category
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.PlanTitle)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.PlanMessage)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.PlanCategory)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.PlanDateCreated)
+                    Creation date
                 </th>
                 <th></th>
             </tr>
@@ -39,18 +30,9 @@
             {
                 <tr>
                     <td>
-                        @Html.DisplayFor(modelItem => item.ActionPlanID)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.AccountID)
-                    </td>
-                    <td>
                         <a href='@string.Format("/ActionPlans/PlanPage?actionPlanID={0}", @item.ActionPlanID)'>
                             @Html.DisplayFor(modelItem => item.PlanTitle)
                         </a>
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.PlanMessage)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.PlanCategory)
