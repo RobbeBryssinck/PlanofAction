@@ -96,5 +96,20 @@ namespace PlanofAction.Models
             }
             return actionPlan;
         }
+
+        public int CreateActionPlan(ActionPlan actionPlan)
+        {
+            string command = "INSERT INTO `actionplan` (`AccountID`, `PlanTitle`, `PlanMessage`, `PlanCategory`, `PlanDateCreated`) VALUES ({0}, '{1}', '{2}', '{3}', '{4}');";
+
+            using (MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand(string.Format(command, actionPlan.AccountID, actionPlan.PlanTitle,
+                                                                    actionPlan.PlanMessage, actionPlan.PlanCategory, DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")), conn);
+
+                int rowsAffected = cmd.ExecuteNonQuery();
+                return rowsAffected;
+            }
+        }
     }
 }
