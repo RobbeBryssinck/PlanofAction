@@ -43,7 +43,9 @@
                 @Html.DisplayFor(modelItem => item.AccountID)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.PlanTitle)
+                <a href='@string.Format("/ActionPlans/PlanPage?actionPlanID={0}", @item.ActionPlanID)'>
+                    @Html.DisplayFor(modelItem => item.PlanTitle)
+                </a>
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.PlanMessage)
