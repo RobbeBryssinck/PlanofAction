@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using PlanofAction.Models;
 
 namespace PlanofAction.Controllers
 {
@@ -10,7 +11,9 @@ namespace PlanofAction.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            PoAContext context = HttpContext.RequestServices.GetService(typeof(PoAContext)) as PoAContext;
+
+            return View(context.GetActionPlans());
         }
     }
 }

@@ -1,6 +1,65 @@
-﻿
+﻿@model IEnumerable<PlanofAction.Models.ActionPlans>
+
 @{
-    ViewData["Title"] = "Action Plans";
+    ViewData["Title"] = "Index";
 }
 
-<p>Action plans</p>
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ActionPlanID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AccountID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlanTitle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlanMessage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlanCategory)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlanDateCreated)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ActionPlanID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AccountID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PlanTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PlanMessage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PlanCategory)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PlanDateCreated)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

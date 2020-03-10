@@ -476,7 +476,6 @@ C:\Users\Robbe\source\repos\PlanofAction\PlanofAction\PlanofAction\obj\Debug\net
 C:\Users\Robbe\source\repos\PlanofAction\PlanofAction\PlanofAction\obj\Debug\netcoreapp3.1\PlanofAction.TagHelpers.output.cache
 C:\Users\Robbe\source\repos\PlanofAction\PlanofAction\PlanofAction\obj\Debug\netcoreapp3.1\PlanofAction.RazorCoreGenerate.cache
 C:\Users\Robbe\source\repos\PlanofAction\PlanofAction\PlanofAction\obj\Debug\netcoreapp3.1\Razor\Views\Account\Login.cshtml.g.cs
-C:\Users\Robbe\source\repos\PlanofAction\PlanofAction\PlanofAction\obj\Debug\netcoreapp3.1\Razor\Views\ActionPlans\Index.cshtml.g.cs
 C:\Users\Robbe\source\repos\PlanofAction\PlanofAction\PlanofAction\obj\Debug\netcoreapp3.1\Razor\Views\Feedback\Index.cshtml.g.cs
 C:\Users\Robbe\source\repos\PlanofAction\PlanofAction\PlanofAction\obj\Debug\netcoreapp3.1\Razor\Views\Forum\Index.cshtml.g.cs
 C:\Users\Robbe\source\repos\PlanofAction\PlanofAction\PlanofAction\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
@@ -492,3 +491,4 @@ C:\Users\Robbe\source\repos\PlanofAction\PlanofAction\PlanofAction\obj\Debug\net
 C:\Users\Robbe\source\repos\PlanofAction\PlanofAction\PlanofAction\obj\Debug\netcoreapp3.1\PlanofAction.csproj.CopyComplete
 C:\Users\Robbe\source\repos\PlanofAction\PlanofAction\PlanofAction\obj\Debug\netcoreapp3.1\PlanofAction.dll
 C:\Users\Robbe\source\repos\PlanofAction\PlanofAction\PlanofAction\obj\Debug\netcoreapp3.1\PlanofAction.pdb
+C:\Users\Robbe\source\repos\PlanofAction\PlanofAction\PlanofAction\obj\Debug\netcoreapp3.1\Razor\Views\ActionPlans\Index.cshtml.g.cs

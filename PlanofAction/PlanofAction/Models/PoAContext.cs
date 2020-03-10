@@ -42,5 +42,33 @@ namespace PlanofAction.Models
             }
             return flag;
         }
+
+        public List<ActionPlans> GetActionPlans()
+        {
+            string command = "SELECT * FROM actionplan;";
+            List<ActionPlans> actionPlans = new List<ActionPlans>();
+
+            using (MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand(command, conn);
+
+                using MySqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    actionPlans.Add(new ActionPlans()
+                    {
+                        ActionPlanID = Convert.ToInt32(reader["ActionPlanID"]),
+                        AccountID = Convert.ToInt32(reader["AccountID"]),
+                        PlanTitle = reader["PlanTitle"].ToString(),
+                        PlanMessage = reader["PlanMessage"].ToString(),
+                        PlanCategory = reader["PlanCategory"].ToString(),
+                        PlanDateCreated = Convert.ToDateTime(reader["PlanDateCreated"])
+                    });
+                }
+            }
+
+            return actionPlans;
+        }
     }
 }

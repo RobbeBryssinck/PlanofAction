@@ -2,15 +2,14 @@
     padding-top: 55px;
     padding-bottom: 85px;
     font-family: 'Caladea', serif;
+    position:relative;
+    min-height:100vh;
 }
 
-.footer {
-    position: fixed;
-    left: 0;
+footer {
+    position: absolute;
     bottom: 0;
     width: 100%;
-    background-color: grey;
-    color: white;
     text-align: center;
 }
 
