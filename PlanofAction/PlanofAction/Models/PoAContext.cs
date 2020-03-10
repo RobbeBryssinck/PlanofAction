@@ -43,10 +43,10 @@ namespace PlanofAction.Models
             return flag;
         }
 
-        public List<ActionPlans> GetActionPlans()
+        public List<ActionPlan> GetActionPlans()
         {
             string command = "SELECT * FROM actionplan;";
-            List<ActionPlans> actionPlans = new List<ActionPlans>();
+            List<ActionPlan> actionPlans = new List<ActionPlan>();
 
             using (MySqlConnection conn = GetConnection())
             {
@@ -56,7 +56,7 @@ namespace PlanofAction.Models
                 using MySqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    actionPlans.Add(new ActionPlans()
+                    actionPlans.Add(new ActionPlan()
                     {
                         ActionPlanID = Convert.ToInt32(reader["ActionPlanID"]),
                         AccountID = Convert.ToInt32(reader["AccountID"]),
@@ -67,8 +67,34 @@ namespace PlanofAction.Models
                     });
                 }
             }
-
             return actionPlans;
+        }
+
+        public ActionPlan GetActionPlan(int actionPlanID)
+        {
+            string command = "SELECT * FROM actionplan WHERE ActionPlanID='{0}';";
+            ActionPlan actionPlan = new ActionPlan();
+
+            using (MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand(string.Format(command, actionPlanID.ToString()), conn);
+
+                using MySqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    actionPlan = new ActionPlan()
+                    {
+                        ActionPlanID = Convert.ToInt32(reader["ActionPlanID"]),
+                        AccountID = Convert.ToInt32(reader["AccountID"]),
+                        PlanTitle = reader["PlanTitle"].ToString(),
+                        PlanMessage = reader["PlanMessage"].ToString(),
+                        PlanCategory = reader["PlanCategory"].ToString(),
+                        PlanDateCreated = Convert.ToDateTime(reader["PlanDateCreated"])
+                    };
+                }
+            }
+            return actionPlan;
         }
     }
 }

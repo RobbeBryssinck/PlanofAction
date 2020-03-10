@@ -15,5 +15,12 @@ namespace PlanofAction.Controllers
 
             return View(context.GetActionPlans());
         }
+
+        public IActionResult PlanPage(int actionPlanID)
+        {
+            PoAContext context = HttpContext.RequestServices.GetService(typeof(PoAContext)) as PoAContext;
+
+            return View(context.GetActionPlan(actionPlanID));
+        }
     }
 }

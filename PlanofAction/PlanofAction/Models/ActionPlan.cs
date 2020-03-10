@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace PlanofAction.Models
 {
-    public class ActionPlans
+    public class ActionPlan
     {
         public int ActionPlanID { get; set; }
         public int AccountID { get; set; }
