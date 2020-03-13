@@ -496,3 +496,4 @@ C:\Users\Robbe\source\repos\PlanofAction\PlanofAction\PlanofAction\obj\Debug\net
 C:\Users\Robbe\source\repos\PlanofAction\PlanofAction\PlanofAction\obj\Debug\netcoreapp3.1\Razor\Views\ActionPlans\Create.cshtml.g.cs
 C:\Users\Robbe\source\repos\PlanofAction\PlanofAction\PlanofAction\obj\Debug\netcoreapp3.1\Razor\Views\ActionPlans\CreationSuccessful.cshtml.g.cs
 C:\Users\Robbe\source\repos\PlanofAction\PlanofAction\PlanofAction\obj\Debug\netcoreapp3.1\Razor\Views\ActionPlans\CreationFailed.cshtml.g.cs
+C:\Users\Robbe\source\repos\PlanofAction\PlanofAction\PlanofAction\obj\Debug\netcoreapp3.1\Razor\Views\ActionPlans\Delete.cshtml.g.cs

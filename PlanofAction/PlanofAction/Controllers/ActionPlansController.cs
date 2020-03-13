@@ -62,5 +62,23 @@ namespace PlanofAction.Controllers
         {
             return View();
         }
+
+        [HttpGet]
+        public IActionResult Delete(int actionPlanID)
+        {
+            PoAContext context = HttpContext.RequestServices.GetService(typeof(PoAContext)) as PoAContext;
+
+            return View(context.GetActionPlan(actionPlanID));
+        }
+
+        [HttpPost]
+        public IActionResult Delete(ActionPlan actionPlan)
+        {
+            PoAContext context = HttpContext.RequestServices.GetService(typeof(PoAContext)) as PoAContext;
+
+            int rowsAffected = context.DeleteActionPlan(actionPlan);
+
+            return RedirectToAction("Index");
+        }
     }
 }

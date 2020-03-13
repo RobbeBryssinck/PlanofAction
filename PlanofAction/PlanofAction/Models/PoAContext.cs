@@ -112,5 +112,19 @@ namespace PlanofAction.Models
                 return rowsAffected;
             }
         }
+
+        public int DeleteActionPlan(ActionPlan actionPlan)
+        {
+            string command = "DELETE FROM actionplan WHERE ActionPlanID={0};";
+
+            using (MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand(string.Format(command, actionPlan.ActionPlanID), conn);
+
+                int rowsAffected = cmd.ExecuteNonQuery();
+                return rowsAffected;
+            }
+        }
     }
 }
