@@ -50,8 +50,8 @@
             </dd>
         </dl>
 
-        <form asp-action="Delete">
-            <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <form method="post">
+            <input type="submit" class="btn btn-danger" asp-action="DeletePost" asp-action-actionPlanID="Model.ActionPlanID" /> |
             <a asp-action="Index">Back to List</a>
         </form>
     </div>

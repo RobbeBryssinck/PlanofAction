@@ -71,10 +71,13 @@ namespace PlanofAction.Controllers
             return View(context.GetActionPlan(actionPlanID));
         }
 
+        // TODO: fix variable passing from view to controller
         [HttpPost]
-        public IActionResult Delete(ActionPlan actionPlan)
+        public IActionResult DeletePost(int actionPlanID)
         {
             PoAContext context = HttpContext.RequestServices.GetService(typeof(PoAContext)) as PoAContext;
+
+            ActionPlan actionPlan = context.GetActionPlan(actionPlanID);
 
             int rowsAffected = context.DeleteActionPlan(actionPlan);
 
