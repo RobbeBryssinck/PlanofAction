@@ -129,7 +129,7 @@ namespace PlanofAction.Models
 
         public int EditActionPlan(ActionPlan actionPlan)
         {
-            string command = "UPDATE actionplan SET PlanTitle={0}, PlanMessage={1}, PlanCategory={2} WHERE ActionPlanID={3};";
+            string command = "UPDATE actionplan SET PlanTitle='{0}', PlanMessage='{1}', PlanCategory='{2}' WHERE ActionPlanID={3};";
 
             using (MySqlConnection conn = GetConnection())
             {

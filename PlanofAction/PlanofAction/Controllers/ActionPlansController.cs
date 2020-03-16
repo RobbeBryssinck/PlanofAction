@@ -92,11 +92,9 @@ namespace PlanofAction.Controllers
         }
 
         [HttpPost]
-        public IActionResult EditPost(int actionPlanID)
+        public IActionResult EditPost(ActionPlan actionPlan)
         {
             PoAContext context = HttpContext.RequestServices.GetService(typeof(PoAContext)) as PoAContext;
-
-            ActionPlan actionPlan = context.GetActionPlan(actionPlanID);
 
             int rowsAffected = context.EditActionPlan(actionPlan);
 
