@@ -50,9 +50,10 @@
             </dd>
         </dl>
 
-        <form method="post">
-            <input type="submit" class="btn btn-danger" asp-action="DeletePost" asp-action-actionPlanID="Model.ActionPlanID" /> |
-            <a asp-action="Index">Back to List</a>
+        <form method="post" asp-action="DeletePost">
+            @Html.HiddenFor(m => Model.ActionPlanID)
+            <input type="submit" class="btn btn-danger" asp-action="DeletePost" />
         </form>
+        <a asp-action="Index">Back to List</a>
     </div>
 </div>
