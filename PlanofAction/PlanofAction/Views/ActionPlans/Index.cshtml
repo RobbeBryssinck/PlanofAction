@@ -5,48 +5,57 @@
 }
 
 <div class="container">
-    <h1>Action plans</h1>
-
-    <p>
-        <a asp-action="Create">Create New</a>
-    </p>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>
-                    Title
-                </th>
-                <th>
-                    Category
-                </th>
-                <th>
-                    Creation date
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        <a href='@string.Format("/ActionPlans/PlanPage?actionPlanID={0}", @item.ActionPlanID)'>
-                            @Html.DisplayFor(modelItem => item.PlanTitle)
-                        </a>
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.PlanCategory)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.PlanDateCreated)
-                    </td>
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                        @Html.ActionLink("Delete", "Delete", new { actionPlanID=item.ActionPlanID })
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
+    <div class="row" style="margin-left:2px;">
+        <h1>Action plans</h1>
+    </div>
+    <div class="row" style="margin-left:2px;">
+        <p>
+            <a asp-action="Create">Create New</a>
+        </p>
+    </div>
+    <div class="row">
+        <div class="col-sm-9">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            Title
+                        </th>
+                        <th>
+                            Category
+                        </th>
+                        <th>
+                            Creation date
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                <a href='@string.Format("/ActionPlans/PlanPage?actionPlanID={0}", @item.ActionPlanID)'>
+                                    @Html.DisplayFor(modelItem => item.PlanTitle)
+                                </a>
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PlanCategory)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PlanDateCreated)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                                @Html.ActionLink("Delete", "Delete", new { actionPlanID = item.ActionPlanID })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="col-sm-3">
+            <p>sort</p>
+        </div>
+    </div>
 </div>
