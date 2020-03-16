@@ -71,7 +71,6 @@ namespace PlanofAction.Controllers
             return View(context.GetActionPlan(actionPlanID));
         }
 
-        // TODO: fix variable passing from view to controller
         [HttpPost]
         public IActionResult DeletePost(int actionPlanID)
         {
@@ -80,6 +79,26 @@ namespace PlanofAction.Controllers
             ActionPlan actionPlan = context.GetActionPlan(actionPlanID);
 
             int rowsAffected = context.DeleteActionPlan(actionPlan);
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public IActionResult Edit(int actionPlanID)
+        {
+            PoAContext context = HttpContext.RequestServices.GetService(typeof(PoAContext)) as PoAContext;
+
+            return View(context.GetActionPlan(actionPlanID));
+        }
+
+        [HttpPost]
+        public IActionResult EditPost(int actionPlanID)
+        {
+            PoAContext context = HttpContext.RequestServices.GetService(typeof(PoAContext)) as PoAContext;
+
+            ActionPlan actionPlan = context.GetActionPlan(actionPlanID);
+
+            int rowsAffected = context.EditActionPlan(actionPlan);
 
             return RedirectToAction("Index");
         }

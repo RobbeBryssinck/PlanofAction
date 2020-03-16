@@ -126,5 +126,20 @@ namespace PlanofAction.Models
                 return rowsAffected;
             }
         }
+
+        public int EditActionPlan(ActionPlan actionPlan)
+        {
+            string command = "UPDATE actionplan SET PlanTitle={0}, PlanMessage={1}, PlanCategory={2} WHERE ActionPlanID={3};";
+
+            using (MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand(string.Format(command, actionPlan.PlanTitle, actionPlan.PlanMessage, 
+                    actionPlan.PlanCategory, actionPlan.ActionPlanID), conn);
+
+                int rowsAffected = cmd.ExecuteNonQuery();
+                return rowsAffected;
+            }
+        }
     }
 }
