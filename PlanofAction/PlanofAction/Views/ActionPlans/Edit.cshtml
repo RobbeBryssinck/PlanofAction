@@ -14,17 +14,17 @@
             <form method="post" asp-action="EditPost">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
-                    <label asp-for="PlanTitle" class="control-label"></label>
+                    <label asp-for="PlanTitle" class="control-label">Plan title</label>
                     <input asp-for="PlanTitle" class="form-control" />
                     <span asp-validation-for="PlanTitle" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="PlanMessage" class="control-label"></label>
+                    <label asp-for="PlanMessage" class="control-label">Plan message</label>
                     <input asp-for="PlanMessage" class="form-control" />
                     <span asp-validation-for="PlanMessage" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="PlanCategory" class="control-label"></label>
+                    <label asp-for="PlanCategory" class="control-label">Plan category</label>
                     <input asp-for="PlanCategory" class="form-control" />
                     <span asp-validation-for="PlanCategory" class="text-danger"></span>
                 </div>

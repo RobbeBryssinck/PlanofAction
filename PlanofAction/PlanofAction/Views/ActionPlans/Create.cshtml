@@ -7,29 +7,29 @@
 <div class="container">
     <h1>Create</h1>
 
-    <h4>ActionPlan</h4>
+    <h4>Action Plan</h4>
     <hr />
     <div class="row">
         <div class="col-md-4">
             <form method="post" asp-action="Create">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
-                    <label asp-for="AccountID" class="control-label"></label>
+                    <label asp-for="AccountID" class="control-label">Account ID</label>
                     <input asp-for="AccountID" class="form-control" />
                     <span asp-validation-for="AccountID" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="PlanTitle" class="control-label"></label>
+                    <label asp-for="PlanTitle" class="control-label">Plan title</label>
                     <input asp-for="PlanTitle" class="form-control" />
                     <span asp-validation-for="PlanTitle" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="PlanMessage" class="control-label"></label>
+                    <label asp-for="PlanMessage" class="control-label">Plan message</label>
                     <textarea asp-for="PlanMessage" class="form-control" cols="25" rows="3"></textarea>
                     <span asp-validation-for="PlanMessage" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="PlanCategory" class="control-label"></label>
+                    <label asp-for="PlanCategory" class="control-label">Plan category</label>
                     <input asp-for="PlanCategory" class="form-control" />
                     <span asp-validation-for="PlanCategory" class="text-danger"></span>
                 </div>
