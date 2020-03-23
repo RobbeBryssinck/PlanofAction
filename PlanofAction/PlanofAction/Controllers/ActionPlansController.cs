@@ -9,44 +9,37 @@ namespace PlanofAction.Controllers
 {
     public class ActionPlansController : Controller
     {
+        private PoAContext db;
+        public ActionPlansController(PoAContext db)
+        {
+            this.db = db;
+        }
+
         [HttpGet]
         public IActionResult Index()
         {
-            PoAContext context = HttpContext.RequestServices.GetService(typeof(PoAContext)) as PoAContext;
-
-            return View(context.GetActionPlans());
+            return View(db.GetActionPlans());
         }
 
         [HttpGet]
         public IActionResult PlanPage(int actionPlanID)
         {
-            PoAContext context = HttpContext.RequestServices.GetService(typeof(PoAContext)) as PoAContext;
-
-            return View(context.GetActionPlan(actionPlanID));
+            return View(db.GetActionPlan(actionPlanID));
         }
 
         [HttpGet]
         public IActionResult Create()
         {
-            PoAContext context = HttpContext.RequestServices.GetService(typeof(PoAContext)) as PoAContext;
-
             return View();
         }
 
         [HttpPost]
         public IActionResult Create(ActionPlan actionPlan)
         {
-            if (ModelState.IsValid)
-            {
-                PoAContext context = HttpContext.RequestServices.GetService(typeof(PoAContext)) as PoAContext;
+            int rowsAffected = db.CreateActionPlan(actionPlan);
 
-                int rowsAffected = context.CreateActionPlan(actionPlan);
-
-                if (rowsAffected == 1)
-                    return RedirectToAction("CreationSuccessful");
-                else
-                    return RedirectToAction("CreationFailed");
-            }
+            if (rowsAffected == 1)
+                return RedirectToAction("CreationSuccessful");
             else
                 return RedirectToAction("CreationFailed");
         }
@@ -56,7 +49,7 @@ namespace PlanofAction.Controllers
         {
             return View();
         }
-        
+
         [HttpGet]
         public IActionResult CreationFailed()
         {
@@ -66,19 +59,15 @@ namespace PlanofAction.Controllers
         [HttpGet]
         public IActionResult Delete(int actionPlanID)
         {
-            PoAContext context = HttpContext.RequestServices.GetService(typeof(PoAContext)) as PoAContext;
-
-            return View(context.GetActionPlan(actionPlanID));
+            return View(db.GetActionPlan(actionPlanID));
         }
 
         [HttpPost]
         public IActionResult DeletePost(int actionPlanID)
         {
-            PoAContext context = HttpContext.RequestServices.GetService(typeof(PoAContext)) as PoAContext;
+            ActionPlan actionPlan = db.GetActionPlan(actionPlanID);
 
-            ActionPlan actionPlan = context.GetActionPlan(actionPlanID);
-
-            int rowsAffected = context.DeleteActionPlan(actionPlan);
+            int rowsAffected = db.DeleteActionPlan(actionPlan);
 
             return RedirectToAction("Index");
         }
@@ -86,17 +75,13 @@ namespace PlanofAction.Controllers
         [HttpGet]
         public IActionResult Edit(int actionPlanID)
         {
-            PoAContext context = HttpContext.RequestServices.GetService(typeof(PoAContext)) as PoAContext;
-
-            return View(context.GetActionPlan(actionPlanID));
+            return View(db.GetActionPlan(actionPlanID));
         }
 
         [HttpPost]
         public IActionResult EditPost(ActionPlan actionPlan)
         {
-            PoAContext context = HttpContext.RequestServices.GetService(typeof(PoAContext)) as PoAContext;
-
-            int rowsAffected = context.EditActionPlan(actionPlan);
+            int rowsAffected = db.EditActionPlan(actionPlan);
 
             return RedirectToAction("Index");
         }
