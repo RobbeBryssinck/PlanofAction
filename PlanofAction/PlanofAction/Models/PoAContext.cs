@@ -141,5 +141,10 @@ namespace PlanofAction.Models
                 return rowsAffected;
             }
         }
+
+        public List<ActionPlan> GetForumPosts()
+        {
+            return new List<ActionPlan>();
+        }
     }
 }
