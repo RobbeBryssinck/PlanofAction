@@ -7,10 +7,11 @@ namespace PlanofAction.Models
 {
     public class Discussion
     {
-        public int PostID { get; set; }
         public int ThreadID { get; set; }
         public int AccountID { get; set; }
-        public string PostMessage { get; set; }
-        public DateTime PostDateCreated { get; set; }
+        public string ThreadTitle { get; set; }
+        public string ThreadMessage { get; set; }
+        public string ThreadCategory { get; set; }
+        public DateTime ThreadDateCreated { get; set; }
     }
 }
