@@ -195,5 +195,21 @@ namespace PlanofAction.Models
             }
             return thread;
         }
+
+        public int CreateThread(Thread thread)
+        {
+            string command = "INSERT INTO `thread` (`AccountID`, `ThreadTitle`, `ThreadMessage`, `ThreadCategory`, `ThreadDateCreated`) VALUES ({0}, '{1}', '{2}', '{3}', '{4}');";
+
+            using (MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand(string.Format(command, thread.AccountID, thread.ThreadTitle,
+                                                                    thread.ThreadMessage, thread.ThreadCategory, 
+                                                                    DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")), conn);
+
+                int rowsAffected = cmd.ExecuteNonQuery();
+                return rowsAffected;
+            }
+        }
     }
 }
