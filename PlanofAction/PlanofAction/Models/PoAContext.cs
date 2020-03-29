@@ -211,5 +211,19 @@ namespace PlanofAction.Models
                 return rowsAffected;
             }
         }
+
+        public int DeleteThread(Thread thread)
+        {
+            string command = "DELETE FROM thread WHERE ThreadID={0};";
+
+            using (MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand(string.Format(command, thread.ThreadID), conn);
+
+                int rowsAffected = cmd.ExecuteNonQuery();
+                return rowsAffected;
+            }
+        }
     }
 }

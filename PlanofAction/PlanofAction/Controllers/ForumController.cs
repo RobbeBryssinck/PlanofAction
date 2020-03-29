@@ -55,5 +55,22 @@ namespace PlanofAction.Controllers
         {
             return View();
         }
+
+        [HttpGet]
+        public IActionResult Delete(int threadID)
+        {
+            return View(db.GetForumThread(threadID));
+        }
+
+        //TODO: simplify method (GetForumThread unnecessary)
+        [HttpPost]
+        public IActionResult DeletePost(int threadID)
+        {
+            Thread thread = db.GetForumThread(threadID);
+            //TODO: delete return value
+            int rowsAffected = db.DeleteThread(thread);
+
+            return RedirectToAction("Index");
+        }
     }
 }
