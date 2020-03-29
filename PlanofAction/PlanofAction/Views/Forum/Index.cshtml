@@ -4,46 +4,54 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<div class="container">
+    <div class="row" style="margin-left:2px;">
+        <h1>Index</h1>
+    </div>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                Title
-            </th>
-            <th>
-                Category
-            </th>
-            <th>
-                Date created
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    <a href='@string.Format("/Forum/ThreadPage?threadID={0}", item.ThreadID)'>
-                        @item.ThreadTitle
-                    </a>
-                </td>
-                <td>
-                    @item.ThreadCategory
-                </td>
-                <td>
-                    @item.ThreadDateCreated
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { threadID = item.ThreadID }) |
-                    @Html.ActionLink("Delete", "Delete", new { threadID = item.ThreadID })
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+    <div class="row" style="margin-left:2px;">
+        <p>
+            <a asp-action="Create">Create New</a>
+        </p>
+    </div>
+    <div class="row">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Title
+                    </th>
+                    <th>
+                        Category
+                    </th>
+                    <th>
+                        Date created
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <a href='@string.Format("/Forum/ThreadPage?threadID={0}", item.ThreadID)'>
+                                @item.ThreadTitle
+                            </a>
+                        </td>
+                        <td>
+                            @item.ThreadCategory
+                        </td>
+                        <td>
+                            @item.ThreadDateCreated
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { threadID = item.ThreadID }) |
+                            @Html.ActionLink("Delete", "Delete", new { threadID = item.ThreadID })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
