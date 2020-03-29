@@ -500,3 +500,4 @@ C:\Users\Robbe\source\test\PlanofAction\PlanofAction\PlanofAction\obj\Debug\netc
 C:\Users\Robbe\source\test\PlanofAction\PlanofAction\PlanofAction\obj\Debug\netcoreapp3.1\Razor\Views\ActionPlans\Edit.cshtml.g.cs
 C:\Users\Robbe\source\test\PlanofAction\PlanofAction\PlanofAction\obj\Debug\netcoreapp3.1\PlanofAction.csproj.CoreCompileInputs.cache
 C:\Users\Robbe\source\test\PlanofAction\PlanofAction\PlanofAction\obj\Debug\netcoreapp3.1\PlanofAction.genruntimeconfig.cache
+C:\Users\Robbe\source\test\PlanofAction\PlanofAction\PlanofAction\obj\Debug\netcoreapp3.1\Razor\Views\Forum\CreateThread.cshtml.g.cs

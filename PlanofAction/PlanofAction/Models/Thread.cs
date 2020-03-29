@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace PlanofAction.Models
 {
-    public class Discussion
+    public class Thread
     {
         public int ThreadID { get; set; }
         public int AccountID { get; set; }
