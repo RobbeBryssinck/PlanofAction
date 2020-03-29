@@ -142,7 +142,6 @@ namespace PlanofAction.Models
             }
         }
 
-
         public List<Thread> GetForumThreads()
         {
             string command = "SELECT * FROM thread;";
@@ -168,6 +167,33 @@ namespace PlanofAction.Models
                 }
             }
             return threads;
+        }
+
+        public Thread GetForumThread(int threadID)
+        {
+            string command = "SELECT * FROM thread WHERE ThreadID='{0}';";
+            Thread thread = new Thread();
+
+            using (MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand(string.Format(command, threadID.ToString()), conn);
+
+                using MySqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    thread = new Thread()
+                    {
+                        ThreadID = Convert.ToInt32(reader["ThreadID"]),
+                        AccountID = Convert.ToInt32(reader["AccountID"]),
+                        ThreadTitle = reader["ThreadTitle"].ToString(),
+                        ThreadMessage = reader["ThreadMessage"].ToString(),
+                        ThreadCategory = reader["ThreadCategory"].ToString(),
+                        ThreadDateCreated = Convert.ToDateTime(reader["ThreadDateCreated"])
+                    };
+                }
+            }
+            return thread;
         }
     }
 }

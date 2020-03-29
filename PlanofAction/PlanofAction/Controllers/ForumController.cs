@@ -15,11 +15,16 @@ namespace PlanofAction.Controllers
             this.db = db;
         }
 
-
         [HttpGet]
         public IActionResult Index()
         {
             return View(db.GetForumThreads());
+        }
+
+        [HttpGet]
+        public IActionResult ThreadPage(int threadID)
+        {
+            return View(db.GetForumThread(threadID));
         }
     }
 }

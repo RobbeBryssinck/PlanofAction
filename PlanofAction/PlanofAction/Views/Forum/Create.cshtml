@@ -4,52 +4,42 @@
     ViewData["Title"] = "CreateThread";
 }
 
-<h1>CreateThread</h1>
+<div class="container">
+    <h1>Create Thread</h1>
 
-<h4>Discussion</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="CreateThread">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="ThreadID" class="control-label"></label>
-                <input asp-for="ThreadID" class="form-control" />
-                <span asp-validation-for="ThreadID" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="AccountID" class="control-label"></label>
-                <input asp-for="AccountID" class="form-control" />
-                <span asp-validation-for="AccountID" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ThreadTitle" class="control-label"></label>
-                <input asp-for="ThreadTitle" class="form-control" />
-                <span asp-validation-for="ThreadTitle" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ThreadMessage" class="control-label"></label>
-                <input asp-for="ThreadMessage" class="form-control" />
-                <span asp-validation-for="ThreadMessage" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ThreadCategory" class="control-label"></label>
-                <input asp-for="ThreadCategory" class="form-control" />
-                <span asp-validation-for="ThreadCategory" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ThreadDateCreated" class="control-label"></label>
-                <input asp-for="ThreadDateCreated" class="form-control" />
-                <span asp-validation-for="ThreadDateCreated" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="AccountID" class="control-label"></label>
+                    <input asp-for="AccountID" class="form-control" />
+                    <span asp-validation-for="AccountID" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ThreadTitle" class="control-label"></label>
+                    <input asp-for="ThreadTitle" class="form-control" />
+                    <span asp-validation-for="ThreadTitle" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ThreadMessage" class="control-label"></label>
+                    <input asp-for="ThreadMessage" class="form-control" />
+                    <span asp-validation-for="ThreadMessage" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ThreadCategory" class="control-label"></label>
+                    <input asp-for="ThreadCategory" class="form-control" />
+                    <span asp-validation-for="ThreadCategory" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Index">Back to List</a>
     </div>
 </div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
