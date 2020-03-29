@@ -505,3 +505,4 @@ C:\Users\Robbe\source\test\PlanofAction\PlanofAction\PlanofAction\obj\Debug\netc
 C:\Users\Robbe\source\test\PlanofAction\PlanofAction\PlanofAction\obj\Debug\netcoreapp3.1\Razor\Views\Forum\CreationFailed.cshtml.g.cs
 C:\Users\Robbe\source\test\PlanofAction\PlanofAction\PlanofAction\obj\Debug\netcoreapp3.1\Razor\Views\Forum\CreationSuccessful.cshtml.g.cs
 C:\Users\Robbe\source\test\PlanofAction\PlanofAction\PlanofAction\obj\Debug\netcoreapp3.1\Razor\Views\Forum\Delete.cshtml.g.cs
+C:\Users\Robbe\source\test\PlanofAction\PlanofAction\PlanofAction\obj\Debug\netcoreapp3.1\Razor\Views\Forum\Edit.cshtml.g.cs

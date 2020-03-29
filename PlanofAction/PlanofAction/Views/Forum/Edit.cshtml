@@ -1,0 +1,41 @@
+﻿@model PlanofAction.Models.Thread
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="container">
+    <h1>Edit thread</h1>
+
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form method="post" asp-action="EditPost">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="ThreadTitle" class="control-label"></label>
+                    <input asp-for="ThreadTitle" class="form-control" />
+                    <span asp-validation-for="ThreadTitle" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ThreadMessage" class="control-label"></label>
+                    <input asp-for="ThreadMessage" class="form-control" />
+                    <span asp-validation-for="ThreadMessage" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ThreadCategory" class="control-label"></label>
+                    <input asp-for="ThreadCategory" class="form-control" />
+                    <span asp-validation-for="ThreadCategory" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input asp-for="ThreadID" type="hidden" />
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+</div>

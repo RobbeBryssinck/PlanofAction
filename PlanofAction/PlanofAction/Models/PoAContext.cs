@@ -225,5 +225,20 @@ namespace PlanofAction.Models
                 return rowsAffected;
             }
         }
+
+        public int EditThread(Thread thread)
+        {
+            string command = "UPDATE thread SET ThreadTitle='{0}', ThreadMessage='{1}', ThreadCategory='{2}' WHERE ThreadID={3};";
+
+            using (MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand(string.Format(command, thread.ThreadTitle, thread.ThreadMessage, 
+                    thread.ThreadCategory, thread.ThreadID), conn);
+
+                int rowsAffected = cmd.ExecuteNonQuery();
+                return rowsAffected;
+            }
+        }
     }
 }

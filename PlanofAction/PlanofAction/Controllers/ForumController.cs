@@ -72,5 +72,19 @@ namespace PlanofAction.Controllers
 
             return RedirectToAction("Index");
         }
+
+        [HttpGet]
+        public IActionResult Edit(int threadID)
+        {
+            return View(db.GetForumThread(threadID));
+        }
+
+        [HttpPost]
+        public IActionResult EditPost(Thread thread)
+        {
+            int rowsAffected = db.EditThread(thread);
+
+            return RedirectToAction("Index");
+        }
     }
 }
