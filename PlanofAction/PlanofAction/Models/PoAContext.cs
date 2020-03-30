@@ -113,7 +113,7 @@ namespace PlanofAction.Models
             }
         }
 
-        public int DeleteActionPlan(ActionPlan actionPlan)
+        public void DeleteActionPlan(ActionPlan actionPlan)
         {
             string command = "DELETE FROM actionplan WHERE ActionPlanID={0};";
 
@@ -122,12 +122,11 @@ namespace PlanofAction.Models
                 conn.Open();
                 MySqlCommand cmd = new MySqlCommand(string.Format(command, actionPlan.ActionPlanID), conn);
 
-                int rowsAffected = cmd.ExecuteNonQuery();
-                return rowsAffected;
+                cmd.ExecuteNonQuery();
             }
         }
 
-        public int EditActionPlan(ActionPlan actionPlan)
+        public void EditActionPlan(ActionPlan actionPlan)
         {
             string command = "UPDATE actionplan SET PlanTitle='{0}', PlanMessage='{1}', PlanCategory='{2}' WHERE ActionPlanID={3};";
 
@@ -137,8 +136,7 @@ namespace PlanofAction.Models
                 MySqlCommand cmd = new MySqlCommand(string.Format(command, actionPlan.PlanTitle, actionPlan.PlanMessage, 
                     actionPlan.PlanCategory, actionPlan.ActionPlanID), conn);
 
-                int rowsAffected = cmd.ExecuteNonQuery();
-                return rowsAffected;
+                cmd.ExecuteNonQuery();
             }
         }
 
@@ -212,7 +210,7 @@ namespace PlanofAction.Models
             }
         }
 
-        public int DeleteThread(Thread thread)
+        public void DeleteThread(Thread thread)
         {
             string command = "DELETE FROM thread WHERE ThreadID={0};";
 
@@ -221,12 +219,11 @@ namespace PlanofAction.Models
                 conn.Open();
                 MySqlCommand cmd = new MySqlCommand(string.Format(command, thread.ThreadID), conn);
 
-                int rowsAffected = cmd.ExecuteNonQuery();
-                return rowsAffected;
+                cmd.ExecuteNonQuery();
             }
         }
 
-        public int EditThread(Thread thread)
+        public void EditThread(Thread thread)
         {
             string command = "UPDATE thread SET ThreadTitle='{0}', ThreadMessage='{1}', ThreadCategory='{2}' WHERE ThreadID={3};";
 
@@ -236,8 +233,7 @@ namespace PlanofAction.Models
                 MySqlCommand cmd = new MySqlCommand(string.Format(command, thread.ThreadTitle, thread.ThreadMessage, 
                     thread.ThreadCategory, thread.ThreadID), conn);
 
-                int rowsAffected = cmd.ExecuteNonQuery();
-                return rowsAffected;
+                cmd.ExecuteNonQuery();
             }
         }
     }

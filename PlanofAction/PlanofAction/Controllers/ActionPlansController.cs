@@ -67,7 +67,7 @@ namespace PlanofAction.Controllers
         {
             ActionPlan actionPlan = db.GetActionPlan(actionPlanID);
 
-            int rowsAffected = db.DeleteActionPlan(actionPlan);
+            db.DeleteActionPlan(actionPlan);
 
             return RedirectToAction("Index");
         }
@@ -81,7 +81,7 @@ namespace PlanofAction.Controllers
         [HttpPost]
         public IActionResult EditPost(ActionPlan actionPlan)
         {
-            int rowsAffected = db.EditActionPlan(actionPlan);
+            db.EditActionPlan(actionPlan);
 
             return RedirectToAction("Index");
         }

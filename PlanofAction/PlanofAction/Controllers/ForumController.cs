@@ -62,13 +62,11 @@ namespace PlanofAction.Controllers
             return View(db.GetForumThread(threadID));
         }
 
-        //TODO: simplify method (GetForumThread unnecessary)
         [HttpPost]
         public IActionResult DeletePost(int threadID)
         {
             Thread thread = db.GetForumThread(threadID);
-            //TODO: delete return value
-            int rowsAffected = db.DeleteThread(thread);
+            db.DeleteThread(thread);
 
             return RedirectToAction("Index");
         }
@@ -82,7 +80,7 @@ namespace PlanofAction.Controllers
         [HttpPost]
         public IActionResult EditPost(Thread thread)
         {
-            int rowsAffected = db.EditThread(thread);
+            db.EditThread(thread);
 
             return RedirectToAction("Index");
         }
