@@ -29,7 +29,7 @@ namespace PlanofAction.Models
             {
                 conn.Open();
                 MySqlCommand cmd = new MySqlCommand(string.Format(command, username), conn);
-                
+
                 using MySqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
@@ -105,7 +105,7 @@ namespace PlanofAction.Models
             {
                 conn.Open();
                 MySqlCommand cmd = new MySqlCommand(string.Format(command, actionPlan.AccountID, actionPlan.PlanTitle,
-                                                                    actionPlan.PlanMessage, actionPlan.PlanCategory, 
+                                                                    actionPlan.PlanMessage, actionPlan.PlanCategory,
                                                                     DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")), conn);
 
                 int rowsAffected = cmd.ExecuteNonQuery();
@@ -133,7 +133,7 @@ namespace PlanofAction.Models
             using (MySqlConnection conn = GetConnection())
             {
                 conn.Open();
-                MySqlCommand cmd = new MySqlCommand(string.Format(command, actionPlan.PlanTitle, actionPlan.PlanMessage, 
+                MySqlCommand cmd = new MySqlCommand(string.Format(command, actionPlan.PlanTitle, actionPlan.PlanMessage,
                     actionPlan.PlanCategory, actionPlan.ActionPlanID), conn);
 
                 cmd.ExecuteNonQuery();
@@ -202,7 +202,7 @@ namespace PlanofAction.Models
             {
                 conn.Open();
                 MySqlCommand cmd = new MySqlCommand(string.Format(command, thread.AccountID, thread.ThreadTitle,
-                                                                    thread.ThreadMessage, thread.ThreadCategory, 
+                                                                    thread.ThreadMessage, thread.ThreadCategory,
                                                                     DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")), conn);
 
                 int rowsAffected = cmd.ExecuteNonQuery();
@@ -230,7 +230,7 @@ namespace PlanofAction.Models
             using (MySqlConnection conn = GetConnection())
             {
                 conn.Open();
-                MySqlCommand cmd = new MySqlCommand(string.Format(command, thread.ThreadTitle, thread.ThreadMessage, 
+                MySqlCommand cmd = new MySqlCommand(string.Format(command, thread.ThreadTitle, thread.ThreadMessage,
                     thread.ThreadCategory, thread.ThreadID), conn);
 
                 cmd.ExecuteNonQuery();

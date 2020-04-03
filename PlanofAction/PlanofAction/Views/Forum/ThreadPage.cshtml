@@ -1,1 +1,35 @@
 ﻿@model PlanofAction.ViewModels.ForumPostViewModel
+@using PlanofAction.Models;
+
+<!--Thread title-->
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1>@Model.ThreadTitle</h1>
+        </div>
+    </div>
+</div>
+
+<!--Thread Message-->
+<div class="container">
+    <div class="row">
+        <div class="col-3">
+            @Model.ThreadUser
+        </div>
+        <div class="col-9">
+            @Model.ThreadMessage
+        </div>
+    </div>
+</div>
+
+<!--Posts-->
+@foreach (var item in Model.posts)
+{
+    <div class="container">
+        <div class="row">
+            <div class="col-3">
+                @item.
+            </div>
+        </div>
+    </div>
+}
