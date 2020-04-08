@@ -198,6 +198,7 @@ namespace PlanofAction.Models
         public ForumPostViewModel GetForumThreadViewModel(int threadID)
         {
             string command = "SELECT * FROM thread WHERE ThreadID='{0}';";
+            int accountID = 0;
             ForumPostViewModel forumPostViewModel = new ForumPostViewModel();
 
             using (MySqlConnection conn = GetConnection())
@@ -208,42 +209,89 @@ namespace PlanofAction.Models
                 using MySqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    forumPostViewModel = new ForumPostViewModel()
-                    {
-                        ThreadTitle = reader["ThreadTitle"].ToString(),
-                        ThreadMessage = reader["ThreadMessage"].ToString(),
-                        ThreadCategory = reader["ThreadCategory"].ToString(),
-                        ThreadDateCreated = Convert.ToDateTime(reader["ThreadDateCreated"])
-                    };
+                    forumPostViewModel.ThreadTitle = reader["ThreadTitle"].ToString();
+                    forumPostViewModel.ThreadMessage = reader["ThreadMessage"].ToString();
+                    forumPostViewModel.ThreadCategory = reader["ThreadCategory"].ToString();
+                    forumPostViewModel.ThreadDateCreated = Convert.ToDateTime(reader["ThreadDateCreated"]);
+
+                    accountID = Convert.ToInt32(reader["AccountID"]);
                 }
             }
 
+            forumPostViewModel.ThreadCreator = GetThreadCreator(accountID);
             forumPostViewModel.Posts = GetPosts(threadID);
 
             return forumPostViewModel;
         }
 
+        public Account GetThreadCreator(int accountID)
+        {
+            string command = "SELECT * FROM account WHERE AccountID='{0}';";
+            Account account = new Account();
+
+            using (MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand(string.Format(command, accountID.ToString()), conn);
+
+                using MySqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    account.AccountID = Convert.ToInt32(reader["AccountID"]);
+                    account.Username = reader["Username"].ToString();
+                    account.Email = reader["Email"].ToString();
+                    account.Password = reader["Password"].ToString();
+                    account.Role = reader["Role"].ToString();
+                    account.ProfilePicture = reader["ProfilePicture"].ToString();
+                    account.DateJoined = Convert.ToDateTime(reader["DateJoined"]);
+                }
+            }
+
+            return account;
+        }
+
+        //TODO: get user
         public List<Post> GetPosts(int threadID)
         {
-            string command = "SELECT * FROM post WHERE ThreadID='{0}';";
+            string postsCommand = "SELECT * FROM post WHERE ThreadID='{0}';";
+            string accountCommand = "SELECT * FROM account WHERE AccountID='{0}';";
             List<Post> posts = new List<Post>();
 
             using (MySqlConnection conn = GetConnection())
             {
                 conn.Open();
-                MySqlCommand cmd = new MySqlCommand(string.Format(command, threadID.ToString()), conn);
+                MySqlCommand cmdPosts = new MySqlCommand(string.Format(postsCommand, threadID.ToString()), conn);
 
-                using MySqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
+                using MySqlDataReader postsReader = cmdPosts.ExecuteReader();
+                while (postsReader.Read())
                 {
-                    posts.Add(new Post()
+                    Post post = new Post();
+                    post.PostID = Convert.ToInt32(postsReader["PostID"]);
+                    post.ThreadID = Convert.ToInt32(postsReader["ThreadID"]);
+                    post.AccountID = Convert.ToInt32(postsReader["AccountID"]);
+                    post.PostMessage = postsReader["PostMessage"].ToString();
+                    post.PostDateCreated = Convert.ToDateTime(postsReader["PostDateCreated"]);
+
+                    using (MySqlConnection conn2 = GetConnection())
                     {
-                        PostID = Convert.ToInt32(reader["PostID"]),
-                        ThreadID = Convert.ToInt32(reader["ThreadID"]),
-                        AccountID = Convert.ToInt32(reader["AccountID"]),
-                        PostMessage = reader["PostMessage"].ToString(),
-                        PostDateCreated = Convert.ToDateTime(reader["PostDateCreated"])
-                    });
+                        conn2.Open();
+                        MySqlCommand cmdAccount = new MySqlCommand(string.Format(accountCommand, postsReader["AccountID"].ToString()), conn2);
+                        using MySqlDataReader accountReader = cmdAccount.ExecuteReader();
+                        while (accountReader.Read())
+                        {
+                            Account account = new Account();
+                            account.AccountID = Convert.ToInt32(accountReader["AccountID"]);
+                            account.Username = accountReader["Username"].ToString();
+                            account.Email = accountReader["Email"].ToString();
+                            account.Password = accountReader["Password"].ToString();
+                            account.Role = accountReader["Role"].ToString();
+                            account.ProfilePicture = accountReader["ProfilePicture"].ToString();
+                            account.DateJoined = Convert.ToDateTime(accountReader["DateJoined"]);
+                            post.PostAccount = account;
+                        }
+                    }
+
+                    posts.Add(post);
                 }
             }
 

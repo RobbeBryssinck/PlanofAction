@@ -12,5 +12,6 @@ namespace PlanofAction.Models
         public int AccountID { get; set; }
         public string PostMessage { get; set; }
         public DateTime PostDateCreated { get; set; }
+        public Account PostAccount { get; set; }
     }
 }
