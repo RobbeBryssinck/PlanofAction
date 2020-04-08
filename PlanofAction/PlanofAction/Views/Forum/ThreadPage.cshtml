@@ -1,35 +1,76 @@
-﻿@model PlanofAction.ViewModels.ForumPostViewModel
-@using PlanofAction.Models;
+﻿@model ForumPostViewModel
+<style>
+    #threadlayout {
+        padding-top: 20px;
+    }
 
-<!--Thread title-->
-<div class="container">
+    .userdescription {
+        height: 100%;
+        border-left: 2px solid #444;
+        margin: 0 auto;
+        text-align: center;
+    }
+</style>
+
+<!--Thread-->
+<div class="container" id="threadlayout">
     <div class="row">
         <div class="col-12">
-            <h1>@Model.ThreadTitle</h1>
+            <h2>@Model.ThreadTitle</h2>
+            <hr />
         </div>
     </div>
-</div>
-
-<!--Thread Message-->
-<div class="container">
     <div class="row">
-        <div class="col-3">
-            @Model.ThreadUser
-        </div>
-        <div class="col-9">
-            @Model.ThreadMessage
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    @Model.ThreadDateCreated
+                </div>
+                <div class="row card-body">
+                    <div class="col-9">
+                        <p>@Model.ThreadMessage</p>
+                    </div>
+                    <div class="col-3 userdescription">
+                        profile picture
+                        <br />
+                        username
+                        <br />
+                        joined date
+                        <br />
+                        posts
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
 <!--Posts-->
-@foreach (var item in Model.posts)
+@foreach (var post in Model.Posts)
 {
-    <div class="container">
-        <div class="row">
-            <div class="col-3">
-                @item.
+<div class="container" id="threadlayout">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    @post.PostDateCreated
+                </div>
+                <div class="row card-body">
+                    <div class="col-9">
+                        <p>@post.PostMessage</p>
+                    </div>
+                    <div class="col-3 userdescription">
+                        profile picture
+                        <br />
+                        username
+                        <br />
+                        joined date
+                        <br />
+                        posts
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+</div>
 }

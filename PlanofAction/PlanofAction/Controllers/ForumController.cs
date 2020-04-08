@@ -24,7 +24,7 @@ namespace PlanofAction.Controllers
         [HttpGet]
         public IActionResult ThreadPage(int threadID)
         {
-            return View(db.GetForumThread(threadID));
+            return View(db.GetForumThreadViewModel(threadID));
         }
 
         [HttpGet]
@@ -59,7 +59,7 @@ namespace PlanofAction.Controllers
         [HttpGet]
         public IActionResult Delete(int threadID)
         {
-            return View(db.GetForumThread(threadID));
+            return View(db.GetForumThreadViewModel(threadID));
         }
 
         [HttpPost]
@@ -74,7 +74,7 @@ namespace PlanofAction.Controllers
         [HttpGet]
         public IActionResult Edit(int threadID)
         {
-            return View(db.GetForumThread(threadID));
+            return View(db.GetForumThreadViewModel(threadID));
         }
 
         [HttpPost]

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
+using PlanofAction.ViewModels;
 
 namespace PlanofAction.Models
 {
@@ -192,6 +193,61 @@ namespace PlanofAction.Models
                 }
             }
             return thread;
+        }
+
+        public ForumPostViewModel GetForumThreadViewModel(int threadID)
+        {
+            string command = "SELECT * FROM thread WHERE ThreadID='{0}';";
+            ForumPostViewModel forumPostViewModel = new ForumPostViewModel();
+
+            using (MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand(string.Format(command, threadID.ToString()), conn);
+
+                using MySqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    forumPostViewModel = new ForumPostViewModel()
+                    {
+                        ThreadTitle = reader["ThreadTitle"].ToString(),
+                        ThreadMessage = reader["ThreadMessage"].ToString(),
+                        ThreadCategory = reader["ThreadCategory"].ToString(),
+                        ThreadDateCreated = Convert.ToDateTime(reader["ThreadDateCreated"])
+                    };
+                }
+            }
+
+            forumPostViewModel.Posts = GetPosts(threadID);
+
+            return forumPostViewModel;
+        }
+
+        public List<Post> GetPosts(int threadID)
+        {
+            string command = "SELECT * FROM post WHERE ThreadID='{0}';";
+            List<Post> posts = new List<Post>();
+
+            using (MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand(string.Format(command, threadID.ToString()), conn);
+
+                using MySqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    posts.Add(new Post()
+                    {
+                        PostID = Convert.ToInt32(reader["PostID"]),
+                        ThreadID = Convert.ToInt32(reader["ThreadID"]),
+                        AccountID = Convert.ToInt32(reader["AccountID"]),
+                        PostMessage = reader["PostMessage"].ToString(),
+                        PostDateCreated = Convert.ToDateTime(reader["PostDateCreated"])
+                    });
+                }
+            }
+
+            return posts;
         }
 
         public int CreateThread(Thread thread)

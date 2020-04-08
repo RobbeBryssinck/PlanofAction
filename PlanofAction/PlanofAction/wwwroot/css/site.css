@@ -2,8 +2,8 @@
     padding-top: 55px;
     padding-bottom: 85px;
     font-family: 'Caladea', serif;
-    position:relative;
-    min-height:100vh;
+    position: relative;
+    min-height: 100vh;
 }
 
 footer {
@@ -30,3 +30,8 @@ footer {
     top: 0;
     left: 0;
 }
+
+#threadlayout {
+    padding-top: 20px;
+}
+

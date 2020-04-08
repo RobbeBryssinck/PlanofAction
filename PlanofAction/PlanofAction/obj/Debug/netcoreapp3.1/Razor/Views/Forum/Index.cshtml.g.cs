@@ -26,8 +26,15 @@ using PlanofAction.Models;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 3 "C:\Users\Robbe\source\test\PlanofAction\PlanofAction\PlanofAction\Views\_ViewImports.cshtml"
+using PlanofAction.ViewModels;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"ee5292352dadde96daabdf5619c952ca0b845dfa", @"/Views/Forum/Index.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"200853f0e2f0dfcc6a48f6be7c18a3c0d8593973", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"4067e32548d53179c984f967962a868b82883075", @"/Views/_ViewImports.cshtml")]
     public class Views_Forum_Index : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<IEnumerable<PlanofAction.Models.Thread>>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("asp-action", "Create", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -65,7 +72,7 @@ using PlanofAction.Models;
 #line hidden
 #nullable disable
             WriteLiteral("\r\n<div class=\"container\">\r\n    <div class=\"row\" style=\"margin-left:2px;\">\r\n        <h1>Forum</h1>\r\n    </div>\r\n\r\n    <div class=\"row\" style=\"margin-left:2px;\">\r\n        <p>\r\n            ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ee5292352dadde96daabdf5619c952ca0b845dfa3891", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ee5292352dadde96daabdf5619c952ca0b845dfa4095", async() => {
                 WriteLiteral("Create New");
             }
             );
