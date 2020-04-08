@@ -13,6 +13,6 @@ namespace PlanofAction.Models
         public string Password { get; set; }
         public string Role { get; set; }
         public string ProfilePicture { get; set; }
-        public DateTime DateJoined { get; set; }
+        public string DateJoined { get; set; }
     }
 }

@@ -243,18 +243,16 @@ namespace PlanofAction.Models
                     account.Password = reader["Password"].ToString();
                     account.Role = reader["Role"].ToString();
                     account.ProfilePicture = reader["ProfilePicture"].ToString();
-                    account.DateJoined = Convert.ToDateTime(reader["DateJoined"]);
+                    account.DateJoined = Convert.ToDateTime(reader["DateJoined"]).ToString("dd-MM-yyyy");
                 }
             }
 
             return account;
         }
 
-        //TODO: get user
         public List<Post> GetPosts(int threadID)
         {
             string postsCommand = "SELECT * FROM post WHERE ThreadID='{0}';";
-            string accountCommand = "SELECT * FROM account WHERE AccountID='{0}';";
             List<Post> posts = new List<Post>();
 
             using (MySqlConnection conn = GetConnection())
@@ -272,30 +270,40 @@ namespace PlanofAction.Models
                     post.PostMessage = postsReader["PostMessage"].ToString();
                     post.PostDateCreated = Convert.ToDateTime(postsReader["PostDateCreated"]);
 
-                    using (MySqlConnection conn2 = GetConnection())
-                    {
-                        conn2.Open();
-                        MySqlCommand cmdAccount = new MySqlCommand(string.Format(accountCommand, postsReader["AccountID"].ToString()), conn2);
-                        using MySqlDataReader accountReader = cmdAccount.ExecuteReader();
-                        while (accountReader.Read())
-                        {
-                            Account account = new Account();
-                            account.AccountID = Convert.ToInt32(accountReader["AccountID"]);
-                            account.Username = accountReader["Username"].ToString();
-                            account.Email = accountReader["Email"].ToString();
-                            account.Password = accountReader["Password"].ToString();
-                            account.Role = accountReader["Role"].ToString();
-                            account.ProfilePicture = accountReader["ProfilePicture"].ToString();
-                            account.DateJoined = Convert.ToDateTime(accountReader["DateJoined"]);
-                            post.PostAccount = account;
-                        }
-                    }
+                    post.PostAccount = GetAccount(postsReader["AccountID"].ToString());
 
                     posts.Add(post);
                 }
             }
 
             return posts;
+        }
+
+        public Account GetAccount(string accountID)
+        {
+            string accountCommand = "SELECT * FROM account WHERE AccountID='{0}';";
+            Account account = new Account();
+
+            using (MySqlConnection conn2 = GetConnection())
+            {
+                conn2.Open();
+
+                MySqlCommand cmdAccount = new MySqlCommand(string.Format(accountCommand, accountID), conn2);
+
+                using MySqlDataReader accountReader = cmdAccount.ExecuteReader();
+                while (accountReader.Read())
+                {
+                    account.AccountID = Convert.ToInt32(accountReader["AccountID"]);
+                    account.Username = accountReader["Username"].ToString();
+                    account.Email = accountReader["Email"].ToString();
+                    account.Password = accountReader["Password"].ToString();
+                    account.Role = accountReader["Role"].ToString();
+                    account.ProfilePicture = accountReader["ProfilePicture"].ToString();
+                    account.DateJoined = Convert.ToDateTime(accountReader["DateJoined"]).ToString("dd-MM-yyyy");
+                }
+            }
+
+            return account;
         }
 
         public int CreateThread(Thread thread)
