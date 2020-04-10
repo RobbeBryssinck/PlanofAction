@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
+using PlanofAction.Models;
 using PlanofAction.ViewModels;
 
-namespace PlanofAction.Models
+namespace PlanofAction.Data
 {
     public class PoAContext
     {
