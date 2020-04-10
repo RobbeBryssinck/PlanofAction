@@ -31,13 +31,13 @@
                         <p>@Model.ThreadMessage</p>
                     </div>
                     <div class="col-3 userdescription">
-                        profile picture
-                        <br />
-                        @Model.ThreadCreator.Username
-                        <br />
-                        @Model.ThreadCreator.DateJoined
-                        <br />
-                        posts
+                        <img class="img-rounded img-responsive" style="max-width: 60%;" src="~/images/ProfilePics/@Model.ThreadCreator.ProfilePicture" />
+                        <dl class="row">
+                            <dt class="col-sm-6">Username: </dt>
+                            <dd class="col-sm-6">@Model.ThreadCreator.Username</dd>
+                            <dt class="col-sm-6">Date Joined: </dt>
+                            <dd class="col-sm-6">@Model.ThreadCreator.DateJoined</dd>
+                        </dl>
                     </div>
                 </div>
             </div>
@@ -48,29 +48,29 @@
 <!--Posts-->
 @foreach (var post in Model.Posts)
 {
-<div class="container" id="threadlayout">
-    <div class="row">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-header">
-                    @post.PostDateCreated
-                </div>
-                <div class="row card-body">
-                    <div class="col-9">
-                        <p>@post.PostMessage</p>
+    <div class="container" id="threadlayout">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        @post.PostDateCreated
                     </div>
-                    <div class="col-3 userdescription">
-                        profile picture
-                        <br />
-                        @post.PostAccount.Username
-                        <br />
-                        @post.PostAccount.DateJoined
-                        <br />
-                        posts
+                    <div class="row card-body">
+                        <div class="col-9">
+                            <p>@post.PostMessage</p>
+                        </div>
+                        <div class="col-3 userdescription">
+                            <img class="img-rounded img-responsive" style="max-width: 60%;" src="~/images/ProfilePics/@post.PostAccount.ProfilePicture" />
+                            <dl class="row">
+                                <dt class="col-sm-6">Username: </dt>
+                                <dd class="col-sm-6">@post.PostAccount.Username</dd>
+                                <dt class="col-sm-6">Date joined: </dt>
+                                <dd class="col-sm-6">@post.PostAccount.DateJoined</dd>
+                            </dl>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 }
