@@ -142,10 +142,10 @@ namespace PlanofAction.Data
             }
         }
 
-        public List<Thread> GetForumThreads()
+        public List<ForumCategory> GetForumCategories()
         {
-            string command = "SELECT * FROM thread;";
-            List<Thread> threads = new List<Thread>();
+            string command = "SELECT * FROM forumcategory;";
+            List<ForumCategory> forumCategories = new List<ForumCategory>();
 
             using (MySqlConnection conn = GetConnection())
             {
@@ -155,7 +155,44 @@ namespace PlanofAction.Data
                 using MySqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    threads.Add(new Thread()
+                    forumCategories.Add(new ForumCategory()
+                    {
+                        ForumCategoryID = Convert.ToInt32(reader["ForumCategoryID"]),
+                        ForumCategoryString = reader["ForumCategoryString"].ToString(),
+                    });
+                }
+            }
+            return forumCategories;
+        }
+
+        public int CreateForumCategory(ForumCategory forumCategory)
+        {
+            string command = "INSERT INTO `forumcategory` (`ForumCategoryID`, `ForumCategoryString`) VALUES ({0}, '{1}');";
+
+            using (MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand(string.Format(command, forumCategory.ForumCategoryID, forumCategory.ForumCategoryString), conn);
+
+                int rowsAffected = cmd.ExecuteNonQuery();
+                return rowsAffected;
+            }
+        }
+
+        public List<ForumThread> GetForumThreads()
+        {
+            string command = "SELECT * FROM thread;";
+            List<ForumThread> threads = new List<ForumThread>();
+
+            using (MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand(command, conn);
+
+                using MySqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    threads.Add(new ForumThread()
                     {
                         ThreadID = Convert.ToInt32(reader["ThreadID"]),
                         AccountID = Convert.ToInt32(reader["AccountID"]),
@@ -169,10 +206,10 @@ namespace PlanofAction.Data
             return threads;
         }
 
-        public Thread GetForumThread(int threadID)
+        public ForumThread GetForumThread(int threadID)
         {
             string command = "SELECT * FROM thread WHERE ThreadID='{0}';";
-            Thread thread = new Thread();
+            ForumThread thread = new ForumThread();
 
             using (MySqlConnection conn = GetConnection())
             {
@@ -182,7 +219,7 @@ namespace PlanofAction.Data
                 using MySqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    thread = new Thread()
+                    thread = new ForumThread()
                     {
                         ThreadID = Convert.ToInt32(reader["ThreadID"]),
                         AccountID = Convert.ToInt32(reader["AccountID"]),
@@ -307,7 +344,7 @@ namespace PlanofAction.Data
             return account;
         }
 
-        public int CreateThread(Thread thread)
+        public int CreateThread(ForumThread thread)
         {
             string command = "INSERT INTO `thread` (`AccountID`, `ThreadTitle`, `ThreadMessage`, `ThreadCategory`, `ThreadDateCreated`) VALUES ({0}, '{1}', '{2}', '{3}', '{4}');";
 
@@ -323,7 +360,7 @@ namespace PlanofAction.Data
             }
         }
 
-        public void DeleteThread(Thread thread)
+        public void DeleteThread(ForumThread thread)
         {
             string command = "DELETE FROM thread WHERE ThreadID={0};";
 
@@ -336,7 +373,7 @@ namespace PlanofAction.Data
             }
         }
 
-        public void EditThread(Thread thread)
+        public void EditThread(ForumThread thread)
         {
             string command = "UPDATE thread SET ThreadTitle='{0}', ThreadMessage='{1}', ThreadCategory='{2}' WHERE ThreadID={3};";
 

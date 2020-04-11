@@ -1,0 +1,57 @@
+﻿@model IEnumerable<PlanofAction.Models.ForumThread>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container">
+    <div class="row" style="margin-left:2px;">
+        <h1>Forum</h1>
+    </div>
+
+    <div class="row" style="margin-left:2px;">
+        <p>
+            <a asp-action="Create">Create New</a>
+        </p>
+    </div>
+    <div class="row">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Title
+                    </th>
+                    <th>
+                        Category
+                    </th>
+                    <th>
+                        Date created
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <a href='@string.Format("/Forum/ThreadPage?threadID={0}", item.ThreadID)'>
+                                @item.ThreadTitle
+                            </a>
+                        </td>
+                        <td>
+                            @item.ForumCategory
+                        </td>
+                        <td>
+                            @item.ThreadDateCreated
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { threadID = item.ThreadID }) |
+                            @Html.ActionLink("Delete", "Delete", new { threadID = item.ThreadID })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

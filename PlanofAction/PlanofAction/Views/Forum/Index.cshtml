@@ -1,4 +1,4 @@
-﻿@model IEnumerable<PlanofAction.Models.Thread>
+﻿@model IEnumerable<ForumCategory>
 
 @{
     ViewData["Title"] = "Index";
@@ -11,7 +11,7 @@
 
     <div class="row" style="margin-left:2px;">
         <p>
-            <a asp-action="Create">Create New</a>
+            <a asp-action="Create">Create new category</a>
         </p>
     </div>
     <div class="row">
@@ -19,13 +19,7 @@
             <thead>
                 <tr>
                     <th>
-                        Title
-                    </th>
-                    <th>
                         Category
-                    </th>
-                    <th>
-                        Date created
                     </th>
                     <th></th>
                 </tr>
@@ -35,19 +29,13 @@
                 {
                     <tr>
                         <td>
-                            <a href='@string.Format("/Forum/ThreadPage?threadID={0}", item.ThreadID)'>
-                                @item.ThreadTitle
+                            <a href='@string.Format("/Forum/Threads?forumCategoryID={0}", item.ForumCategoryID)'>
+                                @item.ForumCategoryString
                             </a>
                         </td>
                         <td>
-                            @item.ThreadCategory
-                        </td>
-                        <td>
-                            @item.ThreadDateCreated
-                        </td>
-                        <td>
-                            @Html.ActionLink("Edit", "Edit", new { threadID = item.ThreadID }) |
-                            @Html.ActionLink("Delete", "Delete", new { threadID = item.ThreadID })
+                            @Html.ActionLink("Edit", "Edit", new { forumCategoryID = item.ForumCategoryID }) |
+                            @Html.ActionLink("Delete", "Delete", new { forumCategoryID = item.ForumCategoryID })
                         </td>
                     </tr>
                 }

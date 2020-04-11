@@ -19,7 +19,36 @@ namespace PlanofAction.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            return View(db.GetForumThreads());
+            return View(db.GetForumCategories());
+        }
+
+        [HttpGet]
+        public IActionResult CreateCategory()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult CreateCategory(ForumCategory forumCategory)
+        {
+            int rowsAffected = db.CreateForumCategory(forumCategory);
+
+            if (rowsAffected == 1)
+                return RedirectToAction("CategoryCreationSuccessful");
+            else
+                return RedirectToAction("CategoryCreationFailed");
+        }
+
+        [HttpGet]
+        public IActionResult CategoryCreationSuccessful()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult CategoryCreationFailed()
+        {
+            return View();
         }
 
         [HttpGet]
@@ -35,7 +64,7 @@ namespace PlanofAction.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(Thread thread)
+        public IActionResult Create(ForumThread thread)
         {
             int rowsAffected = db.CreateThread(thread);
 
@@ -66,7 +95,7 @@ namespace PlanofAction.Controllers
         [HttpPost]
         public IActionResult DeletePost(int threadID)
         {
-            Thread thread = db.GetForumThread(threadID);
+            ForumThread thread = db.GetForumThread(threadID);
             db.DeleteThread(thread);
 
             return RedirectToAction("Index");
@@ -79,7 +108,7 @@ namespace PlanofAction.Controllers
         }
 
         [HttpPost]
-        public IActionResult EditPost(Thread thread)
+        public IActionResult EditPost(ForumThread thread)
         {
             db.EditThread(thread);
 

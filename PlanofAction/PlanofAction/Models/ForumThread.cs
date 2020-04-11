@@ -2,17 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using PlanofAction.Models;
 
-namespace PlanofAction.ViewModels
+namespace PlanofAction.Models
 {
-    public class ForumPostViewModel
+    public class ForumThread
     {
-        public int ForumCategory { get; set; }
-        public Account ThreadCreator { get; set; }
+        public int ThreadID { get; set; }
+        public int AccountID { get; set; }
+        public int ForumCategoryID { get; set; }
         public string ThreadTitle { get; set; }
         public string ThreadMessage { get; set; }
         public DateTime ThreadDateCreated { get; set; }
-        public List<Post> Posts { get; set; }
     }
 }
