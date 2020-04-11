@@ -292,7 +292,7 @@ namespace PlanofAction.Data
 
         public List<ForumThread> GetForumThreadsByID(int forumThreadID)
         {
-            string command = "SELECT * FROM thread WHERE ThreadID={0};";
+            string command = "SELECT * FROM thread WHERE ForumCategoryID={0};";
             List<ForumThread> threads = new List<ForumThread>();
 
             using (MySqlConnection conn = GetConnection())
