@@ -16,6 +16,8 @@ namespace PlanofAction.ViewModels
         [Display(Name="Message")]
         public string ThreadMessage { get; set; }
         public DateTime ThreadDateCreated { get; set; }
-        public ForumCategory Category { get; set; }
+        public List<ForumCategory> AvailableCategories { get; set; }
+        [Display(Name="Category ID")]
+        public int CategoryID { get; set; }
     }
 }

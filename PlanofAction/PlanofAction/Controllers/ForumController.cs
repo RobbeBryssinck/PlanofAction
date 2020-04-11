@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using PlanofAction.Models;
 using PlanofAction.Data;
+using PlanofAction.ViewModels;
 
 namespace PlanofAction.Controllers
 {
@@ -94,11 +95,16 @@ namespace PlanofAction.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            return View();
+            CreateForumThreadViewModel createForumThreadViewModel = new CreateForumThreadViewModel()
+            {
+                AvailableCategories = db.GetForumCategories()
+            };
+
+            return View(createForumThreadViewModel);
         }
 
         [HttpPost]
-        public IActionResult Create(ForumThread thread)
+        public IActionResult Create(CreateForumThreadViewModel thread)
         {
             int rowsAffected = db.CreateThread(thread);
 

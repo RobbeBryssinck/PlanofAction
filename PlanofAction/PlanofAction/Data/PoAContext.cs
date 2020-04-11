@@ -434,15 +434,15 @@ namespace PlanofAction.Data
             return account;
         }
 
-        public int CreateThread(ForumThread thread)
+        public int CreateThread(CreateForumThreadViewModel thread)
         {
-            string command = "INSERT INTO `thread` (`AccountID`, `ThreadTitle`, `ThreadMessage`, `ThreadCategory`, `ThreadDateCreated`) VALUES ({0}, '{1}', '{2}', '{3}', '{4}');";
+            string command = "INSERT INTO `thread` (`AccountID`, `ForumCategoryID`, `ThreadTitle`, `ThreadMessage`, `ThreadDateCreated`) VALUES ({0}, '{1}', '{2}', '{3}', '{4}');";
 
             using (MySqlConnection conn = GetConnection())
             {
                 conn.Open();
-                MySqlCommand cmd = new MySqlCommand(string.Format(command, thread.AccountID, thread.ThreadTitle,
-                                                                    thread.ThreadMessage,
+                MySqlCommand cmd = new MySqlCommand(string.Format(command, thread.AccountID, thread.CategoryID,
+                                                                    thread.ThreadTitle, thread.ThreadMessage,
                                                                     DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")), conn);
 
                 int rowsAffected = cmd.ExecuteNonQuery();
