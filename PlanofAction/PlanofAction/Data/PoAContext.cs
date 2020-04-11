@@ -465,7 +465,7 @@ namespace PlanofAction.Data
 
         public void EditThread(ForumThread thread)
         {
-            string command = "UPDATE thread SET ThreadTitle='{0}', ThreadMessage='{1}', ThreadCategory='{2}' WHERE ThreadID={3};";
+            string command = "UPDATE thread SET ThreadTitle='{0}', ThreadMessage='{1}' WHERE ThreadID={2};";
 
             using (MySqlConnection conn = GetConnection())
             {

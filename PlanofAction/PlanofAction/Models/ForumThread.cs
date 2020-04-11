@@ -14,9 +14,5 @@ namespace PlanofAction.Models
         public string ThreadTitle { get; set; }
         public string ThreadMessage { get; set; }
         public DateTime ThreadDateCreated { get; set; }
-
-
-        //TODO: delete this
-        public string ThreadCategory { get; set; }
     }
 }

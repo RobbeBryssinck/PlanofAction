@@ -10,6 +10,10 @@
     </div>
 
     <div class="row" style="margin-left:2px;">
+        <h2>Category: @Model.ToList()[0].Category.ForumCategoryString</h2>
+    </div>
+
+    <div class="row" style="margin-left:2px;">
         <p>
             <a asp-action="Create">Create new forum thread</a>
         </p>
@@ -20,9 +24,6 @@
                 <tr>
                     <th>
                         Title
-                    </th>
-                    <th>
-                        Category
                     </th>
                     <th>
                         Date created
@@ -38,9 +39,6 @@
                             <a href='@string.Format("/Forum/ThreadPage?threadID={0}", item.ThreadID)'>
                                 @item.ThreadTitle
                             </a>
-                        </td>
-                        <td>
-                            @item.ThreadCategory
                         </td>
                         <td>
                             @item.ThreadDateCreated

@@ -129,7 +129,7 @@ namespace PlanofAction.Controllers
         [HttpGet]
         public IActionResult Delete(int threadID)
         {
-            return View(db.GetForumThreadViewModel(threadID));
+            return View(db.GetForumThread(threadID));
         }
 
         [HttpPost]
@@ -144,7 +144,7 @@ namespace PlanofAction.Controllers
         [HttpGet]
         public IActionResult Edit(int threadID)
         {
-            return View(db.GetForumThreadViewModel(threadID));
+            return View(db.GetForumThread(threadID));
         }
 
         [HttpPost]
