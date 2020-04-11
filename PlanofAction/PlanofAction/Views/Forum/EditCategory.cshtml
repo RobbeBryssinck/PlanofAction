@@ -17,6 +17,10 @@
                     <input asp-for="ForumCategoryString" class="form-control" />
                     <span asp-validation-for="ForumCategoryString" class="text-danger"></span>
                 </div>
+                <div class="form-group">
+                    <input asp-for="ForumCategoryID" type="hidden" />
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
             </form>
         </div>
     </div>

@@ -217,12 +217,12 @@ namespace PlanofAction.Data
 
         public void EditForumCategory(ForumCategory forumCategory)
         {
-            string command = "UPDATE forumcategory SET ForumCategoryString='{0}';";
+            string command = "UPDATE forumcategory SET ForumCategoryString='{0}' WHERE ForumCategoryID={1};";
 
             using (MySqlConnection conn = GetConnection())
             {
                 conn.Open();
-                MySqlCommand cmd = new MySqlCommand(string.Format(command, forumCategory.ForumCategoryString), conn);
+                MySqlCommand cmd = new MySqlCommand(string.Format(command, forumCategory.ForumCategoryString, forumCategory.ForumCategoryID), conn);
 
                 cmd.ExecuteNonQuery();
             }

@@ -11,7 +11,7 @@
 
     <div class="row" style="margin-left:2px;">
         <p>
-            <a asp-action="Create">Create new category</a>
+            <a asp-action="CreateCategory">Create new category</a>
         </p>
     </div>
     <div class="row">
@@ -34,8 +34,8 @@
                             </a>
                         </td>
                         <td>
-                            @Html.ActionLink("Edit", "Edit", new { forumCategoryID = item.ForumCategoryID }) |
-                            @Html.ActionLink("Delete", "Delete", new { forumCategoryID = item.ForumCategoryID })
+                            @Html.ActionLink("Edit", "EditCategory", new { forumCategoryID = item.ForumCategoryID }) |
+                            @Html.ActionLink("Delete", "DeleteCategory", new { forumCategoryID = item.ForumCategoryID })
                         </td>
                     </tr>
                 }

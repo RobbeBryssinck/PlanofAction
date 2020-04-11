@@ -52,15 +52,15 @@ namespace PlanofAction.Controllers
         }
 
         [HttpGet]
-        public IActionResult DeleteCategory(int threadID)
+        public IActionResult DeleteCategory(int forumCategoryID)
         {
-            return View(db.GetForumCategory(threadID));
+            return View(db.GetForumCategory(forumCategoryID));
         }
 
         [HttpPost]
-        public IActionResult DeleteCategoryPost(int threadID)
+        public IActionResult DeleteCategoryPost(int forumCategoryID)
         {
-            ForumCategory forumCategory = db.GetForumCategory(threadID);
+            ForumCategory forumCategory = db.GetForumCategory(forumCategoryID);
             db.DeleteForumCategory(forumCategory);
 
             return RedirectToAction("Index");
