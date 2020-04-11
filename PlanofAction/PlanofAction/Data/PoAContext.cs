@@ -165,6 +165,29 @@ namespace PlanofAction.Data
             return forumCategories;
         }
 
+        public ForumCategory GetForumCategory(int forumCategoryID)
+        {
+            string command = "SELECT * FROM forumcategory WHERE ForumCategoryID={0};";
+            ForumCategory forumCategory = new ForumCategory();
+
+            using (MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand(command, conn);
+
+                using MySqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    forumCategory = new ForumCategory()
+                    {
+                        ForumCategoryID = Convert.ToInt32(reader["ForumCategoryID"]),
+                        ForumCategoryString = reader["ForumCategoryString"].ToString(),
+                    };
+                }
+            }
+            return forumCategory;
+        }
+
         public int CreateForumCategory(ForumCategory forumCategory)
         {
             string command = "INSERT INTO `forumcategory` (`ForumCategoryID`, `ForumCategoryString`) VALUES ({0}, '{1}');";
@@ -176,6 +199,32 @@ namespace PlanofAction.Data
 
                 int rowsAffected = cmd.ExecuteNonQuery();
                 return rowsAffected;
+            }
+        }
+
+        public void DeleteForumCategory(ForumCategory forumCategory)
+        {
+            string command = "DELETE FROM forumcategory WHERE ForumCategoryID={0};";
+
+            using (MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand(string.Format(command, forumCategory.ForumCategoryID), conn);
+
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        public void EditForumCategory(ForumCategory forumCategory)
+        {
+            string command = "UPDATE forumcategory SET ForumCategoryString='{0}';";
+
+            using (MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand(string.Format(command, forumCategory.ForumCategoryString), conn);
+
+                cmd.ExecuteNonQuery();
             }
         }
 

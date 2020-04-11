@@ -1,4 +1,4 @@
-﻿@model PlanofAction.Models.Thread
+﻿@model ForumThread
 
 @{
     ViewData["Title"] = "Delete";
@@ -48,6 +48,6 @@
             @Html.HiddenFor(m => Model.ThreadID)
             <input type="submit" class="btn btn-danger" asp-action="DeletePost" /> |
         </form>
-        <a asp-action="Index">Back to List</a>
+        <a asp-action="Index">Back to forum</a>
     </div>
 </div>

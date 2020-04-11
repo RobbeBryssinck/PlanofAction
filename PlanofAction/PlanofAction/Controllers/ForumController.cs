@@ -52,6 +52,35 @@ namespace PlanofAction.Controllers
         }
 
         [HttpGet]
+        public IActionResult DeleteCategory(int threadID)
+        {
+            return View(db.GetForumCategory(threadID));
+        }
+
+        [HttpPost]
+        public IActionResult DeleteCategoryPost(int threadID)
+        {
+            ForumCategory forumCategory = db.GetForumCategory(threadID);
+            db.DeleteForumCategory(forumCategory);
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public IActionResult EditCategory(int forumCategoryID)
+        {
+            return View(db.GetForumCategory(forumCategoryID));
+        }
+
+        [HttpPost]
+        public IActionResult EditCategoryPost(ForumCategory forumCategory)
+        {
+            db.EditForumCategory(forumCategory);
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
         public IActionResult ThreadPage(int threadID)
         {
             return View(db.GetForumThreadViewModel(threadID));
