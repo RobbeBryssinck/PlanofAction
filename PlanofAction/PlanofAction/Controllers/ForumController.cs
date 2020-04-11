@@ -80,6 +80,11 @@ namespace PlanofAction.Controllers
             return RedirectToAction("Index");
         }
 
+        public IActionResult ForumThreads(int forumCategoryID)
+        {
+            return View(db.GetForumThreadsByID(forumCategoryID));
+        }
+
         [HttpGet]
         public IActionResult ThreadPage(int threadID)
         {

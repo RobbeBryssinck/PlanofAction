@@ -173,7 +173,7 @@ namespace PlanofAction.Data
             using (MySqlConnection conn = GetConnection())
             {
                 conn.Open();
-                MySqlCommand cmd = new MySqlCommand(command, conn);
+                MySqlCommand cmd = new MySqlCommand(string.Format(command, forumCategoryID.ToString()), conn);
 
                 using MySqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
@@ -245,13 +245,19 @@ namespace PlanofAction.Data
                     {
                         ThreadID = Convert.ToInt32(reader["ThreadID"]),
                         AccountID = Convert.ToInt32(reader["AccountID"]),
+                        ForumCategoryID = Convert.ToInt32(reader["ForumCategoryID"]),
                         ThreadTitle = reader["ThreadTitle"].ToString(),
                         ThreadMessage = reader["ThreadMessage"].ToString(),
-                        ThreadCategory = reader["ThreadCategory"].ToString(),
                         ThreadDateCreated = Convert.ToDateTime(reader["ThreadDateCreated"])
                     });
                 }
             }
+            
+            foreach (var forumThread in threads)
+            {
+                forumThread.Category = GetForumCategory(forumThread.ForumCategoryID);
+            }
+
             return threads;
         }
 
@@ -272,21 +278,57 @@ namespace PlanofAction.Data
                     {
                         ThreadID = Convert.ToInt32(reader["ThreadID"]),
                         AccountID = Convert.ToInt32(reader["AccountID"]),
+                        ForumCategoryID = Convert.ToInt32(reader["ForumCategoryID"]),
                         ThreadTitle = reader["ThreadTitle"].ToString(),
                         ThreadMessage = reader["ThreadMessage"].ToString(),
-                        ThreadCategory = reader["ThreadCategory"].ToString(),
                         ThreadDateCreated = Convert.ToDateTime(reader["ThreadDateCreated"])
                     };
                 }
             }
+            thread.Category = GetForumCategory(thread.ForumCategoryID);
+
             return thread;
         }
 
-        public ForumPostViewModel GetForumThreadViewModel(int threadID)
+        public List<ForumThread> GetForumThreadsByID(int forumThreadID)
+        {
+            string command = "SELECT * FROM thread WHERE ThreadID={0};";
+            List<ForumThread> threads = new List<ForumThread>();
+
+            using (MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand(string.Format(command, forumThreadID.ToString()), conn);
+
+                using MySqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    threads.Add(new ForumThread()
+                    {
+                        ThreadID = Convert.ToInt32(reader["ThreadID"]),
+                        AccountID = Convert.ToInt32(reader["AccountID"]),
+                        ForumCategoryID = Convert.ToInt32(reader["ForumCategoryID"]),
+                        ThreadTitle = reader["ThreadTitle"].ToString(),
+                        ThreadMessage = reader["ThreadMessage"].ToString(),
+                        ThreadDateCreated = Convert.ToDateTime(reader["ThreadDateCreated"])
+                    });
+                }
+            }
+            
+            foreach (var forumThread in threads)
+            {
+                forumThread.Category = GetForumCategory(forumThread.ForumCategoryID);
+            }
+
+            return threads;
+        }
+
+
+        public ForumThreadViewModel GetForumThreadViewModel(int threadID)
         {
             string command = "SELECT * FROM thread WHERE ThreadID='{0}';";
             int accountID = 0;
-            ForumPostViewModel forumPostViewModel = new ForumPostViewModel();
+            ForumThreadViewModel forumThreadViewModel = new ForumThreadViewModel();
 
             using (MySqlConnection conn = GetConnection())
             {
@@ -296,19 +338,18 @@ namespace PlanofAction.Data
                 using MySqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    forumPostViewModel.ThreadTitle = reader["ThreadTitle"].ToString();
-                    forumPostViewModel.ThreadMessage = reader["ThreadMessage"].ToString();
-                    forumPostViewModel.ThreadCategory = reader["ThreadCategory"].ToString();
-                    forumPostViewModel.ThreadDateCreated = Convert.ToDateTime(reader["ThreadDateCreated"]);
+                    forumThreadViewModel.ThreadTitle = reader["ThreadTitle"].ToString();
+                    forumThreadViewModel.ThreadMessage = reader["ThreadMessage"].ToString();
+                    forumThreadViewModel.ThreadDateCreated = Convert.ToDateTime(reader["ThreadDateCreated"]);
 
                     accountID = Convert.ToInt32(reader["AccountID"]);
                 }
             }
 
-            forumPostViewModel.ThreadCreator = GetThreadCreator(accountID);
-            forumPostViewModel.Posts = GetPosts(threadID);
+            forumThreadViewModel.ThreadCreator = GetThreadCreator(accountID);
+            forumThreadViewModel.Posts = GetPosts(threadID);
 
-            return forumPostViewModel;
+            return forumThreadViewModel;
         }
 
         public Account GetThreadCreator(int accountID)
@@ -401,7 +442,7 @@ namespace PlanofAction.Data
             {
                 conn.Open();
                 MySqlCommand cmd = new MySqlCommand(string.Format(command, thread.AccountID, thread.ThreadTitle,
-                                                                    thread.ThreadMessage, thread.ThreadCategory,
+                                                                    thread.ThreadMessage,
                                                                     DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")), conn);
 
                 int rowsAffected = cmd.ExecuteNonQuery();
@@ -430,7 +471,7 @@ namespace PlanofAction.Data
             {
                 conn.Open();
                 MySqlCommand cmd = new MySqlCommand(string.Format(command, thread.ThreadTitle, thread.ThreadMessage,
-                    thread.ThreadCategory, thread.ThreadID), conn);
+                    thread.ThreadID), conn);
 
                 cmd.ExecuteNonQuery();
             }

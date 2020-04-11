@@ -308,7 +308,6 @@ C:\Users\Robbe\source\test\PlanofAction\PlanofAction\PlanofAction\bin\Debug\netc
 C:\Users\Robbe\source\test\PlanofAction\PlanofAction\PlanofAction\bin\Debug\netcoreapp3.1\Renci.SshNet.dll
 C:\Users\Robbe\source\test\PlanofAction\PlanofAction\PlanofAction\bin\Debug\netcoreapp3.1\SshNet.Security.Cryptography.dll
 C:\Users\Robbe\source\test\PlanofAction\PlanofAction\PlanofAction\bin\Debug\netcoreapp3.1\System.Xml.XPath.XmlDocument.dll
-C:\Users\Robbe\source\test\PlanofAction\PlanofAction\PlanofAction\obj\Debug\netcoreapp3.1\PlanofAction.csprojAssemblyReference.cache
 C:\Users\Robbe\source\test\PlanofAction\PlanofAction\PlanofAction\obj\Debug\netcoreapp3.1\PlanofAction.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Robbe\source\test\PlanofAction\PlanofAction\PlanofAction\obj\Debug\netcoreapp3.1\Razor\Views\Account\Login.cshtml.g.cs
 C:\Users\Robbe\source\repos\PlanofAction\PlanofAction\PlanofAction\bin\Debug\netcoreapp3.1\appsettings.Development.json
@@ -506,3 +505,9 @@ C:\Users\Robbe\source\test\PlanofAction\PlanofAction\PlanofAction\obj\Debug\netc
 C:\Users\Robbe\source\test\PlanofAction\PlanofAction\PlanofAction\obj\Debug\netcoreapp3.1\Razor\Views\Forum\CreationSuccessful.cshtml.g.cs
 C:\Users\Robbe\source\test\PlanofAction\PlanofAction\PlanofAction\obj\Debug\netcoreapp3.1\Razor\Views\Forum\Delete.cshtml.g.cs
 C:\Users\Robbe\source\test\PlanofAction\PlanofAction\PlanofAction\obj\Debug\netcoreapp3.1\Razor\Views\Forum\Edit.cshtml.g.cs
+C:\Users\Robbe\source\test\PlanofAction\PlanofAction\PlanofAction\obj\Debug\netcoreapp3.1\Razor\Views\Forum\CategoryCreationFailed.cshtml.g.cs
+C:\Users\Robbe\source\test\PlanofAction\PlanofAction\PlanofAction\obj\Debug\netcoreapp3.1\Razor\Views\Forum\CategoryCreationSuccessful.cshtml.g.cs
+C:\Users\Robbe\source\test\PlanofAction\PlanofAction\PlanofAction\obj\Debug\netcoreapp3.1\Razor\Views\Forum\CreateCategory.cshtml.g.cs
+C:\Users\Robbe\source\test\PlanofAction\PlanofAction\PlanofAction\obj\Debug\netcoreapp3.1\Razor\Views\Forum\DeleteCategory.cshtml.g.cs
+C:\Users\Robbe\source\test\PlanofAction\PlanofAction\PlanofAction\obj\Debug\netcoreapp3.1\Razor\Views\Forum\EditCategory.cshtml.g.cs
+C:\Users\Robbe\source\test\PlanofAction\PlanofAction\PlanofAction\obj\Debug\netcoreapp3.1\Razor\Views\Forum\ForumThreads.cshtml.g.cs
