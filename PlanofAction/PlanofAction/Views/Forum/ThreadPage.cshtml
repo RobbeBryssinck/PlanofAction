@@ -87,3 +87,28 @@
         </div>
     </div>
 }
+
+<!--Create post-->
+<div class="container" id="threadlayout">
+    <div class="row">
+        <div class="col-12">
+            <form method="post" asp-action="CreatePost">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="PosterAccountID" class="control-label"></label>
+                    <input asp-for="PosterAccountID" class="form-control" />
+                    <span asp-validation-for="PosterAccountID" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="PosterMessage" class="control-label"></label>
+                    <textarea asp-for="PosterMessage" class="form-control" cols="25" rows="3"></textarea>
+                    <span asp-validation-for="PosterMessage" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input asp-for="ThreadID" type="hidden" />
+                    <input type="submit" value="Submit" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -483,5 +483,21 @@ namespace PlanofAction.Data
                 cmd.ExecuteNonQuery();
             }
         }
+
+        public void CreatePost(ForumThreadViewModel forumThreadViewModel)
+        {
+            string command = "INSERT INTO `post` (`ThreadID`, `AccountID`, `PostMessage`, `PostDateCreated`) VALUES ({0}, {1}, '{2}', '{3}');";
+
+            using (MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand(string.Format(command, forumThreadViewModel.ThreadID,
+                                                                    forumThreadViewModel.PosterAccountID,
+                                                                    forumThreadViewModel.PosterMessage,
+                                                                    DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")), conn);
+
+                cmd.ExecuteNonQuery();
+            }
+        }
     }
 }

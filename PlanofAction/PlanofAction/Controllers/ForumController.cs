@@ -157,11 +157,19 @@ namespace PlanofAction.Controllers
         }
 
         [HttpPost]
-        public IActionResult EditPost(ForumThread thread)
+        public IActionResult Edit(ForumThread thread)
         {
             db.EditThread(thread);
 
             return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public IActionResult CreatePost(ForumThreadViewModel forumThreadViewModel)
+        {
+            db.CreatePost(forumThreadViewModel);
+            // return to thread with clean input properties 
+            return RedirectToAction("ThreadPage", "Forum", new { forumThreadViewModel.ThreadID });
         }
     }
 }
