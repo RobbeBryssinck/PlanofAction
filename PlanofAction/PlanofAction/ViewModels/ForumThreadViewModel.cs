@@ -8,6 +8,7 @@ namespace PlanofAction.ViewModels
 {
     public class ForumThreadViewModel
     {
+        public int ThreadID { get; set; }
         public Account ThreadCreator { get; set; }
         public string ThreadTitle { get; set; }
         public string ThreadMessage { get; set; }

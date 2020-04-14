@@ -344,6 +344,7 @@ namespace PlanofAction.Data
                 using MySqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
+                    forumThreadViewModel.ThreadID = Convert.ToInt32(reader["ThreadID"]);
                     forumThreadViewModel.ThreadTitle = reader["ThreadTitle"].ToString();
                     forumThreadViewModel.ThreadMessage = reader["ThreadMessage"].ToString();
                     forumThreadViewModel.ThreadDateCreated = Convert.ToDateTime(reader["ThreadDateCreated"]);
@@ -471,13 +472,13 @@ namespace PlanofAction.Data
 
         public void EditThread(ForumThread thread)
         {
-            string command = "UPDATE thread SET ThreadTitle='{0}', ThreadMessage='{1}' WHERE ThreadID={2};";
+            string command = "UPDATE thread SET ThreadMessage='{0}' WHERE ThreadID={1};";
 
             using (MySqlConnection conn = GetConnection())
             {
                 conn.Open();
-                MySqlCommand cmd = new MySqlCommand(string.Format(command, thread.ThreadTitle, thread.ThreadMessage,
-                    thread.ThreadID), conn);
+                MySqlCommand cmd = new MySqlCommand(string.Format(command, thread.ThreadMessage,
+                                                    thread.ThreadID), conn);
 
                 cmd.ExecuteNonQuery();
             }

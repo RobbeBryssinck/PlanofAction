@@ -1,4 +1,7 @@
 ﻿@model ForumThreadViewModel
+@{ 
+    ViewData["Title"] = Model.ThreadTitle;
+}
 <style>
     #threadlayout {
         padding-top: 20px;
@@ -40,6 +43,11 @@
                         </dl>
                     </div>
                 </div>
+                <div class="card-footer">
+                    <div class="text-right">
+                        @Html.ActionLink("Edit", "Edit", new { threadID = Model.ThreadID })
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -67,6 +75,11 @@
                                 <dt class="col-sm-6">Date joined: </dt>
                                 <dd class="col-sm-6">@post.PostAccount.DateJoined</dd>
                             </dl>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="text-right">
+                            @Html.ActionLink("Edit", "Edit", new { threadID = post.PostID })
                         </div>
                     </div>
                 </div>
