@@ -83,7 +83,16 @@ namespace PlanofAction.Controllers
 
         public IActionResult ForumThreads(int forumCategoryID)
         {
-            return View(db.GetForumThreadsByID(forumCategoryID));
+            List<ForumThread> forumThreads = db.GetForumThreadsByID(forumCategoryID);
+            if (forumThreads[0].ThreadID == -1)
+                return RedirectToAction("NoForumThreads");
+            else
+                return View(forumThreads);
+        }
+
+        public IActionResult NoForumThreads()
+        {
+            return View();
         }
 
         [HttpGet]

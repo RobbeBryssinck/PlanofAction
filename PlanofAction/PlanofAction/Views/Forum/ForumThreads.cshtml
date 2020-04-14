@@ -1,4 +1,4 @@
-﻿@model IEnumerable<PlanofAction.Models.ForumThread>
+﻿@model IEnumerable<ForumThread>
 
 @{
     ViewData["Title"] = "Index";
@@ -10,8 +10,7 @@
     </div>
 
     <div class="row" style="margin-left:2px;">
-        <!--TODO: fix whatever this is-->
-        <h2>Category: @Model.ToList()[0].Category.ForumCategoryString</h2>
+        <h2>@Model.ToList()[0].Category.ForumCategoryString</h2>
     </div>
 
     <div class="row" style="margin-left:2px;">

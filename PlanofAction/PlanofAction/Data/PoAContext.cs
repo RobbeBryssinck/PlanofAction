@@ -320,6 +320,12 @@ namespace PlanofAction.Data
                 forumThread.Category = GetForumCategory(forumThread.ForumCategoryID);
             }
 
+            if (threads.Count == 0)
+                threads.Add(new ForumThread()
+                {
+                    ThreadID = -1
+                });
+
             return threads;
         }
 

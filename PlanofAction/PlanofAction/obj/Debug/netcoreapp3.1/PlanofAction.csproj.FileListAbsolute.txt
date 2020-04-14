@@ -512,3 +512,4 @@ C:\Users\Robbe\source\test\PlanofAction\PlanofAction\PlanofAction\obj\Debug\netc
 C:\Users\Robbe\source\test\PlanofAction\PlanofAction\PlanofAction\obj\Debug\netcoreapp3.1\Razor\Views\Forum\EditCategory.cshtml.g.cs
 C:\Users\Robbe\source\test\PlanofAction\PlanofAction\PlanofAction\obj\Debug\netcoreapp3.1\Razor\Views\Forum\ForumThreads.cshtml.g.cs
 C:\Users\Robbe\source\test\PlanofAction\PlanofAction\PlanofAction\obj\Debug\netcoreapp3.1\PlanofAction.csprojAssemblyReference.cache
+C:\Users\Robbe\source\test\PlanofAction\PlanofAction\PlanofAction\obj\Debug\netcoreapp3.1\Razor\Views\Forum\NoForumThreads.cshtml.g.cs
