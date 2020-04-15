@@ -175,7 +175,7 @@ namespace PlanofAction.Controllers
         [HttpGet]
         public IActionResult EditPost(int postID)
         {
-            return View(db.GetPostEditViewModel(int postID));
+            return View(db.GetPostEditViewModel(postID));
         }
     }
 }
