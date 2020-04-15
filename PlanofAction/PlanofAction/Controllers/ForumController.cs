@@ -173,9 +173,16 @@ namespace PlanofAction.Controllers
         }
 
         [HttpGet]
-        public IActionResult EditPost(int postID)
+        public IActionResult PostEdit(int postID)
         {
             return View(db.GetPostEditViewModel(postID));
+        }
+
+        [HttpPost]
+        public IActionResult PostEdit(PostEditViewModel model)
+        {
+            db.EditPost(model);
+            return RedirectToAction("Threadpage", "Forum", new { model.ThreadID });
         }
     }
 }

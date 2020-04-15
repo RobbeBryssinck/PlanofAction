@@ -9,5 +9,6 @@ namespace PlanofAction.ViewModels
     {
         public int PostID { get; set; }
         public string PostMessage { get; set; }
+        public int ThreadID { get; set; }
     }
 }

@@ -508,7 +508,7 @@ namespace PlanofAction.Data
             using (MySqlConnection conn = GetConnection())
             {
                 conn.Open();
-                MySqlCommand cmd = new MySqlCommand(string.Format(command, postID.ToString()));
+                MySqlCommand cmd = new MySqlCommand(string.Format(command, postID.ToString()), conn);
 
                 using MySqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
@@ -516,12 +516,27 @@ namespace PlanofAction.Data
                     model = new PostEditViewModel()
                     {
                         PostID = Convert.ToInt32(reader["PostID"]),
-                        PostMessage = reader["PostMessage"].ToString()
+                        PostMessage = reader["PostMessage"].ToString(),
+                        ThreadID = Convert.ToInt32(reader["ThreadID"])
                     };
                 }
             }
 
             return model;
+        }
+
+        public void EditPost(PostEditViewModel model)
+        {
+            string command = "UPDATE post SET PostMessage='{0}' WHERE PostID={1};";
+
+            using (MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand(string.Format(command, model.PostMessage,
+                                                    model.PostID), conn);
+
+                cmd.ExecuteNonQuery();
+            }
         }
     }
 }
