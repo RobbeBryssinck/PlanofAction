@@ -419,11 +419,11 @@ namespace PlanofAction.Data
             string accountCommand = "SELECT * FROM account WHERE AccountID='{0}';";
             Account account = new Account();
 
-            using (MySqlConnection conn2 = GetConnection())
+            using (MySqlConnection conn = GetConnection())
             {
-                conn2.Open();
+                conn.Open();
 
-                MySqlCommand cmdAccount = new MySqlCommand(string.Format(accountCommand, accountID), conn2);
+                MySqlCommand cmdAccount = new MySqlCommand(string.Format(accountCommand, accountID), conn);
 
                 using MySqlDataReader accountReader = cmdAccount.ExecuteReader();
                 while (accountReader.Read())
@@ -498,6 +498,30 @@ namespace PlanofAction.Data
 
                 cmd.ExecuteNonQuery();
             }
+        }
+
+        public PostEditViewModel GetPostEditViewModel(int postID)
+        {
+            string command = "SELECT * FROM post WHERE PostID={0};";
+            PostEditViewModel model = new PostEditViewModel();
+
+            using (MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand(string.Format(command, postID.ToString()));
+
+                using MySqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    model = new PostEditViewModel()
+                    {
+                        PostID = Convert.ToInt32(reader["PostID"]),
+                        PostMessage = reader["PostMessage"].ToString()
+                    };
+                }
+            }
+
+            return model;
         }
     }
 }

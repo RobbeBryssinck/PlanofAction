@@ -171,5 +171,11 @@ namespace PlanofAction.Controllers
             // return to thread with clean input properties 
             return RedirectToAction("ThreadPage", "Forum", new { forumThreadViewModel.ThreadID });
         }
+
+        [HttpGet]
+        public IActionResult EditPost(int postID)
+        {
+            return View(db.GetPostEditViewModel(int postID));
+        }
     }
 }
