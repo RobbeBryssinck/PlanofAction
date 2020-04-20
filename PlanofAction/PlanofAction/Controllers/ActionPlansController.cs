@@ -5,13 +5,15 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using PlanofAction.Models;
 using PlanofAction.Data;
+using PlanofAction.ViewModels;
+using DataHandler;
 
 namespace PlanofAction.Controllers
 {
     public class ActionPlansController : Controller
     {
-        private PoAContext db;
-        public ActionPlansController(PoAContext db)
+        private ActionPlanContext db;
+        public ActionPlansController(ActionPlanContext db)
         {
             this.db = db;
         }
@@ -35,9 +37,10 @@ namespace PlanofAction.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(ActionPlan actionPlan)
+        public IActionResult Create(CreateActionPlanViewModel actionPlan)
         {
-            int rowsAffected = db.CreateActionPlan(actionPlan);
+            int rowsAffected = db.CreateActionPlan(actionPlan.AccountID, actionPlan.PlanTitle,
+                                                    actionPlan.PlanMessage, actionPlan.PlanCategory);
 
             if (rowsAffected == 1)
                 return RedirectToAction("CreationSuccessful");
@@ -66,7 +69,7 @@ namespace PlanofAction.Controllers
         [HttpPost]
         public IActionResult DeletePost(int actionPlanID)
         {
-            ActionPlan actionPlan = db.GetActionPlan(actionPlanID);
+            ActionPlanDto actionPlan = db.GetActionPlan(actionPlanID);
 
             db.DeleteActionPlan(actionPlan);
 
@@ -80,7 +83,7 @@ namespace PlanofAction.Controllers
         }
 
         [HttpPost]
-        public IActionResult EditPost(ActionPlan actionPlan)
+        public IActionResult EditPost(ActionPlanDto actionPlan)
         {
             db.EditActionPlan(actionPlan);
 
