@@ -1,8 +1,9 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using DataHandler.Models;
 
-namespace DataHandler
+namespace DataHandler.Context
 {
     public class ActionPlanContext
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace DataHandler
+namespace DataHandler.Models
 {
     public class ActionPlanDto
     {
