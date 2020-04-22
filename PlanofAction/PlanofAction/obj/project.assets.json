@@ -2920,17 +2920,27 @@
           "lib/netstandard1.3/System.Xml.XPath.XmlDocument.dll": {}
         }
       },
-      "DataHandler/1.0.0": {
+      "Logic/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
-          "MySql.Data": "8.0.19"
+          "PoAModels": "1.0.0"
         },
         "compile": {
-          "bin/placeholder/DataHandler.dll": {}
+          "bin/placeholder/Logic.dll": {}
         },
         "runtime": {
-          "bin/placeholder/DataHandler.dll": {}
+          "bin/placeholder/Logic.dll": {}
+        }
+      },
+      "PoAModels/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/PoAModels.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PoAModels.dll": {}
         }
       }
     }
@@ -9256,20 +9266,26 @@
         "system.xml.xpath.xmldocument.nuspec"
       ]
     },
-    "DataHandler/1.0.0": {
+    "Logic/1.0.0": {
       "type": "project",
-      "path": "../DataHandler/DataHandler.csproj",
-      "msbuildProject": "../DataHandler/DataHandler.csproj"
+      "path": "../Logic/Logic.csproj",
+      "msbuildProject": "../Logic/Logic.csproj"
+    },
+    "PoAModels/1.0.0": {
+      "type": "project",
+      "path": "../PoAModels/PoAModels.csproj",
+      "msbuildProject": "../PoAModels/PoAModels.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
-      "DataHandler >= 1.0.0",
+      "Logic >= 1.0.0",
       "Microsoft.EntityFrameworkCore.SqlServer >= 3.1.2",
       "Microsoft.EntityFrameworkCore.Sqlite >= 3.1.2",
       "Microsoft.EntityFrameworkCore.Tools >= 3.1.2",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 3.1.1",
-      "MySql.Data >= 8.0.19"
+      "MySql.Data >= 8.0.19",
+      "PoAModels >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -9298,8 +9314,11 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Users\\Robbe\\source\\test\\PlanofAction\\PlanofAction\\DataHandler\\DataHandler.csproj": {
-              "projectPath": "C:\\Users\\Robbe\\source\\test\\PlanofAction\\PlanofAction\\DataHandler\\DataHandler.csproj"
+            "C:\\Users\\Robbe\\source\\test\\PlanofAction\\PlanofAction\\Logic\\Logic.csproj": {
+              "projectPath": "C:\\Users\\Robbe\\source\\test\\PlanofAction\\PlanofAction\\Logic\\Logic.csproj"
+            },
+            "C:\\Users\\Robbe\\source\\test\\PlanofAction\\PlanofAction\\PoAModels\\PoAModels.csproj": {
+              "projectPath": "C:\\Users\\Robbe\\source\\test\\PlanofAction\\PlanofAction\\PoAModels\\PoAModels.csproj"
             }
           }
         }
