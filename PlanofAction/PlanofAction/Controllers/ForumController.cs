@@ -20,7 +20,8 @@ namespace PlanofAction.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            return View(db.GetForumCategories());
+            List<ForumCategory> forumCategories = db.GetForumCategories();
+            return View(forumCategories);
         }
 
         [HttpGet]
@@ -55,6 +56,7 @@ namespace PlanofAction.Controllers
         [HttpGet]
         public IActionResult DeleteCategory(int forumCategoryID)
         {
+
             return View(db.GetForumCategory(forumCategoryID));
         }
 
