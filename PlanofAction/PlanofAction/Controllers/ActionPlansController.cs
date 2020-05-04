@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Mvc;
 using PlanofAction.Models;
 using PlanofAction.Data;
 using PlanofAction.ViewModels;
-using DataHandler.Context;
 
 namespace PlanofAction.Controllers
 {
