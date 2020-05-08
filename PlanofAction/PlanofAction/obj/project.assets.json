@@ -2923,24 +2923,11 @@
       "Logic/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
-        "dependencies": {
-          "PoAModels": "1.0.0"
-        },
         "compile": {
           "bin/placeholder/Logic.dll": {}
         },
         "runtime": {
           "bin/placeholder/Logic.dll": {}
-        }
-      },
-      "PoAModels/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v3.1",
-        "compile": {
-          "bin/placeholder/PoAModels.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/PoAModels.dll": {}
         }
       }
     }
@@ -9270,11 +9257,6 @@
       "type": "project",
       "path": "../Logic/Logic.csproj",
       "msbuildProject": "../Logic/Logic.csproj"
-    },
-    "PoAModels/1.0.0": {
-      "type": "project",
-      "path": "../PoAModels/PoAModels.csproj",
-      "msbuildProject": "../PoAModels/PoAModels.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -9284,8 +9266,7 @@
       "Microsoft.EntityFrameworkCore.Sqlite >= 3.1.2",
       "Microsoft.EntityFrameworkCore.Tools >= 3.1.2",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 3.1.1",
-      "MySql.Data >= 8.0.19",
-      "PoAModels >= 1.0.0"
+      "MySql.Data >= 8.0.19"
     ]
   },
   "packageFolders": {
@@ -9316,9 +9297,6 @@
           "projectReferences": {
             "C:\\Users\\Robbe\\source\\test\\PlanofAction\\PlanofAction\\Logic\\Logic.csproj": {
               "projectPath": "C:\\Users\\Robbe\\source\\test\\PlanofAction\\PlanofAction\\Logic\\Logic.csproj"
-            },
-            "C:\\Users\\Robbe\\source\\test\\PlanofAction\\PlanofAction\\PoAModels\\PoAModels.csproj": {
-              "projectPath": "C:\\Users\\Robbe\\source\\test\\PlanofAction\\PlanofAction\\PoAModels\\PoAModels.csproj"
             }
           }
         }
