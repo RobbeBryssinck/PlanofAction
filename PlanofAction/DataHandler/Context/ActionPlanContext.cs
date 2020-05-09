@@ -89,28 +89,28 @@ namespace DataHandler.Context
             }
         }
 
-        public void DeleteActionPlan(ActionPlanDto actionPlan)
+        public void DeleteActionPlan(int actionPlanID)
         {
             string command = "DELETE FROM actionplan WHERE ActionPlanID={0};";
 
             using (MySqlConnection conn = GetConnection())
             {
                 conn.Open();
-                MySqlCommand cmd = new MySqlCommand(string.Format(command, actionPlan.ActionPlanID), conn);
+                MySqlCommand cmd = new MySqlCommand(string.Format(command, actionPlanID), conn);
 
                 cmd.ExecuteNonQuery();
             }
         }
 
-        public void EditActionPlan(ActionPlanDto actionPlan)
+        public void EditActionPlan(string planTitle, string planMessage, string planCategory, string actionPlanID)
         {
             string command = "UPDATE actionplan SET PlanTitle='{0}', PlanMessage='{1}', PlanCategory='{2}' WHERE ActionPlanID={3};";
 
             using (MySqlConnection conn = GetConnection())
             {
                 conn.Open();
-                MySqlCommand cmd = new MySqlCommand(string.Format(command, actionPlan.PlanTitle, actionPlan.PlanMessage,
-                    actionPlan.PlanCategory, actionPlan.ActionPlanID), conn);
+                MySqlCommand cmd = new MySqlCommand(string.Format(command, planTitle, planMessage,
+                    planCategory, actionPlanID), conn);
 
                 cmd.ExecuteNonQuery();
             }

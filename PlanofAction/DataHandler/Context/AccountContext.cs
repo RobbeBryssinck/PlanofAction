@@ -46,10 +46,10 @@ namespace DataHandler.Context
             return account;
         }
 
-        public Account GetAccount(string accountID)
+        public AccountDto GetAccount(string accountID)
         {
             string accountCommand = "SELECT * FROM account WHERE AccountID='{0}';";
-            Account account = new Account();
+            AccountDto account = new AccountDto();
 
             using (MySqlConnection conn = GetConnection())
             {

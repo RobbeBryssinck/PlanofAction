@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace PoAModels
+namespace Logic.Models
 {
-    class ActionPlan
+    public class ActionPlan
     {
         public int ActionPlanID { get; set; }
         public int AccountID { get; set; }

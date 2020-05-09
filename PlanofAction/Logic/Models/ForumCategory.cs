@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace PoAModels
+namespace Logic.Models
 {
-    class ForumCategory
+    public class ForumCategory
     {
         public int ForumCategoryID { get; set; }
         public string ForumCategoryString { get; set; }

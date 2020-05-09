@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PoAModels
+namespace Logic.Models
 {
     public class Account
     {

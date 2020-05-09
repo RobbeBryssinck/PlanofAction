@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace PoAModels
+namespace Logic.Models
 {
-    class ForumThread
+    public class ForumThread
     {
         public int ThreadID { get; set; }
         public int AccountID { get; set; }

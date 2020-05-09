@@ -7,9 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlanofAction", "PlanofActio
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataHandler", "DataHandler\DataHandler.csproj", "{31719490-EA88-4182-A307-A504545856AF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logic", "Logic\Logic.csproj", "{F35A9947-D2C6-4068-8828-5FBEDF643138}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoAModels", "PoAModels\PoAModels.csproj", "{B1273399-1167-4332-852A-588F3FDD005B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Logic", "Logic\Logic.csproj", "{F35A9947-D2C6-4068-8828-5FBEDF643138}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +27,6 @@ Global
 		{F35A9947-D2C6-4068-8828-5FBEDF643138}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F35A9947-D2C6-4068-8828-5FBEDF643138}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F35A9947-D2C6-4068-8828-5FBEDF643138}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B1273399-1167-4332-852A-588F3FDD005B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B1273399-1167-4332-852A-588F3FDD005B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B1273399-1167-4332-852A-588F3FDD005B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B1273399-1167-4332-852A-588F3FDD005B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -5,11 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MySql.Data" Version="8.0.19" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\PoAModels\PoAModels.csproj" />
+    <PackageReference Include="MySql.Data" Version="8.0.20" />
   </ItemGroup>
 
 </Project>

@@ -6,15 +6,16 @@ using Microsoft.AspNetCore.Mvc;
 using PlanofAction.Models;
 using PlanofAction.Data;
 using PlanofAction.ViewModels;
+using Logic.Models;
 
 namespace PlanofAction.Controllers
 {
     public class ActionPlansController : Controller
     {
-        private ActionPlanContext db;
-        public ActionPlansController(ActionPlanContext db)
+        private ActionPlan actionPlan;
+        public ActionPlansController()
         {
-            this.db = db;
+            this.actionPlan = new ActionPlan();
         }
 
         [HttpGet]
