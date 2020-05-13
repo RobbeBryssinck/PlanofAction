@@ -18,6 +18,16 @@ namespace DataHandlerFactory
         {
             return new ActionPlanDto();
         }
+
+        public static IForumCategoryContext GetForumCategoryContext()
+        {
+            return new ForumCategoryContext();
+        }
+
+        public static IForumCategoryDto GetForumCategoryDto()
+        {
+            return new ForumCategoryDto();
+        }
     }
 }
 

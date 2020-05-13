@@ -3,10 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using DataHandler.Models;
+using DataHandlerInterfaces;
 
 namespace DataHandler.Context
 {
-    class ForumCategoryContext
+    public class ForumCategoryContext : IForumCategoryContext
     {
         public string ConnectionString { get; set; }
 
@@ -20,10 +21,10 @@ namespace DataHandler.Context
             return new MySqlConnection(ConnectionString);
         }
 
-        public List<ForumCategoryDto> GetForumCategories()
+        public List<IForumCategoryDto> GetForumCategories()
         {
             string command = "SELECT * FROM forumcategory;";
-            List<ForumCategoryDto> forumCategories = new List<ForumCategoryDto>();
+            List<IForumCategoryDto> forumCategories = new List<IForumCategoryDto>();
 
             using (MySqlConnection conn = GetConnection())
             {
@@ -43,10 +44,10 @@ namespace DataHandler.Context
             return forumCategories;
         }
 
-        public ForumCategoryDto GetForumCategory(int forumCategoryID)
+        public IForumCategoryDto GetForumCategory(int forumCategoryID)
         {
             string command = "SELECT * FROM forumcategory WHERE ForumCategoryID={0};";
-            ForumCategoryDto forumCategory = new ForumCategoryDto();
+            IForumCategoryDto forumCategory = new ForumCategoryDto();
 
             using (MySqlConnection conn = GetConnection())
             {
@@ -66,7 +67,7 @@ namespace DataHandler.Context
             return forumCategory;
         }
 
-        public int CreateForumCategory(ForumCategoryDto forumCategory)
+        public int CreateForumCategory(IForumCategoryDto forumCategory)
         {
             string command = "INSERT INTO `forumcategory` (`ForumCategoryID`, `ForumCategoryString`) VALUES ({0}, '{1}');";
 
@@ -80,7 +81,7 @@ namespace DataHandler.Context
             }
         }
 
-        public void DeleteForumCategory(ForumCategoryDto forumCategory)
+        public void DeleteForumCategory(IForumCategoryDto forumCategory)
         {
             string command = "DELETE FROM forumcategory WHERE ForumCategoryID={0};";
 
@@ -93,7 +94,7 @@ namespace DataHandler.Context
             }
         }
 
-        public void EditForumCategory(ForumCategoryDto forumCategory)
+        public void EditForumCategory(IForumCategoryDto forumCategory)
         {
             string command = "UPDATE forumcategory SET ForumCategoryString='{0}' WHERE ForumCategoryID={1};";
 

@@ -3,18 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using PlanofAction.Models;
-using PlanofAction.Data;
 using PlanofAction.ViewModels;
+using LogicInterfaces;
+using LogicFactory;
 
 namespace PlanofAction.Controllers
 {
     public class ForumController : Controller
     {
-        private PoAContext db;
-        public ForumController(PoAContext db)
+        private IActionPlan actionPlan;
+        private IActionPlanCollection actionPlanCollection;
+
+        public ForumController()
         {
-            this.db = db;
         }
 
         [HttpGet]

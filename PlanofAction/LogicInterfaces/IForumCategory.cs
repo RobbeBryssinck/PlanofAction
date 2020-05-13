@@ -1,11 +1,10 @@
-﻿using LogicInterfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Logic.Models
+namespace LogicInterfaces
 {
-    public class ForumCategory : IForumCategory
+    public interface IForumCategory
     {
         public int ForumCategoryID { get; set; }
         public string ForumCategoryString { get; set; }
