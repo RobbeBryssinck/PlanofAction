@@ -10,9 +10,9 @@ namespace DataHandler.Context
     {
         public string ConnectionString { get; set; }
 
-        public ForumPostContext(string ConnectionString)
+        public ForumPostContext()
         {
-            this.ConnectionString = ConnectionString;
+            ConnectionString = ConnectionStringValue.connectionString;
         }
 
         private MySqlConnection GetConnection()

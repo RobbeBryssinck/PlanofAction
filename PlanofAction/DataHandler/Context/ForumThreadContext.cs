@@ -11,9 +11,9 @@ namespace DataHandler.Context
     {
         public string ConnectionString { get; set; }
 
-        public ForumThreadContext(string ConnectionString)
+        public ForumThreadContext()
         {
-            this.ConnectionString = ConnectionString;
+            ConnectionString = ConnectionStringValue.connectionString;
         }
 
         private MySqlConnection GetConnection()
