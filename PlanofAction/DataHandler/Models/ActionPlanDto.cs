@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DataHandler.Models
 {
-    public class ActionPlanDto
+    public class ActionPlanDto : IActionPlanDto
     {
         public int ActionPlanID { get; set; }
         public int AccountID { get; set; }

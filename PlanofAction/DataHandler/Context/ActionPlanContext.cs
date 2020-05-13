@@ -5,7 +5,7 @@ using DataHandler.Models;
 
 namespace DataHandler.Context
 {
-    public class ActionPlanContext
+    public class ActionPlanContext : IActionPlanContext
     {
         public string ConnectionString { get; set; }
 
