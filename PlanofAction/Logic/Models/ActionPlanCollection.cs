@@ -12,13 +12,12 @@ namespace Logic.Models
     class ActionPlanCollection
     {
         private IActionPlanContext db;
-        private string connectionString = "Server=studmysql01.fhict.local;Uid=dbi406843;Database=dbi406843;Pwd=kwf40C1@s&OM;";
 
         private List<ActionPlan> ActionPlans { get; set; }
 
         public ActionPlanCollection()
         {
-            db = Factory.GetActionPlanContext(connectionString);
+            db = Factory.GetActionPlanContext();
             List<IActionPlanDto> actionPlanDtos = db.GetActionPlans();
             foreach (IActionPlanDto actionPlanDto in actionPlanDtos)
             {
@@ -36,7 +35,15 @@ namespace Logic.Models
 
         public void CreateActionPlan(ActionPlan actionPlan)
         {
+            IActionPlanDto actionPlanDto = Factory.GetActionPlanDto();
+            actionPlanDto.AccountID = actionPlan.AccountID;
+            actionPlanDto.ActionPlanID = actionPlan.ActionPlanID;
+            actionPlanDto.PlanTitle = actionPlan.PlanTitle;
+            actionPlanDto.PlanMessage = actionPlan.PlanMessage;
+            actionPlanDto.PlanCategory = actionPlan.PlanCategory;
+            actionPlanDto.PlanDateCreated = actionPlan.PlanDateCreated;
 
+            db.CreateActionPlan(actionPlanDto);
         }
 
         public List<ActionPlan> GetActionPlans()

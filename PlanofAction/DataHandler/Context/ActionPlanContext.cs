@@ -74,19 +74,18 @@ namespace DataHandler.Context
             return actionPlan;
         }
 
-        public int CreateActionPlan(int accountID, string planTitle, string planMessage, string planCategory)
+        public void CreateActionPlan(IActionPlanDto actionPlanDto)
         {
             string command = "INSERT INTO `actionplan` (`AccountID`, `PlanTitle`, `PlanMessage`, `PlanCategory`, `PlanDateCreated`) VALUES ({0}, '{1}', '{2}', '{3}', '{4}');";
 
             using (MySqlConnection conn = GetConnection())
             {
                 conn.Open();
-                MySqlCommand cmd = new MySqlCommand(string.Format(command, accountID, planTitle,
-                                                                    planMessage, planCategory,
+                MySqlCommand cmd = new MySqlCommand(string.Format(command, actionPlanDto.AccountID, actionPlanDto.PlanTitle,
+                                                                    actionPlanDto.PlanMessage, actionPlanDto.PlanCategory,
                                                                     DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")), conn);
 
-                int rowsAffected = cmd.ExecuteNonQuery();
-                return rowsAffected;
+                cmd.ExecuteNonQuery();
             }
         }
 
