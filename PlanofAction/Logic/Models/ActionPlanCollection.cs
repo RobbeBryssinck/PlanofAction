@@ -6,10 +6,11 @@ using DataHandler.Context;
 using DataHandler.Models;
 using DataHandlerInterfaces;
 using DataHandlerFactory;
+using LogicInterfaces;
 
 namespace Logic.Models
 {
-    class ActionPlanCollection
+    public class ActionPlanCollection : IActionPlanCollection
     {
         private IActionPlanContext db;
 
@@ -33,20 +34,20 @@ namespace Logic.Models
             }
         }
 
-        public void CreateActionPlan(ActionPlan actionPlan)
+        public int CreateActionPlan(IActionPlan actionPlan)
         {
             IActionPlanDto actionPlanDto = Factory.GetActionPlanDto();
             actionPlanDto.AccountID = actionPlan.AccountID;
-            actionPlanDto.ActionPlanID = actionPlan.ActionPlanID;
             actionPlanDto.PlanTitle = actionPlan.PlanTitle;
             actionPlanDto.PlanMessage = actionPlan.PlanMessage;
             actionPlanDto.PlanCategory = actionPlan.PlanCategory;
             actionPlanDto.PlanDateCreated = actionPlan.PlanDateCreated;
 
-            db.CreateActionPlan(actionPlanDto);
+            int rowcount = db.CreateActionPlan(actionPlanDto);
+            return rowcount;
         }
 
-        public List<ActionPlan> GetActionPlans()
+        public List<IActionPlan> GetActionPlans()
         {
             return ActionPlans;
         }

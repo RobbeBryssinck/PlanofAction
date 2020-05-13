@@ -74,7 +74,7 @@ namespace DataHandler.Context
             return actionPlan;
         }
 
-        public void CreateActionPlan(IActionPlanDto actionPlanDto)
+        public int CreateActionPlan(IActionPlanDto actionPlanDto)
         {
             string command = "INSERT INTO `actionplan` (`AccountID`, `PlanTitle`, `PlanMessage`, `PlanCategory`, `PlanDateCreated`) VALUES ({0}, '{1}', '{2}', '{3}', '{4}');";
 
@@ -85,7 +85,8 @@ namespace DataHandler.Context
                                                                     actionPlanDto.PlanMessage, actionPlanDto.PlanCategory,
                                                                     DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")), conn);
 
-                cmd.ExecuteNonQuery();
+                int rowcount = cmd.ExecuteNonQuery();
+                return rowcount;
             }
         }
 

@@ -12,5 +12,10 @@ namespace LogicFactory
         {
             return new ActionPlan();
         }
+
+        public static IActionPlanCollection GetActionPlanCollection()
+        {
+            return new ActionPlanCollection();
+        }
     }
 }

@@ -9,21 +9,30 @@ using PlanofAction.ViewModels;
 using Logic.Models;
 using LogicFactory;
 using LogicInterfaces;
+using Microsoft.AspNetCore.Mvc.ActionConstraints;
 
 namespace PlanofAction.Controllers
 {
     public class ActionPlansController : Controller
     {
-        private ActionPlan actionPlan;
+        private IActionPlan actionPlan;
+        private IActionPlanCollection actionPlanCollection;
+
         public ActionPlansController()
         {
-            this.actionPlan = new ActionPlan();
+            actionPlan = Factory.GetActionPlan();
+            actionPlanCollection = Factory.GetActionPlanCollection();
         }
 
         [HttpGet]
         public IActionResult Index()
         {
-            return View(db.GetActionPlans());
+            List<IActionPlan> actionPlans = actionPlanCollection.GetActionPlans();
+            ActionPlanIndexViewModel model = new ActionPlanIndexViewModel();
+
+            model.ActionPlans = actionPlans;
+
+            return View(model);
         }
 
         [HttpGet]
@@ -39,12 +48,16 @@ namespace PlanofAction.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(CreateActionPlanViewModel actionPlan)
+        public IActionResult Create(CreateActionPlanViewModel model)
         {
-            int rowsAffected = db.CreateActionPlan(actionPlan.AccountID, actionPlan.PlanTitle,
-                                                    actionPlan.PlanMessage, actionPlan.PlanCategory);
+            actionPlan.AccountID = model.AccountID;
+            actionPlan.PlanTitle = model.PlanTitle;
+            actionPlan.PlanMessage = model.PlanMessage;
+            actionPlan.PlanCategory = model.PlanCategory;
 
-            if (rowsAffected == 1)
+            int rowcount = actionPlanCollection.CreateActionPlan(actionPlan);
+
+            if (rowcount == 1)
                 return RedirectToAction("CreationSuccessful");
             else
                 return RedirectToAction("CreationFailed");
