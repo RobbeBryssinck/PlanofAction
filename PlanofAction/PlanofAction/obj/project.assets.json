@@ -2961,6 +2961,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
+          "DataHandlerInterfaces": "1.0.0",
           "MySql.Data": "8.0.20"
         },
         "compile": {
@@ -2970,11 +2971,36 @@
           "bin/placeholder/DataHandler.dll": {}
         }
       },
-      "Logic/1.0.0": {
+      "DataHandlerFactory/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
           "DataHandler": "1.0.0",
+          "DataHandlerInterfaces": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/DataHandlerFactory.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DataHandlerFactory.dll": {}
+        }
+      },
+      "DataHandlerInterfaces/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/DataHandlerInterfaces.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DataHandlerInterfaces.dll": {}
+        }
+      },
+      "Logic/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "DataHandlerFactory": "1.0.0",
+          "DataHandlerInterfaces": "1.0.0",
           "LogicInterfaces": "1.0.0"
         },
         "compile": {
@@ -9414,6 +9440,16 @@
       "type": "project",
       "path": "../DataHandler/DataHandler.csproj",
       "msbuildProject": "../DataHandler/DataHandler.csproj"
+    },
+    "DataHandlerFactory/1.0.0": {
+      "type": "project",
+      "path": "../DataHandlerFactory/DataHandlerFactory.csproj",
+      "msbuildProject": "../DataHandlerFactory/DataHandlerFactory.csproj"
+    },
+    "DataHandlerInterfaces/1.0.0": {
+      "type": "project",
+      "path": "../DataHandlerInterfaces/DataHandlerInterfaces.csproj",
+      "msbuildProject": "../DataHandlerInterfaces/DataHandlerInterfaces.csproj"
     },
     "Logic/1.0.0": {
       "type": "project",

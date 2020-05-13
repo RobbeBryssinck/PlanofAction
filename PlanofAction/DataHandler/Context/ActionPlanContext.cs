@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using DataHandler.Models;
+using DataHandlerInterfaces;
 
 namespace DataHandler.Context
 {
@@ -19,10 +20,10 @@ namespace DataHandler.Context
             return new MySqlConnection(ConnectionString);
         }
 
-        public List<ActionPlanDto> GetActionPlans()
+        public List<IActionPlanDto> GetActionPlans()
         {
             string command = "SELECT * FROM actionplan;";
-            List<ActionPlanDto> actionPlans = new List<ActionPlanDto>();
+            List<IActionPlanDto> actionPlans = new List<IActionPlanDto>();
 
             using (MySqlConnection conn = GetConnection())
             {
@@ -46,10 +47,10 @@ namespace DataHandler.Context
             return actionPlans;
         }
 
-        public ActionPlanDto GetActionPlan(int actionPlanID)
+        public IActionPlanDto GetActionPlan(int actionPlanID)
         {
             string command = "SELECT * FROM actionplan WHERE ActionPlanID='{0}';";
-            ActionPlanDto actionPlan = new ActionPlanDto();
+            IActionPlanDto actionPlan = new ActionPlanDto();
 
             using (MySqlConnection conn = GetConnection())
             {
