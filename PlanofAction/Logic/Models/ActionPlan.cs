@@ -9,6 +9,7 @@ namespace Logic.Models
 {
     public class ActionPlan : IActionPlan
     {
+        private IActionPlanContext db;
         public int ActionPlanID { get; set; }
         public int AccountID { get; set; }
         public string PlanTitle { get; set; }
@@ -16,19 +17,19 @@ namespace Logic.Models
         public string PlanCategory { get; set; }
         public DateTime PlanDateCreated { get; set; }
 
-        public void CreateActionPlan(int accountID, string planTitle, string planMessage, string planCategory)
+        public ActionPlan()
         {
-            return;
+            db = Factory.GetActionPlanContext();
         }
 
-        public void EditActionPlan(string title, string message, string category, int actionPlanID)
+        public void EditActionPlan()
         {
-            db.EditActionPlan(title, message, category);
+            db.EditActionPlan(PlanTitle, PlanMessage, PlanCategory, ActionPlanID);
         }
 
-        public void DeleteActionPlan(int actionPlanID)
+        public void DeleteActionPlan()
         {
-            throw new NotImplementedException();
+            db.DeleteActionPlan(ActionPlanID);
         }
     }
 }

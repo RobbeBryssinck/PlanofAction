@@ -38,7 +38,15 @@ namespace PlanofAction.Controllers
         [HttpGet]
         public IActionResult PlanPage(int actionPlanID)
         {
-            return View(db.GetActionPlan(actionPlanID));
+            actionPlan = actionPlanCollection.GetActionPlan(actionPlanID);
+
+            PlanPageViewModel model = new PlanPageViewModel()
+            {
+                PlanTitle = actionPlan.PlanTitle,
+                PlanMessage = actionPlan.PlanMessage
+            };
+
+            return View(model);
         }
 
         [HttpGet]
@@ -78,15 +86,27 @@ namespace PlanofAction.Controllers
         [HttpGet]
         public IActionResult Delete(int actionPlanID)
         {
-            return View(db.GetActionPlan(actionPlanID));
+            actionPlan = actionPlanCollection.GetActionPlan(actionPlanID);
+
+            DeletePlanViewModel model = new DeletePlanViewModel()
+            {
+                ActionPlanID = actionPlan.ActionPlanID,
+                AccountID = actionPlan.AccountID,
+                PlanTitle = actionPlan.PlanTitle,
+                PlanMessage = actionPlan.PlanMessage,
+                PlanCategory = actionPlan.PlanCategory,
+                PlanDateCreated = actionPlan.PlanDateCreated
+            };
+
+            return View(model);
         }
 
         [HttpPost]
         public IActionResult DeletePost(int actionPlanID)
         {
-            ActionPlanDto actionPlan = db.GetActionPlan(actionPlanID);
+            actionPlan = actionPlanCollection.GetActionPlan(actionPlanID);
 
-            db.DeleteActionPlan(actionPlan);
+            actionPlan.DeleteActionPlan();
 
             return RedirectToAction("Index");
         }
@@ -94,13 +114,28 @@ namespace PlanofAction.Controllers
         [HttpGet]
         public IActionResult Edit(int actionPlanID)
         {
-            return View(db.GetActionPlan(actionPlanID));
+            actionPlan = actionPlanCollection.GetActionPlan(actionPlanID);
+
+            EditPlanViewModel model = new EditPlanViewModel()
+            {
+                ActionPlanID = actionPlan.ActionPlanID,
+                PlanTitle = actionPlan.PlanTitle,
+                PlanMessage = actionPlan.PlanMessage,
+                PlanCategory = actionPlan.PlanCategory
+            };
+
+            return View(model);
         }
 
         [HttpPost]
-        public IActionResult EditPost(string title, string message, string category)
+        public IActionResult EditPost(EditPlanViewModel model)
         {
-            IActionPlan actionPlan = ActionPlanFactory.GetActionPlan();
+            actionPlan.ActionPlanID = model.ActionPlanID;
+            actionPlan.PlanTitle = model.PlanTitle;
+            actionPlan.PlanMessage = model.PlanMessage;
+            actionPlan.PlanCategory = model.PlanCategory;
+
+            actionPlan.EditActionPlan();
 
             return RedirectToAction("Index");
         }

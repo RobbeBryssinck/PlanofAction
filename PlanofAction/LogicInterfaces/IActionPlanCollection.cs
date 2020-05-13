@@ -4,7 +4,8 @@ namespace LogicInterfaces
 {
     public interface IActionPlanCollection
     {
-        int CreateActionPlan(IActionPlan actionPlan);
         List<IActionPlan> GetActionPlans();
+        IActionPlan GetActionPlan(int actionPlanID);
+        int CreateActionPlan(IActionPlan actionPlan);
     }
 }

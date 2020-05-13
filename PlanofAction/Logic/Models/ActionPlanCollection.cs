@@ -2,19 +2,17 @@
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
-using DataHandler.Context;
-using DataHandler.Models;
 using DataHandlerInterfaces;
 using DataHandlerFactory;
 using LogicInterfaces;
+using System.Linq;
 
 namespace Logic.Models
 {
     public class ActionPlanCollection : IActionPlanCollection
     {
         private IActionPlanContext db;
-
-        private List<ActionPlan> ActionPlans { get; set; }
+        private List<IActionPlan> ActionPlans { get; set; }
 
         public ActionPlanCollection()
         {
@@ -50,6 +48,11 @@ namespace Logic.Models
         public List<IActionPlan> GetActionPlans()
         {
             return ActionPlans;
+        }
+
+        public IActionPlan GetActionPlan(int actionPlanID)
+        {
+            return ActionPlans.Where(model => model.ActionPlanID == actionPlanID).FirstOrDefault();
         }
     }
 }
