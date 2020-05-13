@@ -102,7 +102,7 @@ namespace DataHandler.Context
             }
         }
 
-        public void EditActionPlan(string planTitle, string planMessage, string planCategory, string actionPlanID)
+        public void EditActionPlan(string planTitle, string planMessage, string planCategory, int actionPlanID)
         {
             string command = "UPDATE actionplan SET PlanTitle='{0}', PlanMessage='{1}', PlanCategory='{2}' WHERE ActionPlanID={3};";
 

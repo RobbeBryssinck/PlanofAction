@@ -7,6 +7,8 @@ using PlanofAction.Models;
 using PlanofAction.Data;
 using PlanofAction.ViewModels;
 using Logic.Models;
+using LogicFactory;
+using LogicInterfaces;
 
 namespace PlanofAction.Controllers
 {
@@ -83,9 +85,9 @@ namespace PlanofAction.Controllers
         }
 
         [HttpPost]
-        public IActionResult EditPost(ActionPlanDto actionPlan)
+        public IActionResult EditPost(string title, string message, string category)
         {
-            db.EditActionPlan(actionPlan);
+            IActionPlan actionPlan = ActionPlanFactory.GetActionPlan();
 
             return RedirectToAction("Index");
         }
