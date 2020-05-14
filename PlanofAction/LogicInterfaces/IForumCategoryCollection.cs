@@ -4,7 +4,7 @@ namespace LogicInterfaces
 {
     public interface IForumCategoryCollection
     {
-        List<IForumCategory> ForumCategories();
+        List<IForumCategory> GetForumCategories();
         IForumCategory GetForumCategory(int forumCategoryID);
         int CreateForumCategory(IForumCategory forumCategory);
     }

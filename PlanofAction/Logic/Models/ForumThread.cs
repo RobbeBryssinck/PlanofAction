@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using LogicInterfaces;
 
 namespace Logic.Models
 {
-    public class ForumThread
+    public class ForumThread : IForumThread
     {
         public int ThreadID { get; set; }
         public int AccountID { get; set; }

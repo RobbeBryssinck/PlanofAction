@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace LogicInterfaces
+namespace PlanofAction.ViewModels
 {
-    public interface IForumCategory
+    public class DeleteCategoryViewModel
     {
         public int ForumCategoryID { get; set; }
         public string ForumCategoryString { get; set; }
-        public void DeleteForumCategory();
-        public void EditForumCategory();
     }
 }

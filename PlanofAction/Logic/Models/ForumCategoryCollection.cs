@@ -3,6 +3,7 @@ using DataHandlerInterfaces;
 using LogicInterfaces;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Logic.Models
@@ -26,19 +27,22 @@ namespace Logic.Models
             }
         }
 
-        List<IForumCategory> IForumCategoryCollection.ForumCategories()
+        public List<IForumCategory> GetForumCategories()
         {
-            throw new NotImplementedException();
+            return ForumCategories;
         }
 
         public IForumCategory GetForumCategory(int forumCategoryID)
         {
-            throw new NotImplementedException();
+            return ForumCategories.Where(x => x.ForumCategoryID == forumCategoryID).FirstOrDefault();
         }
 
         public int CreateForumCategory(IForumCategory forumCategory)
         {
-            throw new NotImplementedException();
+            IForumCategoryDto forumCategoryDto = Factory.GetForumCategoryDto();
+            forumCategoryDto.ForumCategoryString = forumCategory.ForumCategoryString;
+            int rowcount = db.CreateForumCategory(forumCategoryDto);
+            return rowcount;
         }
     }
 }

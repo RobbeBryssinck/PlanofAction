@@ -11,18 +11,21 @@ namespace PlanofAction.Controllers
 {
     public class ForumController : Controller
     {
-        private IActionPlan actionPlan;
-        private IActionPlanCollection actionPlanCollection;
+        private IForumCategory forumCategory;
+        private IForumCategoryCollection forumCategoryCollection;
 
         public ForumController()
         {
+            forumCategory = Factory.GetForumCategory();
+            forumCategoryCollection = Factory.GetForumCategoryCollection();
         }
 
         [HttpGet]
         public IActionResult Index()
         {
-            List<ForumCategory> forumCategories = db.GetForumCategories();
-            return View(forumCategories);
+            ForumIndexViewModel model = new ForumIndexViewModel();
+            model.ForumCategories = forumCategoryCollection.GetForumCategories();
+            return View(model);
         }
 
         [HttpGet]
@@ -32,9 +35,11 @@ namespace PlanofAction.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateCategory(ForumCategory forumCategory)
+        public IActionResult CreateCategory(CreateCategoryViewModel model)
         {
-            int rowsAffected = db.CreateForumCategory(forumCategory);
+            forumCategory.ForumCategoryString = model.ForumCategoryString;
+
+            int rowsAffected = forumCategoryCollection.CreateForumCategory(forumCategory);
 
             if (rowsAffected == 1)
                 return RedirectToAction("CategoryCreationSuccessful");
@@ -57,15 +62,22 @@ namespace PlanofAction.Controllers
         [HttpGet]
         public IActionResult DeleteCategory(int forumCategoryID)
         {
+            forumCategory = forumCategoryCollection.GetForumCategory(forumCategoryID);
 
-            return View(db.GetForumCategory(forumCategoryID));
+            DeleteCategoryViewModel model = new DeleteCategoryViewModel
+            {
+                ForumCategoryID = forumCategory.ForumCategoryID,
+                ForumCategoryString = forumCategory.ForumCategoryString
+            };
+
+            return View(model);
         }
 
         [HttpPost]
         public IActionResult DeleteCategoryPost(int forumCategoryID)
         {
-            ForumCategory forumCategory = db.GetForumCategory(forumCategoryID);
-            db.DeleteForumCategory(forumCategory);
+            forumCategory.ForumCategoryID = forumCategoryID;
+            forumCategory.DeleteForumCategory();
 
             return RedirectToAction("Index");
         }
@@ -73,24 +85,36 @@ namespace PlanofAction.Controllers
         [HttpGet]
         public IActionResult EditCategory(int forumCategoryID)
         {
-            return View(db.GetForumCategory(forumCategoryID));
+            forumCategory = forumCategoryCollection.GetForumCategory(forumCategoryID);
+
+            EditCategoryViewModel model = new EditCategoryViewModel
+            {
+                ForumCategoryID = forumCategory.ForumCategoryID,
+                ForumCategoryString = forumCategory.ForumCategoryString
+            };
+
+            return View(model);
         }
 
         [HttpPost]
-        public IActionResult EditCategoryPost(ForumCategory forumCategory)
+        public IActionResult EditCategoryPost(EditCategoryViewModel model)
         {
-            db.EditForumCategory(forumCategory);
+            forumCategory.ForumCategoryID = model.ForumCategoryID;
+            forumCategory.ForumCategoryString = model.ForumCategoryString;
+
+            forumCategory.EditForumCategory();
 
             return RedirectToAction("Index");
         }
 
         public IActionResult ForumThreads(int forumCategoryID)
         {
-            List<ForumThread> forumThreads = db.GetForumThreadsByID(forumCategoryID);
+            ForumThreadsViewModel model = new ForumThreadsViewModel();
+            model.ForumThreads = forumThreadCollection.GetForumThreads();
             if (forumThreads[0].ThreadID == -1)
                 return RedirectToAction("NoForumThreads");
             else
-                return View(forumThreads);
+                return View(model);
         }
 
         public IActionResult NoForumThreads()

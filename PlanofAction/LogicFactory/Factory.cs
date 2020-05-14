@@ -17,5 +17,15 @@ namespace LogicFactory
         {
             return new ActionPlanCollection();
         }
+
+        public static IForumCategory GetForumCategory()
+        {
+            return new ForumCategory();
+        }
+
+        public static IForumCategoryCollection GetForumCategoryCollection()
+        {
+            return new ForumCategoryCollection();
+        }
     }
 }

@@ -7,7 +7,7 @@ namespace DataHandlerInterfaces
         string ConnectionString { get; set; }
 
         int CreateForumCategory(IForumCategoryDto forumCategory);
-        void DeleteForumCategory(IForumCategoryDto forumCategory);
+        void DeleteForumCategory(int forumCategoryID);
         void EditForumCategory(IForumCategoryDto forumCategory);
         List<IForumCategoryDto> GetForumCategories();
         IForumCategoryDto GetForumCategory(int forumCategoryID);

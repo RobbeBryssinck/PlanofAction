@@ -69,26 +69,26 @@ namespace DataHandler.Context
 
         public int CreateForumCategory(IForumCategoryDto forumCategory)
         {
-            string command = "INSERT INTO `forumcategory` (`ForumCategoryID`, `ForumCategoryString`) VALUES ({0}, '{1}');";
+            string command = "INSERT INTO `forumcategory` (`ForumCategoryString`) VALUES ('{0}');";
 
             using (MySqlConnection conn = GetConnection())
             {
                 conn.Open();
-                MySqlCommand cmd = new MySqlCommand(string.Format(command, forumCategory.ForumCategoryID, forumCategory.ForumCategoryString), conn);
+                MySqlCommand cmd = new MySqlCommand(string.Format(command, forumCategory.ForumCategoryString), conn);
 
-                int rowsAffected = cmd.ExecuteNonQuery();
-                return rowsAffected;
+                int rowcount = cmd.ExecuteNonQuery();
+                return rowcount;
             }
         }
 
-        public void DeleteForumCategory(IForumCategoryDto forumCategory)
+        public void DeleteForumCategory(int forumCategoryID)
         {
             string command = "DELETE FROM forumcategory WHERE ForumCategoryID={0};";
 
             using (MySqlConnection conn = GetConnection())
             {
                 conn.Open();
-                MySqlCommand cmd = new MySqlCommand(string.Format(command, forumCategory.ForumCategoryID), conn);
+                MySqlCommand cmd = new MySqlCommand(string.Format(command, forumCategoryID), conn);
 
                 cmd.ExecuteNonQuery();
             }
