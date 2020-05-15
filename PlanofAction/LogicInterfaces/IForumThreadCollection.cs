@@ -5,6 +5,6 @@ namespace LogicInterfaces
 {
     public interface IForumThreadCollection
     {
-        List<IForumThread> GetForumThreads();
+        List<IForumThread> GetForumThreads(int categoryID);
     }
 }

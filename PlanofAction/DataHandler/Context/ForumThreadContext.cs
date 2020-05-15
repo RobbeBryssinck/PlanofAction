@@ -75,6 +75,7 @@ namespace DataHandler.Context
                 }
             }
 
+            // TODO: fix whatever this is
             if (threads.Count == 0)
                 threads.Add(new ForumThreadDto()
                 {

@@ -20,7 +20,19 @@ namespace Logic.Models
 
         public List<IForumThread> GetForumThreads(int categoryID)
         {
-            List<ForumThreadDto> forumThreadDtos = db.GetForumThreads(categoryID);
+            List<IForumThreadDto> forumThreadDtos = db.GetForumThreads(categoryID);
+            foreach (var thread in forumThreadDtos)
+            {
+                forumThreads.Add(new ForumThread()
+                {
+                    ThreadID = thread.ThreadID,
+                    AccountID = thread.AccountID,
+                    ForumCategoryID = thread.ForumCategoryID,
+                    ThreadTitle = thread.ThreadTitle,
+                    ThreadMessage = thread.ThreadMessage,
+                    ThreadDateCreated = thread.ThreadDateCreated
+                });
+            }
             return forumThreads;
         }
     }

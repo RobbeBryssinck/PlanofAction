@@ -114,8 +114,11 @@ namespace PlanofAction.Controllers
         public IActionResult ForumThreads(int forumCategoryID)
         {
             ForumThreadsViewModel model = new ForumThreadsViewModel();
+
             model.ForumThreads = forumThreadCollection.GetForumThreads(forumCategoryID);
-            if (forumThreads[0].ThreadID == -1)
+            model.ForumCategory = forumCategoryCollection.GetForumCategory(forumCategoryID);
+
+            if (model.ForumThreads[0].ThreadID == -1)
                 return RedirectToAction("NoForumThreads");
             else
                 return View(model);
@@ -129,6 +132,7 @@ namespace PlanofAction.Controllers
         [HttpGet]
         public IActionResult ThreadPage(int threadID)
         {
+
             return View(db.GetForumThreadViewModel(threadID));
         }
 

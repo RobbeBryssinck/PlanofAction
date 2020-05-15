@@ -13,7 +13,7 @@ namespace PlanofAction.Controllers
         [HttpGet]
         public IActionResult Login()
         {
-            return View(new Account());
+            return View();
         }
 
         [HttpPost]
