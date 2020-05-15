@@ -96,8 +96,8 @@ namespace DataHandler.Context
                                                                     forumThreadDto.ThreadTitle, forumThreadDto.ThreadMessage,
                                                                     DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")), conn);
 
-                int rowsAffected = cmd.ExecuteNonQuery();
-                return rowsAffected;
+                int rowcount = cmd.ExecuteNonQuery();
+                return rowcount;
             }
         }
 

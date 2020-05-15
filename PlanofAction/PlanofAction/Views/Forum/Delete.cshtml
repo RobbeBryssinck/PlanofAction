@@ -1,4 +1,4 @@
-﻿@model ForumThread
+﻿@model DeleteThreadViewModel
 
 @{
     ViewData["Title"] = "Delete";
@@ -16,36 +16,36 @@
                 Thread ID
             </dt>
             <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.ThreadID)
+                @Html.DisplayFor(model => model.ForumThread.ThreadID)
             </dd>
             <dt class="col-sm-2">
                 Account ID
             </dt>
             <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.AccountID)
+                @Html.DisplayFor(model => model.ForumThread.AccountID)
             </dd>
             <dt class="col-sm-2">
                 Thread title
             </dt>
             <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.ThreadTitle)
+                @Html.DisplayFor(model => model.ForumThread.ThreadTitle)
             </dd>
             <dt class="col-sm-2">
                 Thread category
             </dt>
             <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Category.ForumCategoryString)
+                @Html.DisplayFor(model => model.ForumCategory.ForumCategoryString)
             </dd>
             <dt class="col-sm-2">
                 Thread date created
             </dt>
             <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.ThreadDateCreated)
+                @Html.DisplayFor(model => model.ForumThread.ThreadDateCreated)
             </dd>
         </dl>
 
         <form method="post" asp-action="DeletePost">
-            @Html.HiddenFor(m => Model.ThreadID)
+            @Html.HiddenFor(m => Model.ForumThread.ThreadID)
             <input type="submit" class="btn btn-danger" asp-action="DeletePost" /> |
         </form>
         <a asp-action="Index">Back to forum</a>

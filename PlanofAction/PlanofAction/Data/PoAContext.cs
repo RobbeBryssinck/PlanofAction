@@ -448,7 +448,7 @@ namespace PlanofAction.Data
             using (MySqlConnection conn = GetConnection())
             {
                 conn.Open();
-                MySqlCommand cmd = new MySqlCommand(string.Format(command, thread.AccountID, thread.CategoryID,
+                MySqlCommand cmd = new MySqlCommand(string.Format(command, thread.AccountID, thread.ForumCategoryID,
                                                                     thread.ThreadTitle, thread.ThreadMessage,
                                                                     DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")), conn);
 

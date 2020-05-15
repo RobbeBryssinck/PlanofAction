@@ -48,7 +48,24 @@ namespace Logic.Models
                 ThreadMessage = forumThreadDto.ThreadMessage,
                 ThreadTitle = forumThreadDto.ThreadTitle,
             };
+
             return forumThread;
+        }
+
+        public int CreateForumThread(IForumThread forumThread)
+        {
+            IForumThreadDto forumThreadDto = new ForumThreadDto()
+            {
+                AccountID = forumThread.AccountID,
+                ForumCategoryID = forumThread.ForumCategoryID,
+                ThreadTitle = forumThread.ThreadTitle,
+                ThreadMessage = forumThread.ThreadMessage,
+                ThreadDateCreated = forumThread.ThreadDateCreated,
+            };
+
+            int rowcount = db.CreateThread(forumThreadDto);
+
+            return rowcount;
         }
     }
 }

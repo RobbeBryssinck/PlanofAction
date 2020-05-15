@@ -10,5 +10,8 @@ namespace LogicInterfaces
         int ThreadID { get; set; }
         string ThreadMessage { get; set; }
         string ThreadTitle { get; set; }
+
+        void EditForumThread();
+        void DeleteForumThread();
     }
 }

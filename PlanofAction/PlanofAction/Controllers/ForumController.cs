@@ -156,20 +156,26 @@ namespace PlanofAction.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            CreateForumThreadViewModel createForumThreadViewModel = new CreateForumThreadViewModel()
+            CreateForumThreadViewModel model = new CreateForumThreadViewModel()
             {
                 AvailableCategories = forumCategoryCollection.GetForumCategories()
             };
 
-            return View(createForumThreadViewModel);
+            return View(model);
         }
 
         [HttpPost]
-        public IActionResult Create(CreateForumThreadViewModel thread)
+        public IActionResult Create(CreateForumThreadViewModel model)
         {
-            int rowsAffected = db.CreateThread(thread);
+            forumThread.AccountID = model.AccountID;
+            forumThread.ThreadTitle = model.ThreadTitle;
+            forumThread.ThreadMessage = model.ThreadMessage;
+            forumThread.ThreadDateCreated = model.ThreadDateCreated;
+            forumThread.ForumCategoryID = model.ForumCategoryID;
 
-            if (rowsAffected == 1)
+            int rowcount = forumThreadCollection.CreateForumThread(forumThread);
+
+            if (rowcount == 1)
                 return RedirectToAction("CreationSuccessful");
             else
                 return RedirectToAction("CreationFailed");
@@ -190,14 +196,22 @@ namespace PlanofAction.Controllers
         [HttpGet]
         public IActionResult Delete(int threadID)
         {
-            return View(db.GetForumThread(threadID));
+            forumThread = forumThreadCollection.GetForumThread(threadID);
+
+            DeleteThreadViewModel model = new DeleteThreadViewModel()
+            {
+                ForumThread = forumThread,
+                ForumCategory = forumCategoryCollection.GetForumCategory(forumThread.ForumCategoryID)
+            };
+
+            return View(model);
         }
 
         [HttpPost]
         public IActionResult DeletePost(int threadID)
         {
-            ForumThread thread = db.GetForumThread(threadID);
-            db.DeleteThread(thread);
+            forumThread = forumThreadCollection.GetForumThread(threadID);
+            forumThread.DeleteForumThread();
 
             return RedirectToAction("Index");
         }

@@ -19,6 +19,6 @@ namespace PlanofAction.ViewModels
         public DateTime ThreadDateCreated { get; set; }
         public List<IForumCategory> AvailableCategories { get; set; }
         [Display(Name="Category ID")]
-        public int CategoryID { get; set; }
+        public int ForumCategoryID { get; set; }
     }
 }
