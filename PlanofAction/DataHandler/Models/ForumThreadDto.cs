@@ -1,11 +1,12 @@
-﻿using System;
+﻿using DataHandlerInterfaces;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace DataHandler.Models
 {
-    class ForumThreadDto
+    public class ForumThreadDto : IForumThreadDto
     {
         public int ThreadID { get; set; }
         public int AccountID { get; set; }

@@ -4,10 +4,11 @@ using System.Collections.Generic;
 using System.Text;
 using DataHandler.Models;
 using DataHandler.Context;
+using DataHandlerInterfaces;
 
 namespace DataHandler.Context
 {
-    class ForumThreadContext
+    public class ForumThreadContext : IForumThreadContext
     {
         public string ConnectionString { get; set; }
 
@@ -21,7 +22,7 @@ namespace DataHandler.Context
             return new MySqlConnection(ConnectionString);
         }
 
-        public ForumThreadDto GetForumThread(int threadID)
+        public IForumThreadDto GetForumThread(int threadID)
         {
             string command = "SELECT * FROM thread WHERE ThreadID='{0}';";
             ForumThreadDto thread = new ForumThreadDto();
@@ -45,20 +46,19 @@ namespace DataHandler.Context
                     };
                 }
             }
-            thread.Category = forumCategoryContext.GetForumCategory(thread.ForumCategoryID);
 
             return thread;
         }
 
-        public List<ForumThreadDto> GetForumThreadsByID(int forumThreadID)
+        public List<IForumThreadDto> GetForumThreads(int categoryID)
         {
             string command = "SELECT * FROM thread WHERE ForumCategoryID={0};";
-            List<ForumThreadDto> threads = new List<ForumThreadDto>();
+            List<IForumThreadDto> threads = new List<IForumThreadDto>();
 
             using (MySqlConnection conn = GetConnection())
             {
                 conn.Open();
-                MySqlCommand cmd = new MySqlCommand(string.Format(command, forumThreadID.ToString()), conn);
+                MySqlCommand cmd = new MySqlCommand(string.Format(command, categoryID), conn);
 
                 using MySqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
@@ -74,11 +74,6 @@ namespace DataHandler.Context
                     });
                 }
             }
-            
-            foreach (var forumThread in threads)
-            {
-                forumThread.Category = GetForumCategory(forumThread.ForumCategoryID);
-            }
 
             if (threads.Count == 0)
                 threads.Add(new ForumThreadDto()
@@ -90,44 +85,15 @@ namespace DataHandler.Context
         }
 
 
-        public ForumThreadViewModel GetForumThreadViewModel(int threadID)
-        {
-            string command = "SELECT * FROM thread WHERE ThreadID='{0}';";
-            int accountID = 0;
-            ForumThreadViewModel forumThreadViewModel = new ForumThreadViewModel();
-
-            using (MySqlConnection conn = GetConnection())
-            {
-                conn.Open();
-                MySqlCommand cmd = new MySqlCommand(string.Format(command, threadID.ToString()), conn);
-
-                using MySqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
-                {
-                    forumThreadViewModel.ThreadID = Convert.ToInt32(reader["ThreadID"]);
-                    forumThreadViewModel.ThreadTitle = reader["ThreadTitle"].ToString();
-                    forumThreadViewModel.ThreadMessage = reader["ThreadMessage"].ToString();
-                    forumThreadViewModel.ThreadDateCreated = Convert.ToDateTime(reader["ThreadDateCreated"]);
-
-                    accountID = Convert.ToInt32(reader["AccountID"]);
-                }
-            }
-
-            forumThreadViewModel.ThreadCreator = GetThreadCreator(accountID);
-            forumThreadViewModel.Posts = GetPosts(threadID);
-
-            return forumThreadViewModel;
-        }
-        
-        public int CreateThread(CreateForumThreadViewModel thread)
+        public int CreateThread(IForumThreadDto forumThreadDto)
         {
             string command = "INSERT INTO `thread` (`AccountID`, `ForumCategoryID`, `ThreadTitle`, `ThreadMessage`, `ThreadDateCreated`) VALUES ({0}, '{1}', '{2}', '{3}', '{4}');";
 
             using (MySqlConnection conn = GetConnection())
             {
                 conn.Open();
-                MySqlCommand cmd = new MySqlCommand(string.Format(command, thread.AccountID, thread.CategoryID,
-                                                                    thread.ThreadTitle, thread.ThreadMessage,
+                MySqlCommand cmd = new MySqlCommand(string.Format(command, forumThreadDto.AccountID, forumThreadDto.ForumCategoryID,
+                                                                    forumThreadDto.ThreadTitle, forumThreadDto.ThreadMessage,
                                                                     DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")), conn);
 
                 int rowsAffected = cmd.ExecuteNonQuery();
@@ -135,28 +101,28 @@ namespace DataHandler.Context
             }
         }
 
-        public void DeleteThread(ForumThread thread)
+        public void DeleteThread(int threadID)
         {
             string command = "DELETE FROM thread WHERE ThreadID={0};";
 
             using (MySqlConnection conn = GetConnection())
             {
                 conn.Open();
-                MySqlCommand cmd = new MySqlCommand(string.Format(command, thread.ThreadID), conn);
+                MySqlCommand cmd = new MySqlCommand(string.Format(command, threadID), conn);
 
                 cmd.ExecuteNonQuery();
             }
         }
 
-        public void EditThread(ForumThread thread)
+        public void EditThread(IForumThreadDto forumThreadDto)
         {
             string command = "UPDATE thread SET ThreadMessage='{0}' WHERE ThreadID={1};";
 
             using (MySqlConnection conn = GetConnection())
             {
                 conn.Open();
-                MySqlCommand cmd = new MySqlCommand(string.Format(command, thread.ThreadMessage,
-                                                    thread.ThreadID), conn);
+                MySqlCommand cmd = new MySqlCommand(string.Format(command, forumThreadDto.ThreadMessage,
+                                                    forumThreadDto.ThreadID), conn);
 
                 cmd.ExecuteNonQuery();
             }

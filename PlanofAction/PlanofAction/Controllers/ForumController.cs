@@ -13,11 +13,15 @@ namespace PlanofAction.Controllers
     {
         private IForumCategory forumCategory;
         private IForumCategoryCollection forumCategoryCollection;
+        private IForumThread forumThread;
+        private IForumThreadCollection forumThreadCollection;
 
         public ForumController()
         {
             forumCategory = Factory.GetForumCategory();
             forumCategoryCollection = Factory.GetForumCategoryCollection();
+            forumThread = Factory.GetForumThread();
+            forumThreadCollection = Factory.GetForumThreadCollection();
         }
 
         [HttpGet]
@@ -110,7 +114,7 @@ namespace PlanofAction.Controllers
         public IActionResult ForumThreads(int forumCategoryID)
         {
             ForumThreadsViewModel model = new ForumThreadsViewModel();
-            model.ForumThreads = forumThreadCollection.GetForumThreads();
+            model.ForumThreads = forumThreadCollection.GetForumThreads(forumCategoryID);
             if (forumThreads[0].ThreadID == -1)
                 return RedirectToAction("NoForumThreads");
             else

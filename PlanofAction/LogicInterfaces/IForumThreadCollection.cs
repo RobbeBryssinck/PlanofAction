@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace LogicInterfaces
 {
-    interface IForumThreadCollection
+    public interface IForumThreadCollection
     {
         List<IForumThread> GetForumThreads();
     }

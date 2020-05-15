@@ -4,10 +4,11 @@ using System.Text;
 using DataHandlerInterfaces;
 using DataHandlerFactory;
 using LogicInterfaces;
+using DataHandler.Models;
 
 namespace Logic.Models
 {
-    class ForumThreadCollection : IForumThreadCollection
+    public class ForumThreadCollection : IForumThreadCollection
     {
         private IForumThreadContext db;
         private List<IForumThread> forumThreads;
@@ -15,11 +16,11 @@ namespace Logic.Models
         public ForumThreadCollection()
         {
             db = Factory.GetForumThreadContext();
-            forumThreads = db.GetForumThreads();
         }
 
-        public List<IForumThread> GetForumThreads()
+        public List<IForumThread> GetForumThreads(int categoryID)
         {
+            List<ForumThreadDto> forumThreadDtos = db.GetForumThreads(categoryID);
             return forumThreads;
         }
     }

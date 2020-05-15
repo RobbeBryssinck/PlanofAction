@@ -28,6 +28,16 @@ namespace DataHandlerFactory
         {
             return new ForumCategoryDto();
         }
+
+        public static IForumThreadContext GetForumThreadContext()
+        {
+            return new ForumThreadContext();
+        }
+
+        public static IForumThreadDto GetForumThreadDto()
+        {
+            return new ForumThreadDto();
+        }
     }
 }
 
