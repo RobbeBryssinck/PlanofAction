@@ -8,6 +8,11 @@ namespace LogicFactory
 {
     public static class Factory
     {
+        public static IAccount GetAccount()
+        {
+            return new Account();
+        }
+
         public static IActionPlan GetActionPlan()
         {
             return new ActionPlan();

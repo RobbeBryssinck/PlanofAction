@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 using DataHandler.Models;
+using DataHandlerInterfaces;
 using MySql.Data.MySqlClient;
 
 namespace DataHandler.Context
 {
-    class AccountContext
+    public class AccountContext : IAccountContext
     {
         public string ConnectionString { get; set; }
 
@@ -20,10 +21,10 @@ namespace DataHandler.Context
             return new MySqlConnection(ConnectionString);
         }
 
-        public AccountDto GetThreadCreator(int accountID)
+        public IAccountDto GetThreadCreator(int accountID)
         {
             string command = "SELECT * FROM account WHERE AccountID='{0}';";
-            AccountDto account = new AccountDto();
+            IAccountDto account = new AccountDto();
 
             using (MySqlConnection conn = GetConnection())
             {
@@ -46,16 +47,16 @@ namespace DataHandler.Context
             return account;
         }
 
-        public AccountDto GetAccount(string accountID)
+        public IAccountDto GetAccountByUsername(string username)
         {
-            string accountCommand = "SELECT * FROM account WHERE AccountID='{0}';";
-            AccountDto account = new AccountDto();
+            string accountCommand = "SELECT * FROM account WHERE Username='{0}';";
+            IAccountDto account = new AccountDto();
 
             using (MySqlConnection conn = GetConnection())
             {
                 conn.Open();
 
-                MySqlCommand cmdAccount = new MySqlCommand(string.Format(accountCommand, accountID), conn);
+                MySqlCommand cmdAccount = new MySqlCommand(string.Format(accountCommand, username), conn);
 
                 using MySqlDataReader accountReader = cmdAccount.ExecuteReader();
                 while (accountReader.Read())
