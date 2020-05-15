@@ -22,14 +22,17 @@ namespace Logic.Models
             db = Factory.GetForumThreadContext();
         }
 
-        public void EditForumThread()
-        {
-            throw new NotImplementedException();
-        }
-
         public void DeleteForumThread()
         {
             db.DeleteThread(ThreadID);
+        }
+
+        public void EditForumThread()
+        {
+            IForumThreadDto forumThreadDto = Factory.GetForumThreadDto();
+            forumThreadDto.ThreadID = ThreadID;
+            forumThreadDto.ThreadMessage = ThreadMessage;
+            db.EditThread(forumThreadDto);
         }
     }
 }

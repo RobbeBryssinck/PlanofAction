@@ -219,13 +219,23 @@ namespace PlanofAction.Controllers
         [HttpGet]
         public IActionResult Edit(int threadID)
         {
-            return View(db.GetForumThread(threadID));
+            forumThread = forumThreadCollection.GetForumThread(threadID);
+            EditThreadViewModel model = new EditThreadViewModel()
+            {
+                ThreadID = forumThread.ThreadID,
+                ThreadMessage = forumThread.ThreadMessage
+            };
+
+            return View(model);
         }
 
         [HttpPost]
-        public IActionResult Edit(ForumThread thread)
+        public IActionResult Edit(EditThreadViewModel model)
         {
-            db.EditThread(thread);
+            forumThread.ThreadID = model.ThreadID;
+            forumThread.ThreadMessage = model.ThreadMessage;
+
+            forumThread.EditForumThread();
 
             return RedirectToAction("Index");
         }
