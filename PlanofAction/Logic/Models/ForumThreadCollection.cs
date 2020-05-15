@@ -16,6 +16,7 @@ namespace Logic.Models
         public ForumThreadCollection()
         {
             db = Factory.GetForumThreadContext();
+            forumThreads = new List<IForumThread>();
         }
 
         public List<IForumThread> GetForumThreads(int categoryID)

@@ -12,15 +12,16 @@ namespace Logic.Models
     public class ActionPlanCollection : IActionPlanCollection
     {
         private IActionPlanContext db;
-        private List<IActionPlan> ActionPlans { get; set; }
+        private List<IActionPlan> actionPlans;
 
         public ActionPlanCollection()
         {
             db = Factory.GetActionPlanContext();
+            actionPlans = new List<IActionPlan>();
             List<IActionPlanDto> actionPlanDtos = db.GetActionPlans();
             foreach (IActionPlanDto actionPlanDto in actionPlanDtos)
             {
-                ActionPlans.Add(new ActionPlan()
+                actionPlans.Add(new ActionPlan()
                 {
                     ActionPlanID = actionPlanDto.ActionPlanID,
                     AccountID = actionPlanDto.AccountID,
@@ -47,12 +48,12 @@ namespace Logic.Models
 
         public List<IActionPlan> GetActionPlans()
         {
-            return ActionPlans;
+            return actionPlans;
         }
 
         public IActionPlan GetActionPlan(int actionPlanID)
         {
-            return ActionPlans.Where(model => model.ActionPlanID == actionPlanID).FirstOrDefault();
+            return actionPlans.Where(model => model.ActionPlanID == actionPlanID).FirstOrDefault();
         }
     }
 }

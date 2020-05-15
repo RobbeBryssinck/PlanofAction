@@ -14,6 +14,7 @@ namespace Logic.Models
 
         public AccountCollection()
         {
+            accounts = new List<IAccount>();
             db = Factory.GetAccountContext();
             List<IAccountDto> accountDtos = db.GetAccounts();
             foreach (var account in accountDtos)

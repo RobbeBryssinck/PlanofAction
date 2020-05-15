@@ -16,7 +16,7 @@ namespace PlanofAction.ViewModels
         public string ThreadTitle { get; set; }
         public string ThreadMessage { get; set; }
         public DateTime ThreadDateCreated { get; set; }
-        public List<IPost> Posts { get; set; }
+        public List<IForumPost> Posts { get; set; }
         
         // Post submit
         [Display(Name="Poster Account ID")]

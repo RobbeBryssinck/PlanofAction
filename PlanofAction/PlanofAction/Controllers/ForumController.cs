@@ -16,6 +16,8 @@ namespace PlanofAction.Controllers
         private IForumCategoryCollection forumCategoryCollection;
         private IForumThread forumThread;
         private IForumThreadCollection forumThreadCollection;
+        private IForumPost forumPost;
+        private IForumPostCollection forumPostCollection;
         private IAccount account;
         private IAccountCollection accountCollection;
 
@@ -25,6 +27,8 @@ namespace PlanofAction.Controllers
             forumCategoryCollection = Factory.GetForumCategoryCollection();
             forumThread = Factory.GetForumThread();
             forumThreadCollection = Factory.GetForumThreadCollection();
+            forumPost = Factory.GetForumPost();
+            forumPostCollection = Factory.GetForumPostCollection();
             account = Factory.GetAccount();
             accountCollection = Factory.GetAccountCollection();
         }
@@ -139,7 +143,8 @@ namespace PlanofAction.Controllers
         {
             forumThread = forumThreadCollection.GetForumThread(threadID);
             account = accountCollection.GetAccount(forumThread.AccountID);
-            // TODO: get posts
+            List<IForumPost> forumPosts = forumPostCollection.GetForumPosts(threadID);
+
             ForumThreadViewModel model = new ForumThreadViewModel()
             {
                 ThreadID = forumThread.ThreadID,
@@ -147,7 +152,7 @@ namespace PlanofAction.Controllers
                 ThreadTitle = forumThread.ThreadTitle,
                 ThreadMessage = forumThread.ThreadMessage,
                 ThreadDateCreated = forumThread.ThreadDateCreated,
-                //Posts = ????
+                Posts = forumPosts
             };
 
             return View(model);
@@ -243,21 +248,38 @@ namespace PlanofAction.Controllers
         [HttpPost]
         public IActionResult CreatePost(ForumThreadViewModel forumThreadViewModel)
         {
-            db.CreatePost(forumThreadViewModel);
-            // return to thread with clean input properties 
+            forumPost.ThreadID = forumThreadViewModel.ThreadID;
+            forumPost.AccountID = forumThreadViewModel.PosterAccountID;
+            forumPost.PostMessage = forumThreadViewModel.PosterMessage;
+
+            forumPostCollection.CreatePost(forumPost);
+
             return RedirectToAction("ThreadPage", "Forum", new { forumThreadViewModel.ThreadID });
         }
 
         [HttpGet]
         public IActionResult PostEdit(int postID)
         {
-            return View(db.GetPostEditViewModel(postID));
+            forumPost = forumPostCollection.GetForumPost(postID);
+
+            PostEditViewModel model = new PostEditViewModel()
+            {
+                PostID = forumPost.PostID,
+                ThreadID = forumPost.ThreadID,
+                PostMessage = forumPost.PostMessage
+            };
+
+            return View(model);
         }
 
         [HttpPost]
         public IActionResult PostEdit(PostEditViewModel model)
         {
-            db.EditPost(model);
+            forumPost.PostID = model.PostID;
+            forumPost.PostMessage = model.PostMessage;
+
+            forumPost.EditPost();
+
             return RedirectToAction("Threadpage", "Forum", new { model.ThreadID });
         }
     }

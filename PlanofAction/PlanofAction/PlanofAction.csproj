@@ -22,7 +22,6 @@
   <ItemGroup>
     <ProjectReference Include="..\LogicFactory\LogicFactory.csproj" />
     <ProjectReference Include="..\LogicInterfaces\LogicInterfaces.csproj" />
-    <ProjectReference Include="..\Logic\Logic.csproj" />
   </ItemGroup>
 
 

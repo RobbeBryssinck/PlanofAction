@@ -48,6 +48,16 @@ namespace DataHandlerFactory
         {
             return new ForumThreadDto();
         }
+
+        public static IForumPostContext GetForumPostContext()
+        {
+            return new ForumPostContext();
+        }
+
+        public static IForumPostDto GetForumPostDto()
+        {
+            return new ForumPostDto();
+        }
     }
 }
 

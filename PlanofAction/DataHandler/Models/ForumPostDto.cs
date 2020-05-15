@@ -1,10 +1,12 @@
-﻿using System;
+﻿using DataHandler.Models;
+using DataHandlerInterfaces;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace DataHandler.Models
 {
-    class ForumPostDto
+    public class ForumPostDto : IForumPostDto
     {
         public int PostID { get; set; }
         public int ThreadID { get; set; }

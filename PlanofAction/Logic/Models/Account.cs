@@ -23,7 +23,7 @@ namespace Logic.Models
 
         public bool LoginQuery(string username, string password)
         {
-            IAccountDto accountDto = db.GetAccountByUsername(username);
+            IAccountDto accountDto = db.GetAccount(username);
             if (username == accountDto.Username && password == accountDto.Password)
                 return true;
             else

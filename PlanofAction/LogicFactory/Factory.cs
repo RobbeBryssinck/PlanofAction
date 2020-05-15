@@ -47,5 +47,15 @@ namespace LogicFactory
         {
             return new ForumThreadCollection();
         }
+
+        public static IForumPost GetForumPost()
+        {
+            return new ForumPost();
+        }
+
+        public static IForumPostCollection GetForumPostCollection()
+        {
+            return new ForumPostCollection();
+        }
     }
 }

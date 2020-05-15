@@ -9,13 +9,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataHandler", "DataHandler\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Logic", "Logic\Logic.csproj", "{F35A9947-D2C6-4068-8828-5FBEDF643138}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogicInterfaces", "LogicInterfaces\LogicInterfaces.csproj", "{897C8A3A-240A-427B-B991-C00B7CBD721A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LogicInterfaces", "LogicInterfaces\LogicInterfaces.csproj", "{897C8A3A-240A-427B-B991-C00B7CBD721A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogicFactory", "LogicFactory\LogicFactory.csproj", "{B8F66FEF-87F8-427A-8CB3-0B07B5A55DEC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LogicFactory", "LogicFactory\LogicFactory.csproj", "{B8F66FEF-87F8-427A-8CB3-0B07B5A55DEC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataHandlerInterfaces", "DataHandlerInterfaces\DataHandlerInterfaces.csproj", "{31BCE947-14BC-479C-B772-D659045B1E61}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataHandlerInterfaces", "DataHandlerInterfaces\DataHandlerInterfaces.csproj", "{31BCE947-14BC-479C-B772-D659045B1E61}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataHandlerFactory", "DataHandlerFactory\DataHandlerFactory.csproj", "{2C2C01F4-5395-4D8E-B349-3678F571F957}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataHandlerFactory", "DataHandlerFactory\DataHandlerFactory.csproj", "{2C2C01F4-5395-4D8E-B349-3678F571F957}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
