@@ -13,6 +13,11 @@ namespace LogicFactory
             return new Account();
         }
 
+        public static IAccountCollection GetAccountCollection()
+        {
+            return new AccountCollection();
+        }
+
         public static IActionPlan GetActionPlan()
         {
             return new ActionPlan();

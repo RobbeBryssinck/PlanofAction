@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using PlanofAction.ViewModels;
 using LogicInterfaces;
 using LogicFactory;
+using System.Configuration;
 
 namespace PlanofAction.Controllers
 {
@@ -15,6 +16,8 @@ namespace PlanofAction.Controllers
         private IForumCategoryCollection forumCategoryCollection;
         private IForumThread forumThread;
         private IForumThreadCollection forumThreadCollection;
+        private IAccount account;
+        private IAccountCollection accountCollection;
 
         public ForumController()
         {
@@ -22,6 +25,8 @@ namespace PlanofAction.Controllers
             forumCategoryCollection = Factory.GetForumCategoryCollection();
             forumThread = Factory.GetForumThread();
             forumThreadCollection = Factory.GetForumThreadCollection();
+            account = Factory.GetAccount();
+            accountCollection = Factory.GetAccountCollection();
         }
 
         [HttpGet]
@@ -132,8 +137,20 @@ namespace PlanofAction.Controllers
         [HttpGet]
         public IActionResult ThreadPage(int threadID)
         {
+            forumThread = forumThreadCollection.GetForumThread(threadID);
+            account = accountCollection.GetAccount(forumThread.AccountID);
+            // TODO: get posts
+            ForumThreadViewModel model = new ForumThreadViewModel()
+            {
+                ThreadID = forumThread.ThreadID,
+                ThreadCreator = account,
+                ThreadTitle = forumThread.ThreadTitle,
+                ThreadMessage = forumThread.ThreadMessage,
+                ThreadDateCreated = forumThread.ThreadDateCreated,
+                //Posts = ????
+            };
 
-            return View(db.GetForumThreadViewModel(threadID));
+            return View(model);
         }
 
         [HttpGet]
@@ -141,7 +158,7 @@ namespace PlanofAction.Controllers
         {
             CreateForumThreadViewModel createForumThreadViewModel = new CreateForumThreadViewModel()
             {
-                AvailableCategories = db.GetForumCategories()
+                AvailableCategories = forumCategoryCollection.GetForumCategories()
             };
 
             return View(createForumThreadViewModel);

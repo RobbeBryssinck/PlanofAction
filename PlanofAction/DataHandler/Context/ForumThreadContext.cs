@@ -22,34 +22,6 @@ namespace DataHandler.Context
             return new MySqlConnection(ConnectionString);
         }
 
-        public IForumThreadDto GetForumThread(int threadID)
-        {
-            string command = "SELECT * FROM thread WHERE ThreadID='{0}';";
-            ForumThreadDto thread = new ForumThreadDto();
-
-            using (MySqlConnection conn = GetConnection())
-            {
-                conn.Open();
-                MySqlCommand cmd = new MySqlCommand(string.Format(command, threadID.ToString()), conn);
-
-                using MySqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
-                {
-                    thread = new ForumThreadDto()
-                    {
-                        ThreadID = Convert.ToInt32(reader["ThreadID"]),
-                        AccountID = Convert.ToInt32(reader["AccountID"]),
-                        ForumCategoryID = Convert.ToInt32(reader["ForumCategoryID"]),
-                        ThreadTitle = reader["ThreadTitle"].ToString(),
-                        ThreadMessage = reader["ThreadMessage"].ToString(),
-                        ThreadDateCreated = Convert.ToDateTime(reader["ThreadDateCreated"])
-                    };
-                }
-            }
-
-            return thread;
-        }
-
         public List<IForumThreadDto> GetForumThreads(int categoryID)
         {
             string command = "SELECT * FROM thread WHERE ForumCategoryID={0};";
@@ -85,6 +57,33 @@ namespace DataHandler.Context
             return threads;
         }
 
+        public IForumThreadDto GetForumThread(int threadID)
+        {
+            string command = "SELECT * FROM thread WHERE ThreadID='{0}';";
+            ForumThreadDto thread = new ForumThreadDto();
+
+            using (MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand(string.Format(command, threadID.ToString()), conn);
+
+                using MySqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    thread = new ForumThreadDto()
+                    {
+                        ThreadID = Convert.ToInt32(reader["ThreadID"]),
+                        AccountID = Convert.ToInt32(reader["AccountID"]),
+                        ForumCategoryID = Convert.ToInt32(reader["ForumCategoryID"]),
+                        ThreadTitle = reader["ThreadTitle"].ToString(),
+                        ThreadMessage = reader["ThreadMessage"].ToString(),
+                        ThreadDateCreated = Convert.ToDateTime(reader["ThreadDateCreated"])
+                    };
+                }
+            }
+
+            return thread;
+        }
 
         public int CreateThread(IForumThreadDto forumThreadDto)
         {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using LogicInterfaces;
 using PlanofAction.Models;
 
 namespace PlanofAction.ViewModels
@@ -11,11 +12,11 @@ namespace PlanofAction.ViewModels
     {
         // Thread and post view
         public int ThreadID { get; set; }
-        public Account ThreadCreator { get; set; }
+        public IAccount ThreadCreator { get; set; }
         public string ThreadTitle { get; set; }
         public string ThreadMessage { get; set; }
         public DateTime ThreadDateCreated { get; set; }
-        public List<Post> Posts { get; set; }
+        public List<IPost> Posts { get; set; }
         
         // Post submit
         [Display(Name="Poster Account ID")]

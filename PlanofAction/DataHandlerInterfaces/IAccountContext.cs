@@ -1,10 +1,13 @@
-﻿namespace DataHandlerInterfaces
+﻿using System.Collections.Generic;
+
+namespace DataHandlerInterfaces
 {
     public interface IAccountContext
     {
         string ConnectionString { get; set; }
 
-        IAccountDto GetAccountByUsername(string username);
-        IAccountDto GetThreadCreator(int accountID);
+        List<IAccountDto> GetAccounts();
+        IAccountDto GetAccount(string username);
+        IAccountDto GetAccount(int accountID);
     }
 }

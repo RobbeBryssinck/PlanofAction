@@ -21,7 +21,36 @@ namespace DataHandler.Context
             return new MySqlConnection(ConnectionString);
         }
 
-        public IAccountDto GetThreadCreator(int accountID)
+        public List<IAccountDto> GetAccounts()
+        {
+            string command = "SELECT * FROM account;";
+            List<IAccountDto> accounts = new List<IAccountDto>();
+
+            using (MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand(command, conn);
+
+                using MySqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    accounts.Add(new AccountDto()
+                    {
+                    AccountID = Convert.ToInt32(reader["AccountID"]),
+                    Username = reader["Username"].ToString(),
+                    Email = reader["Email"].ToString(),
+                    Password = reader["Password"].ToString(),
+                    Role = reader["Role"].ToString(),
+                    ProfilePicture = reader["ProfilePicture"].ToString(),
+                    DateJoined = Convert.ToDateTime(reader["DateJoined"]).ToString("dd-MM-yyyy")
+                    });
+                }
+            }
+
+            return accounts;
+        }
+
+        public IAccountDto GetAccount(int accountID)
         {
             string command = "SELECT * FROM account WHERE AccountID='{0}';";
             IAccountDto account = new AccountDto();
@@ -47,7 +76,7 @@ namespace DataHandler.Context
             return account;
         }
 
-        public IAccountDto GetAccountByUsername(string username)
+        public IAccountDto GetAccount(string username)
         {
             string accountCommand = "SELECT * FROM account WHERE Username='{0}';";
             IAccountDto account = new AccountDto();
