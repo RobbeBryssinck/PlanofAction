@@ -3,7 +3,7 @@ using DataHandlerInterfaces;
 using LogicInterfaces;
 using System;
 
-namespace Logic.Models
+namespace Logic
 {
     public class Account : IAccount
     {

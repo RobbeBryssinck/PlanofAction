@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Logic.Models
+namespace Logic
 {
     public class AccountCollection : IAccountCollection
     {

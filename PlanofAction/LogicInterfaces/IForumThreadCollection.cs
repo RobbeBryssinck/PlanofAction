@@ -1,5 +1,4 @@
-﻿using LogicInterfaces;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace LogicInterfaces
 {

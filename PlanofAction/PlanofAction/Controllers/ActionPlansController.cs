@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using PlanofAction.Models;
 using PlanofAction.ViewModels;
-using Logic.Models;
 using LogicFactory;
 using LogicInterfaces;
 using Microsoft.AspNetCore.Mvc.ActionConstraints;

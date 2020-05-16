@@ -7,7 +7,7 @@ using DataHandlerFactory;
 using LogicInterfaces;
 using System.Linq;
 
-namespace Logic.Models
+namespace Logic
 {
     public class ActionPlanCollection : IActionPlanCollection
     {
