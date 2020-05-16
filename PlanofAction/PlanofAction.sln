@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataHandlerInterfaces", "Da
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataHandlerFactory", "DataHandlerFactory\DataHandlerFactory.csproj", "{2C2C01F4-5395-4D8E-B349-3678F571F957}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogicTests", "LogicTests\LogicTests.csproj", "{32F25018-9DC5-4A34-9C1A-A58C2180A914}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{2C2C01F4-5395-4D8E-B349-3678F571F957}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2C2C01F4-5395-4D8E-B349-3678F571F957}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2C2C01F4-5395-4D8E-B349-3678F571F957}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32F25018-9DC5-4A34-9C1A-A58C2180A914}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32F25018-9DC5-4A34-9C1A-A58C2180A914}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32F25018-9DC5-4A34-9C1A-A58C2180A914}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32F25018-9DC5-4A34-9C1A-A58C2180A914}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
