@@ -6,7 +6,7 @@ using DataHandlerFactory;
 using LogicInterfaces;
 using DataHandler.Models;
 
-namespace Logic.Models
+namespace Logic
 {
     public class ForumThreadCollection : IForumThreadCollection
     {

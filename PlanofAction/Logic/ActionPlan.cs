@@ -5,7 +5,7 @@ using LogicInterfaces;
 using DataHandlerInterfaces;
 using DataHandlerFactory;
 
-namespace Logic.Models
+namespace Logic
 {
     public class ActionPlan : IActionPlan
     {

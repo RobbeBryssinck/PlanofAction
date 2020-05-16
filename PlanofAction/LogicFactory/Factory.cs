@@ -1,4 +1,4 @@
-﻿using Logic.Models;
+﻿using Logic;
 using LogicInterfaces;
 using System;
 using System.Collections.Generic;
