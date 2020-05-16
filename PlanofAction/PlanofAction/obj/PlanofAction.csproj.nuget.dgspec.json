@@ -4,14 +4,73 @@
     "C:\\Users\\Robbe\\source\\test\\PlanofAction\\PlanofAction\\PlanofAction\\PlanofAction.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Robbe\\source\\test\\PlanofAction\\PlanofAction\\PlanofAction\\PlanofAction.csproj": {
+    "C:\\Users\\Robbe\\source\\test\\PlanofAction\\PlanofAction\\DataHandlerFactory\\DataHandlerFactory.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Robbe\\source\\test\\PlanofAction\\PlanofAction\\PlanofAction\\PlanofAction.csproj",
-        "projectName": "PlanofAction",
-        "projectPath": "C:\\Users\\Robbe\\source\\test\\PlanofAction\\PlanofAction\\PlanofAction\\PlanofAction.csproj",
+        "projectUniqueName": "C:\\Users\\Robbe\\source\\test\\PlanofAction\\PlanofAction\\DataHandlerFactory\\DataHandlerFactory.csproj",
+        "projectName": "DataHandlerFactory",
+        "projectPath": "C:\\Users\\Robbe\\source\\test\\PlanofAction\\PlanofAction\\DataHandlerFactory\\DataHandlerFactory.csproj",
         "packagesPath": "C:\\Users\\Robbe\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Robbe\\source\\test\\PlanofAction\\PlanofAction\\PlanofAction\\obj\\",
+        "outputPath": "C:\\Users\\Robbe\\source\\test\\PlanofAction\\PlanofAction\\DataHandlerFactory\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Robbe\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {
+              "C:\\Users\\Robbe\\source\\test\\PlanofAction\\PlanofAction\\DataHandlerInterfaces\\DataHandlerInterfaces.csproj": {
+                "projectPath": "C:\\Users\\Robbe\\source\\test\\PlanofAction\\PlanofAction\\DataHandlerInterfaces\\DataHandlerInterfaces.csproj"
+              },
+              "C:\\Users\\Robbe\\source\\test\\PlanofAction\\PlanofAction\\DataHandler\\DataHandler.csproj": {
+                "projectPath": "C:\\Users\\Robbe\\source\\test\\PlanofAction\\PlanofAction\\DataHandler\\DataHandler.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Robbe\\source\\test\\PlanofAction\\PlanofAction\\DataHandlerInterfaces\\DataHandlerInterfaces.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Robbe\\source\\test\\PlanofAction\\PlanofAction\\DataHandlerInterfaces\\DataHandlerInterfaces.csproj",
+        "projectName": "DataHandlerInterfaces",
+        "projectPath": "C:\\Users\\Robbe\\source\\test\\PlanofAction\\PlanofAction\\DataHandlerInterfaces\\DataHandlerInterfaces.csproj",
+        "packagesPath": "C:\\Users\\Robbe\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Robbe\\source\\test\\PlanofAction\\PlanofAction\\DataHandlerInterfaces\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Robbe\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -37,28 +96,322 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Robbe\\source\\test\\PlanofAction\\PlanofAction\\DataHandler\\DataHandler.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Robbe\\source\\test\\PlanofAction\\PlanofAction\\DataHandler\\DataHandler.csproj",
+        "projectName": "DataHandler",
+        "projectPath": "C:\\Users\\Robbe\\source\\test\\PlanofAction\\PlanofAction\\DataHandler\\DataHandler.csproj",
+        "packagesPath": "C:\\Users\\Robbe\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Robbe\\source\\test\\PlanofAction\\PlanofAction\\DataHandler\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Robbe\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {
+              "C:\\Users\\Robbe\\source\\test\\PlanofAction\\PlanofAction\\DataHandlerInterfaces\\DataHandlerInterfaces.csproj": {
+                "projectPath": "C:\\Users\\Robbe\\source\\test\\PlanofAction\\PlanofAction\\DataHandlerInterfaces\\DataHandlerInterfaces.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "MySql.Data": {
+              "target": "Package",
+              "version": "[8.0.20, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Robbe\\source\\test\\PlanofAction\\PlanofAction\\LogicFactory\\LogicFactory.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Robbe\\source\\test\\PlanofAction\\PlanofAction\\LogicFactory\\LogicFactory.csproj",
+        "projectName": "LogicFactory",
+        "projectPath": "C:\\Users\\Robbe\\source\\test\\PlanofAction\\PlanofAction\\LogicFactory\\LogicFactory.csproj",
+        "packagesPath": "C:\\Users\\Robbe\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Robbe\\source\\test\\PlanofAction\\PlanofAction\\LogicFactory\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Robbe\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {
+              "C:\\Users\\Robbe\\source\\test\\PlanofAction\\PlanofAction\\LogicInterfaces\\LogicInterfaces.csproj": {
+                "projectPath": "C:\\Users\\Robbe\\source\\test\\PlanofAction\\PlanofAction\\LogicInterfaces\\LogicInterfaces.csproj"
+              },
+              "C:\\Users\\Robbe\\source\\test\\PlanofAction\\PlanofAction\\Logic\\Logic.csproj": {
+                "projectPath": "C:\\Users\\Robbe\\source\\test\\PlanofAction\\PlanofAction\\Logic\\Logic.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Robbe\\source\\test\\PlanofAction\\PlanofAction\\LogicInterfaces\\LogicInterfaces.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Robbe\\source\\test\\PlanofAction\\PlanofAction\\LogicInterfaces\\LogicInterfaces.csproj",
+        "projectName": "LogicInterfaces",
+        "projectPath": "C:\\Users\\Robbe\\source\\test\\PlanofAction\\PlanofAction\\LogicInterfaces\\LogicInterfaces.csproj",
+        "packagesPath": "C:\\Users\\Robbe\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Robbe\\source\\test\\PlanofAction\\PlanofAction\\LogicInterfaces\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Robbe\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Robbe\\source\\test\\PlanofAction\\PlanofAction\\Logic\\Logic.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Robbe\\source\\test\\PlanofAction\\PlanofAction\\Logic\\Logic.csproj",
+        "projectName": "Logic",
+        "projectPath": "C:\\Users\\Robbe\\source\\test\\PlanofAction\\PlanofAction\\Logic\\Logic.csproj",
+        "packagesPath": "C:\\Users\\Robbe\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Robbe\\source\\test\\PlanofAction\\PlanofAction\\Logic\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Robbe\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {
+              "C:\\Users\\Robbe\\source\\test\\PlanofAction\\PlanofAction\\DataHandlerFactory\\DataHandlerFactory.csproj": {
+                "projectPath": "C:\\Users\\Robbe\\source\\test\\PlanofAction\\PlanofAction\\DataHandlerFactory\\DataHandlerFactory.csproj"
+              },
+              "C:\\Users\\Robbe\\source\\test\\PlanofAction\\PlanofAction\\DataHandlerInterfaces\\DataHandlerInterfaces.csproj": {
+                "projectPath": "C:\\Users\\Robbe\\source\\test\\PlanofAction\\PlanofAction\\DataHandlerInterfaces\\DataHandlerInterfaces.csproj"
+              },
+              "C:\\Users\\Robbe\\source\\test\\PlanofAction\\PlanofAction\\LogicInterfaces\\LogicInterfaces.csproj": {
+                "projectPath": "C:\\Users\\Robbe\\source\\test\\PlanofAction\\PlanofAction\\LogicInterfaces\\LogicInterfaces.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Robbe\\source\\test\\PlanofAction\\PlanofAction\\PlanofAction\\PlanofAction.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Robbe\\source\\test\\PlanofAction\\PlanofAction\\PlanofAction\\PlanofAction.csproj",
+        "projectName": "PlanofAction",
+        "projectPath": "C:\\Users\\Robbe\\source\\test\\PlanofAction\\PlanofAction\\PlanofAction\\PlanofAction.csproj",
+        "packagesPath": "C:\\Users\\Robbe\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Robbe\\source\\test\\PlanofAction\\PlanofAction\\PlanofAction\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Robbe\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {
+              "C:\\Users\\Robbe\\source\\test\\PlanofAction\\PlanofAction\\LogicFactory\\LogicFactory.csproj": {
+                "projectPath": "C:\\Users\\Robbe\\source\\test\\PlanofAction\\PlanofAction\\LogicFactory\\LogicFactory.csproj"
+              },
+              "C:\\Users\\Robbe\\source\\test\\PlanofAction\\PlanofAction\\LogicInterfaces\\LogicInterfaces.csproj": {
+                "projectPath": "C:\\Users\\Robbe\\source\\test\\PlanofAction\\PlanofAction\\LogicInterfaces\\LogicInterfaces.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
           "dependencies": {
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[3.1.2, )"
+              "version": "[3.1.3, )"
             },
             "Microsoft.EntityFrameworkCore.Sqlite": {
               "target": "Package",
-              "version": "[3.1.2, )"
+              "version": "[3.1.3, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[3.1.2, )"
+              "version": "[3.1.3, )"
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
-              "version": "[3.1.1, )"
+              "version": "[3.1.2, )"
             },
             "MySql.Data": {
               "target": "Package",
-              "version": "[8.0.19, )"
+              "version": "[8.0.20, )"
             }
           },
           "imports": [

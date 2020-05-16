@@ -4,12 +4,10 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PlanofAction.Models
+namespace PlanofAction.ViewModels
 {
-    public class ActionPlan
+    public class CreateActionPlanViewModel
     {
-        // TODO: make data annotations work
-        public int ActionPlanID { get; set; }
         public int AccountID { get; set; }
         [Required]
         [StringLength(300)]
@@ -20,6 +18,5 @@ namespace PlanofAction.Models
         [Required]
         [StringLength(100)]
         public string PlanCategory { get; set; }
-        public DateTime PlanDateCreated { get; set; }
     }
 }

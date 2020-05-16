@@ -3,24 +3,42 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using PlanofAction.Models;
-using PlanofAction.Data;
 using PlanofAction.ViewModels;
+using LogicInterfaces;
+using LogicFactory;
+using System.Configuration;
 
 namespace PlanofAction.Controllers
 {
     public class ForumController : Controller
     {
-        private PoAContext db;
-        public ForumController(PoAContext db)
+        private IForumCategory forumCategory;
+        private IForumCategoryCollection forumCategoryCollection;
+        private IForumThread forumThread;
+        private IForumThreadCollection forumThreadCollection;
+        private IForumPost forumPost;
+        private IForumPostCollection forumPostCollection;
+        private IAccount account;
+        private IAccountCollection accountCollection;
+
+        public ForumController()
         {
-            this.db = db;
+            forumCategory = Factory.GetForumCategory();
+            forumCategoryCollection = Factory.GetForumCategoryCollection();
+            forumThread = Factory.GetForumThread();
+            forumThreadCollection = Factory.GetForumThreadCollection();
+            forumPost = Factory.GetForumPost();
+            forumPostCollection = Factory.GetForumPostCollection();
+            account = Factory.GetAccount();
+            accountCollection = Factory.GetAccountCollection();
         }
 
         [HttpGet]
         public IActionResult Index()
         {
-            return View(db.GetForumCategories());
+            ForumIndexViewModel model = new ForumIndexViewModel();
+            model.ForumCategories = forumCategoryCollection.GetForumCategories();
+            return View(model);
         }
 
         [HttpGet]
@@ -30,9 +48,11 @@ namespace PlanofAction.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateCategory(ForumCategory forumCategory)
+        public IActionResult CreateCategory(CreateCategoryViewModel model)
         {
-            int rowsAffected = db.CreateForumCategory(forumCategory);
+            forumCategory.ForumCategoryString = model.ForumCategoryString;
+
+            int rowsAffected = forumCategoryCollection.CreateForumCategory(forumCategory);
 
             if (rowsAffected == 1)
                 return RedirectToAction("CategoryCreationSuccessful");
@@ -55,14 +75,22 @@ namespace PlanofAction.Controllers
         [HttpGet]
         public IActionResult DeleteCategory(int forumCategoryID)
         {
-            return View(db.GetForumCategory(forumCategoryID));
+            forumCategory = forumCategoryCollection.GetForumCategory(forumCategoryID);
+
+            DeleteCategoryViewModel model = new DeleteCategoryViewModel
+            {
+                ForumCategoryID = forumCategory.ForumCategoryID,
+                ForumCategoryString = forumCategory.ForumCategoryString
+            };
+
+            return View(model);
         }
 
         [HttpPost]
         public IActionResult DeleteCategoryPost(int forumCategoryID)
         {
-            ForumCategory forumCategory = db.GetForumCategory(forumCategoryID);
-            db.DeleteForumCategory(forumCategory);
+            forumCategory.ForumCategoryID = forumCategoryID;
+            forumCategory.DeleteForumCategory();
 
             return RedirectToAction("Index");
         }
@@ -70,24 +98,39 @@ namespace PlanofAction.Controllers
         [HttpGet]
         public IActionResult EditCategory(int forumCategoryID)
         {
-            return View(db.GetForumCategory(forumCategoryID));
+            forumCategory = forumCategoryCollection.GetForumCategory(forumCategoryID);
+
+            EditCategoryViewModel model = new EditCategoryViewModel
+            {
+                ForumCategoryID = forumCategory.ForumCategoryID,
+                ForumCategoryString = forumCategory.ForumCategoryString
+            };
+
+            return View(model);
         }
 
         [HttpPost]
-        public IActionResult EditCategoryPost(ForumCategory forumCategory)
+        public IActionResult EditCategoryPost(EditCategoryViewModel model)
         {
-            db.EditForumCategory(forumCategory);
+            forumCategory.ForumCategoryID = model.ForumCategoryID;
+            forumCategory.ForumCategoryString = model.ForumCategoryString;
+
+            forumCategory.EditForumCategory();
 
             return RedirectToAction("Index");
         }
 
         public IActionResult ForumThreads(int forumCategoryID)
         {
-            List<ForumThread> forumThreads = db.GetForumThreadsByID(forumCategoryID);
-            if (forumThreads[0].ThreadID == -1)
+            ForumThreadsViewModel model = new ForumThreadsViewModel();
+
+            model.ForumThreads = forumThreadCollection.GetForumThreads(forumCategoryID);
+            model.ForumCategory = forumCategoryCollection.GetForumCategory(forumCategoryID);
+
+            if (model.ForumThreads[0].ThreadID == -1)
                 return RedirectToAction("NoForumThreads");
             else
-                return View(forumThreads);
+                return View(model);
         }
 
         public IActionResult NoForumThreads()
@@ -98,26 +141,46 @@ namespace PlanofAction.Controllers
         [HttpGet]
         public IActionResult ThreadPage(int threadID)
         {
-            return View(db.GetForumThreadViewModel(threadID));
+            forumThread = forumThreadCollection.GetForumThread(threadID);
+            account = accountCollection.GetAccount(forumThread.AccountID);
+            List<IForumPost> forumPosts = forumPostCollection.GetForumPosts(threadID);
+
+            ForumThreadViewModel model = new ForumThreadViewModel()
+            {
+                ThreadID = forumThread.ThreadID,
+                ThreadCreator = account,
+                ThreadTitle = forumThread.ThreadTitle,
+                ThreadMessage = forumThread.ThreadMessage,
+                ThreadDateCreated = forumThread.ThreadDateCreated,
+                Posts = forumPosts
+            };
+
+            return View(model);
         }
 
         [HttpGet]
         public IActionResult Create()
         {
-            CreateForumThreadViewModel createForumThreadViewModel = new CreateForumThreadViewModel()
+            CreateForumThreadViewModel model = new CreateForumThreadViewModel()
             {
-                AvailableCategories = db.GetForumCategories()
+                AvailableCategories = forumCategoryCollection.GetForumCategories()
             };
 
-            return View(createForumThreadViewModel);
+            return View(model);
         }
 
         [HttpPost]
-        public IActionResult Create(CreateForumThreadViewModel thread)
+        public IActionResult Create(CreateForumThreadViewModel model)
         {
-            int rowsAffected = db.CreateThread(thread);
+            forumThread.AccountID = model.AccountID;
+            forumThread.ThreadTitle = model.ThreadTitle;
+            forumThread.ThreadMessage = model.ThreadMessage;
+            forumThread.ThreadDateCreated = model.ThreadDateCreated;
+            forumThread.ForumCategoryID = model.ForumCategoryID;
 
-            if (rowsAffected == 1)
+            int rowcount = forumThreadCollection.CreateForumThread(forumThread);
+
+            if (rowcount == 1)
                 return RedirectToAction("CreationSuccessful");
             else
                 return RedirectToAction("CreationFailed");
@@ -138,14 +201,22 @@ namespace PlanofAction.Controllers
         [HttpGet]
         public IActionResult Delete(int threadID)
         {
-            return View(db.GetForumThread(threadID));
+            forumThread = forumThreadCollection.GetForumThread(threadID);
+
+            DeleteThreadViewModel model = new DeleteThreadViewModel()
+            {
+                ForumThread = forumThread,
+                ForumCategory = forumCategoryCollection.GetForumCategory(forumThread.ForumCategoryID)
+            };
+
+            return View(model);
         }
 
         [HttpPost]
         public IActionResult DeletePost(int threadID)
         {
-            ForumThread thread = db.GetForumThread(threadID);
-            db.DeleteThread(thread);
+            forumThread = forumThreadCollection.GetForumThread(threadID);
+            forumThread.DeleteForumThread();
 
             return RedirectToAction("Index");
         }
@@ -153,13 +224,23 @@ namespace PlanofAction.Controllers
         [HttpGet]
         public IActionResult Edit(int threadID)
         {
-            return View(db.GetForumThread(threadID));
+            forumThread = forumThreadCollection.GetForumThread(threadID);
+            EditThreadViewModel model = new EditThreadViewModel()
+            {
+                ThreadID = forumThread.ThreadID,
+                ThreadMessage = forumThread.ThreadMessage
+            };
+
+            return View(model);
         }
 
         [HttpPost]
-        public IActionResult Edit(ForumThread thread)
+        public IActionResult Edit(EditThreadViewModel model)
         {
-            db.EditThread(thread);
+            forumThread.ThreadID = model.ThreadID;
+            forumThread.ThreadMessage = model.ThreadMessage;
+
+            forumThread.EditForumThread();
 
             return RedirectToAction("Index");
         }
@@ -167,21 +248,38 @@ namespace PlanofAction.Controllers
         [HttpPost]
         public IActionResult CreatePost(ForumThreadViewModel forumThreadViewModel)
         {
-            db.CreatePost(forumThreadViewModel);
-            // return to thread with clean input properties 
+            forumPost.ThreadID = forumThreadViewModel.ThreadID;
+            forumPost.AccountID = forumThreadViewModel.PosterAccountID;
+            forumPost.PostMessage = forumThreadViewModel.PosterMessage;
+
+            forumPostCollection.CreatePost(forumPost);
+
             return RedirectToAction("ThreadPage", "Forum", new { forumThreadViewModel.ThreadID });
         }
 
         [HttpGet]
         public IActionResult PostEdit(int postID)
         {
-            return View(db.GetPostEditViewModel(postID));
+            forumPost = forumPostCollection.GetForumPost(postID);
+
+            PostEditViewModel model = new PostEditViewModel()
+            {
+                PostID = forumPost.PostID,
+                ThreadID = forumPost.ThreadID,
+                PostMessage = forumPost.PostMessage
+            };
+
+            return View(model);
         }
 
         [HttpPost]
         public IActionResult PostEdit(PostEditViewModel model)
         {
-            db.EditPost(model);
+            forumPost.PostID = model.PostID;
+            forumPost.PostMessage = model.PostMessage;
+
+            forumPost.EditPost();
+
             return RedirectToAction("Threadpage", "Forum", new { model.ThreadID });
         }
     }

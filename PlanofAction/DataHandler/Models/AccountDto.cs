@@ -1,11 +1,11 @@
-﻿using System;
+﻿using DataHandlerInterfaces;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Text;
 
-namespace PlanofAction.Models
+namespace DataHandler.Models
 {
-    public class Account
+    public class AccountDto : IAccountDto
     {
         public int AccountID { get; set; }
         public string Username { get; set; }

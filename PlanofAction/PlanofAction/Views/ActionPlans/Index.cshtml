@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ActionPlan>
+﻿@model ActionPlanIndexViewModel
 
 @{
     ViewData["Title"] = "Index";
@@ -31,7 +31,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var item in Model)
+                    @foreach (var item in Model.ActionPlans)
                     {
                         <tr>
                             <td>

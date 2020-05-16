@@ -1,17 +1,17 @@
-﻿using System;
+﻿using DataHandler.Models;
+using DataHandlerInterfaces;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Text;
 
-namespace PlanofAction.Models
+namespace DataHandler.Models
 {
-    public class Post
+    public class ForumPostDto : IForumPostDto
     {
         public int PostID { get; set; }
         public int ThreadID { get; set; }
         public int AccountID { get; set; }
         public string PostMessage { get; set; }
         public DateTime PostDateCreated { get; set; }
-        public Account PostAccount { get; set; }
     }
 }
