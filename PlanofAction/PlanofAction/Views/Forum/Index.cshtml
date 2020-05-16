@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ForumCategory>
+﻿@model ForumIndexViewModel
 
 @{
     ViewData["Title"] = "Index";
@@ -25,7 +25,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var item in Model)
+                @foreach (var item in Model.ForumCategories)
                 {
                     <tr>
                         <td>

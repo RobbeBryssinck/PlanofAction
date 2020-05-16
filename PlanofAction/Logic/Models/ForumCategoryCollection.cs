@@ -15,6 +15,7 @@ namespace Logic.Models
 
         public ForumCategoryCollection()
         {
+            ForumCategories = new List<IForumCategory>();
             db = Factory.GetForumCategoryContext();
             List<IForumCategoryDto> forumCategoryDtos = db.GetForumCategories();
             foreach (IForumCategoryDto forumCategoryDto in forumCategoryDtos)

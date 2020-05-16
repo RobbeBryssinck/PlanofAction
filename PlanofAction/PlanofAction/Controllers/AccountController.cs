@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using LogicFactory;
 using LogicInterfaces;
 using Microsoft.AspNetCore.Mvc;
-using PlanofAction.Data;
 using PlanofAction.ViewModels;
 
 namespace PlanofAction.Controllers

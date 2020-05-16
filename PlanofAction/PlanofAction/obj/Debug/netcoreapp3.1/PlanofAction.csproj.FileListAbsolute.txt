@@ -516,3 +516,17 @@ C:\Users\Robbe\source\test\PlanofAction\PlanofAction\PlanofAction\obj\Debug\netc
 C:\Users\Robbe\source\test\PlanofAction\PlanofAction\PlanofAction\obj\Debug\netcoreapp3.1\Razor\Views\Forum\PostEdit.cshtml.g.cs
 C:\Users\Robbe\source\test\PlanofAction\PlanofAction\PlanofAction\bin\Debug\netcoreapp3.1\DataHandler.dll
 C:\Users\Robbe\source\test\PlanofAction\PlanofAction\PlanofAction\bin\Debug\netcoreapp3.1\DataHandler.pdb
+C:\Users\Robbe\source\test\PlanofAction\PlanofAction\PlanofAction\bin\Debug\netcoreapp3.1\K4os.Compression.LZ4.dll
+C:\Users\Robbe\source\test\PlanofAction\PlanofAction\PlanofAction\bin\Debug\netcoreapp3.1\K4os.Compression.LZ4.Streams.dll
+C:\Users\Robbe\source\test\PlanofAction\PlanofAction\PlanofAction\bin\Debug\netcoreapp3.1\K4os.Hash.xxHash.dll
+C:\Users\Robbe\source\test\PlanofAction\PlanofAction\PlanofAction\bin\Debug\netcoreapp3.1\Zstandard.Net.dll
+C:\Users\Robbe\source\test\PlanofAction\PlanofAction\PlanofAction\bin\Debug\netcoreapp3.1\DataHandlerFactory.dll
+C:\Users\Robbe\source\test\PlanofAction\PlanofAction\PlanofAction\bin\Debug\netcoreapp3.1\DataHandlerInterfaces.dll
+C:\Users\Robbe\source\test\PlanofAction\PlanofAction\PlanofAction\bin\Debug\netcoreapp3.1\Logic.dll
+C:\Users\Robbe\source\test\PlanofAction\PlanofAction\PlanofAction\bin\Debug\netcoreapp3.1\LogicFactory.dll
+C:\Users\Robbe\source\test\PlanofAction\PlanofAction\PlanofAction\bin\Debug\netcoreapp3.1\LogicInterfaces.dll
+C:\Users\Robbe\source\test\PlanofAction\PlanofAction\PlanofAction\bin\Debug\netcoreapp3.1\LogicFactory.pdb
+C:\Users\Robbe\source\test\PlanofAction\PlanofAction\PlanofAction\bin\Debug\netcoreapp3.1\LogicInterfaces.pdb
+C:\Users\Robbe\source\test\PlanofAction\PlanofAction\PlanofAction\bin\Debug\netcoreapp3.1\DataHandlerFactory.pdb
+C:\Users\Robbe\source\test\PlanofAction\PlanofAction\PlanofAction\bin\Debug\netcoreapp3.1\DataHandlerInterfaces.pdb
+C:\Users\Robbe\source\test\PlanofAction\PlanofAction\PlanofAction\bin\Debug\netcoreapp3.1\Logic.pdb

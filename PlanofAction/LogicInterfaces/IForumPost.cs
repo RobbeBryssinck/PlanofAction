@@ -9,6 +9,7 @@ namespace LogicInterfaces
         int PostID { get; set; }
         string PostMessage { get; set; }
         int ThreadID { get; set; }
+        IAccount Account { get; set; }
 
         void EditPost();
     }

@@ -11,11 +11,13 @@ namespace Logic.Models
     public class ForumPostCollection : IForumPostCollection
     {
         private IForumPostContext db;
+        private IAccountContext accountdb;
         private List<IForumPost> forumPosts;
 
         public ForumPostCollection()
         {
             db = Factory.GetForumPostContext();
+            accountdb = Factory.GetAccountContext();
             forumPosts = new List<IForumPost>();
         }
 
@@ -24,6 +26,18 @@ namespace Logic.Models
             List<IForumPostDto> forumPostDtos = db.GetForumPosts(threadID);
             foreach (var forumPostDto in forumPostDtos)
             {
+                IAccountDto accountDto = accountdb.GetAccount(forumPostDto.AccountID);
+                IAccount account = new Account()
+                {
+                    AccountID = accountDto.AccountID,
+                    Username = accountDto.Username,
+                    Email = accountDto.Email,
+                    Password = accountDto.Password,
+                    Role = accountDto.Role,
+                    ProfilePicture = accountDto.ProfilePicture,
+                    DateJoined = accountDto.DateJoined,
+                };
+
                 forumPosts.Add(new ForumPost()
                 {
                     PostID = forumPostDto.PostID,
@@ -31,7 +45,8 @@ namespace Logic.Models
                     AccountID = forumPostDto.AccountID,
                     PostMessage = forumPostDto.PostMessage,
                     PostDateCreated = forumPostDto.PostDateCreated,
-                });
+                    Account = account
+                }); 
             }
             return forumPosts;
         }

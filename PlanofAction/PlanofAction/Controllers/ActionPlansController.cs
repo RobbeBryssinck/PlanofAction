@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using PlanofAction.Models;
-using PlanofAction.Data;
 using PlanofAction.ViewModels;
 using Logic.Models;
 using LogicFactory;
