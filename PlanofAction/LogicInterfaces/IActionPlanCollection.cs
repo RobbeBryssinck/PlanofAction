@@ -7,5 +7,6 @@ namespace LogicInterfaces
         List<IActionPlan> GetActionPlans();
         IActionPlan GetActionPlan(int actionPlanID);
         int CreateActionPlan(IActionPlan actionPlan);
+        List<IActionPlan> InstantiateActionPlans();
     }
 }

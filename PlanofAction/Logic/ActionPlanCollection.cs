@@ -17,6 +17,10 @@ namespace Logic
         public ActionPlanCollection()
         {
             db = Factory.GetActionPlanContext();
+        }
+
+        public List<IActionPlan> InstantiateActionPlans()
+        {
             actionPlans = new List<IActionPlan>();
             List<IActionPlanDto> actionPlanDtos = db.GetActionPlans();
             foreach (IActionPlanDto actionPlanDto in actionPlanDtos)
@@ -31,6 +35,7 @@ namespace Logic
                     PlanDateCreated = actionPlanDto.PlanDateCreated
                 });
             }
+            return actionPlans;
         }
 
         public int CreateActionPlan(IActionPlan actionPlan)
@@ -48,11 +53,13 @@ namespace Logic
 
         public List<IActionPlan> GetActionPlans()
         {
+            InstantiateActionPlans();
             return actionPlans;
         }
 
         public IActionPlan GetActionPlan(int actionPlanID)
         {
+            InstantiateActionPlans();
             return actionPlans.Where(model => model.ActionPlanID == actionPlanID).FirstOrDefault();
         }
     }

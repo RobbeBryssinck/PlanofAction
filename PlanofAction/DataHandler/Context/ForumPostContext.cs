@@ -13,7 +13,7 @@ namespace DataHandler.Context
 
         public ForumPostContext()
         {
-            ConnectionString = ConnectionStringValue.connectionString;
+            ConnectionString = ConnectionStringValue.GetConnectionString();
         }
 
         private MySqlConnection GetConnection()

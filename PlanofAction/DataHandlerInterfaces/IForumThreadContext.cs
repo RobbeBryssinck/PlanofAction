@@ -4,7 +4,7 @@ namespace DataHandlerInterfaces
 {
     public interface IForumThreadContext
     {
-        string ConnectionString { get; set; }
+        string connectionString { get; set; }
 
         int CreateThread(IForumThreadDto forumThreadDto);
         void DeleteThread(int threadID);

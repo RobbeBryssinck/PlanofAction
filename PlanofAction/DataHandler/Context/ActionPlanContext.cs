@@ -12,7 +12,7 @@ namespace DataHandler.Context
 
         public ActionPlanContext()
         {
-            ConnectionString = ConnectionStringValue.connectionString;
+            ConnectionString = ConnectionStringValue.GetConnectionString();
         }
 
         private MySqlConnection GetConnection()

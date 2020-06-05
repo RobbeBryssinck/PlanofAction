@@ -10,16 +10,16 @@ namespace DataHandler.Context
 {
     public class ForumThreadContext : IForumThreadContext
     {
-        public string ConnectionString { get; set; }
+        public string connectionString { get; set; }
 
         public ForumThreadContext()
         {
-            ConnectionString = ConnectionStringValue.connectionString;
+            connectionString = ConnectionStringValue.GetConnectionString();
         }
 
         private MySqlConnection GetConnection()
         {
-            return new MySqlConnection(ConnectionString);
+            return new MySqlConnection(connectionString);
         }
 
         public List<IForumThreadDto> GetForumThreads(int categoryID)
