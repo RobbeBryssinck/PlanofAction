@@ -16,7 +16,7 @@ namespace Logic
         public ForumCategoryCollection()
         {
             ForumCategories = new List<IForumCategory>();
-            db = Factory.GetForumCategoryContext();
+            db = DataHandlerFactory.DataHandlerFactory.GetForumCategoryContext();
             List<IForumCategoryDto> forumCategoryDtos = db.GetForumCategories();
             foreach (IForumCategoryDto forumCategoryDto in forumCategoryDtos)
             {
@@ -40,7 +40,7 @@ namespace Logic
 
         public int CreateForumCategory(IForumCategory forumCategory)
         {
-            IForumCategoryDto forumCategoryDto = Factory.GetForumCategoryDto();
+            IForumCategoryDto forumCategoryDto = DataHandlerFactory.DataHandlerFactory.GetForumCategoryDto();
             forumCategoryDto.ForumCategoryString = forumCategory.ForumCategoryString;
             int rowcount = db.CreateForumCategory(forumCategoryDto);
             return rowcount;

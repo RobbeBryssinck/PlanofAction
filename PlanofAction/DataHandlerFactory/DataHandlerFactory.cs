@@ -7,7 +7,7 @@ using DataHandlerInterfaces;
 
 namespace DataHandlerFactory
 {
-    public static class Factory
+    public static class DataHandlerFactory
     {
         public static IAccountContext GetAccountContext()
         {

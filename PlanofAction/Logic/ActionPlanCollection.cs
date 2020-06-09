@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using DataHandlerInterfaces;
-using DataHandlerFactory;
 using LogicInterfaces;
 using System.Linq;
 
@@ -14,9 +13,9 @@ namespace Logic
         private IActionPlanContext db;
         private List<IActionPlan> actionPlans;
 
-        public ActionPlanCollection()
+        public ActionPlanCollection(IActionPlanContext actionPlanContext)
         {
-            db = Factory.GetActionPlanContext();
+            db = actionPlanContext;
         }
 
         public List<IActionPlan> InstantiateActionPlans()
@@ -40,7 +39,7 @@ namespace Logic
 
         public int CreateActionPlan(IActionPlan actionPlan)
         {
-            IActionPlanDto actionPlanDto = Factory.GetActionPlanDto();
+            IActionPlanDto actionPlanDto = DataHandlerFactory.DataHandlerFactory.GetActionPlanDto();
             actionPlanDto.AccountID = actionPlan.AccountID;
             actionPlanDto.PlanTitle = actionPlan.PlanTitle;
             actionPlanDto.PlanMessage = actionPlan.PlanMessage;

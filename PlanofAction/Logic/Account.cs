@@ -18,7 +18,7 @@ namespace Logic
 
         public Account()
         {
-            db = Factory.GetAccountContext();
+            db = DataHandlerFactory.DataHandlerFactory.GetAccountContext();
         }
 
         public bool LoginQuery(string username, string password)

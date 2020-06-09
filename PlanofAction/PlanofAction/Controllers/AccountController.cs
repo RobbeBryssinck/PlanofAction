@@ -15,7 +15,7 @@ namespace PlanofAction.Controllers
 
         public AccountController()
         {
-            account = Factory.GetAccount();
+            account = LogicFactory.LogicFactory.GetAccount();
         }
 
         [HttpGet]

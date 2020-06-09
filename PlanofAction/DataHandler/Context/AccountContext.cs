@@ -9,24 +9,12 @@ namespace DataHandler.Context
 {
     public class AccountContext : IAccountContext
     {
-        public string ConnectionString { get; set; }
-
-        public AccountContext()
-        {
-            ConnectionString = ConnectionStringValue.GetConnectionString();
-        }
-
-        private MySqlConnection GetConnection()
-        {
-            return new MySqlConnection(ConnectionString);
-        }
-
         public List<IAccountDto> GetAccounts()
         {
             string command = "SELECT * FROM account;";
             List<IAccountDto> accounts = new List<IAccountDto>();
 
-            using (MySqlConnection conn = GetConnection())
+            using (MySqlConnection conn = Connection.GetConnection())
             {
                 conn.Open();
                 MySqlCommand cmd = new MySqlCommand(command, conn);
@@ -55,7 +43,7 @@ namespace DataHandler.Context
             string command = "SELECT * FROM account WHERE AccountID='{0}';";
             IAccountDto account = new AccountDto();
 
-            using (MySqlConnection conn = GetConnection())
+            using (MySqlConnection conn = Connection.GetConnection())
             {
                 conn.Open();
                 MySqlCommand cmd = new MySqlCommand(string.Format(command, accountID.ToString()), conn);
@@ -81,7 +69,7 @@ namespace DataHandler.Context
             string accountCommand = "SELECT * FROM account WHERE Username='{0}';";
             IAccountDto account = new AccountDto();
 
-            using (MySqlConnection conn = GetConnection())
+            using (MySqlConnection conn = Connection.GetConnection())
             {
                 conn.Open();
 

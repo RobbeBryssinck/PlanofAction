@@ -16,8 +16,8 @@ namespace Logic
 
         public ForumPostCollection()
         {
-            db = Factory.GetForumPostContext();
-            accountdb = Factory.GetAccountContext();
+            db = DataHandlerFactory.DataHandlerFactory.GetForumPostContext();
+            accountdb = DataHandlerFactory.DataHandlerFactory.GetAccountContext();
             forumPosts = new List<IForumPost>();
         }
 
@@ -67,7 +67,7 @@ namespace Logic
 
         public void CreatePost(IForumPost forumPost)
         {
-            IForumPostDto forumPostDto = Factory.GetForumPostDto();
+            IForumPostDto forumPostDto = DataHandlerFactory.DataHandlerFactory.GetForumPostDto();
             forumPostDto.ThreadID = forumPost.ThreadID;
             forumPostDto.AccountID = forumPost.AccountID;
             forumPostDto.PostMessage = forumPost.PostMessage;

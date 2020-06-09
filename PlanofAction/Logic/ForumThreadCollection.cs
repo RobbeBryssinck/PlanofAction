@@ -15,7 +15,7 @@ namespace Logic
 
         public ForumThreadCollection()
         {
-            db = Factory.GetForumThreadContext();
+            db = DataHandlerFactory.DataHandlerFactory.GetForumThreadContext();
             forumThreads = new List<IForumThread>();
         }
 

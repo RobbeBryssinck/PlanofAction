@@ -8,24 +8,12 @@ namespace DataHandler.Context
 {
     public class ActionPlanContext : IActionPlanContext
     {
-        public string ConnectionString { get; set; }
-
-        public ActionPlanContext()
-        {
-            ConnectionString = ConnectionStringValue.GetConnectionString();
-        }
-
-        private MySqlConnection GetConnection()
-        {
-            return new MySqlConnection(ConnectionString);
-        }
-
         public List<IActionPlanDto> GetActionPlans()
         {
             string command = "SELECT * FROM actionplan;";
             List<IActionPlanDto> actionPlans = new List<IActionPlanDto>();
 
-            using (MySqlConnection conn = GetConnection())
+            using (MySqlConnection conn = Connection.GetConnection())
             {
                 conn.Open();
                 MySqlCommand cmd = new MySqlCommand(command, conn);
@@ -52,7 +40,7 @@ namespace DataHandler.Context
             string command = "SELECT * FROM actionplan WHERE ActionPlanID='{0}';";
             IActionPlanDto actionPlan = new ActionPlanDto();
 
-            using (MySqlConnection conn = GetConnection())
+            using (MySqlConnection conn = Connection.GetConnection())
             {
                 conn.Open();
                 MySqlCommand cmd = new MySqlCommand(string.Format(command, actionPlanID.ToString()), conn);
@@ -78,7 +66,7 @@ namespace DataHandler.Context
         {
             string command = "INSERT INTO `actionplan` (`AccountID`, `PlanTitle`, `PlanMessage`, `PlanCategory`, `PlanDateCreated`) VALUES ({0}, '{1}', '{2}', '{3}', '{4}');";
 
-            using (MySqlConnection conn = GetConnection())
+            using (MySqlConnection conn = Connection.GetConnection())
             {
                 conn.Open();
                 MySqlCommand cmd = new MySqlCommand(string.Format(command, actionPlanDto.AccountID, actionPlanDto.PlanTitle,
@@ -94,7 +82,7 @@ namespace DataHandler.Context
         {
             string command = "DELETE FROM actionplan WHERE ActionPlanID={0};";
 
-            using (MySqlConnection conn = GetConnection())
+            using (MySqlConnection conn = Connection.GetConnection())
             {
                 conn.Open();
                 MySqlCommand cmd = new MySqlCommand(string.Format(command, actionPlanID), conn);
@@ -107,7 +95,7 @@ namespace DataHandler.Context
         {
             string command = "UPDATE actionplan SET PlanTitle='{0}', PlanMessage='{1}', PlanCategory='{2}' WHERE ActionPlanID={3};";
 
-            using (MySqlConnection conn = GetConnection())
+            using (MySqlConnection conn = Connection.GetConnection())
             {
                 conn.Open();
                 MySqlCommand cmd = new MySqlCommand(string.Format(command, planTitle, planMessage,

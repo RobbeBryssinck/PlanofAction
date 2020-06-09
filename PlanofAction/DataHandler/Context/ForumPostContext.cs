@@ -9,24 +9,12 @@ namespace DataHandler.Context
 {
     public class ForumPostContext : IForumPostContext
     {
-        public string ConnectionString { get; set; }
-
-        public ForumPostContext()
-        {
-            ConnectionString = ConnectionStringValue.GetConnectionString();
-        }
-
-        private MySqlConnection GetConnection()
-        {
-            return new MySqlConnection(ConnectionString);
-        }
-
         public List<IForumPostDto> GetForumPosts(int threadID)
         {
             string postsCommand = "SELECT * FROM post WHERE ThreadID='{0}';";
             List<IForumPostDto> posts = new List<IForumPostDto>();
 
-            using (MySqlConnection conn = GetConnection())
+            using (MySqlConnection conn = Connection.GetConnection())
             {
                 conn.Open();
                 MySqlCommand cmdPosts = new MySqlCommand(string.Format(postsCommand, threadID.ToString()), conn);
@@ -51,7 +39,7 @@ namespace DataHandler.Context
         {
             string command = "INSERT INTO `post` (`ThreadID`, `AccountID`, `PostMessage`, `PostDateCreated`) VALUES ({0}, {1}, '{2}', '{3}');";
 
-            using (MySqlConnection conn = GetConnection())
+            using (MySqlConnection conn = Connection.GetConnection())
             {
                 conn.Open();
                 MySqlCommand cmd = new MySqlCommand(string.Format(command, forumPostDto.ThreadID,
@@ -68,7 +56,7 @@ namespace DataHandler.Context
             string command = "SELECT * FROM post WHERE PostID={0};";
             IForumPostDto model = new ForumPostDto();
 
-            using (MySqlConnection conn = GetConnection())
+            using (MySqlConnection conn = Connection.GetConnection())
             {
                 conn.Open();
                 MySqlCommand cmd = new MySqlCommand(string.Format(command, postID.ToString()), conn);
@@ -92,7 +80,7 @@ namespace DataHandler.Context
         {
             string command = "UPDATE post SET PostMessage='{0}' WHERE PostID={1};";
 
-            using (MySqlConnection conn = GetConnection())
+            using (MySqlConnection conn = Connection.GetConnection())
             {
                 conn.Open();
                 MySqlCommand cmd = new MySqlCommand(string.Format(command, forumPostDto.PostMessage,

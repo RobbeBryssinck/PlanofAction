@@ -19,7 +19,7 @@ namespace Logic
 
         public ActionPlan()
         {
-            db = Factory.GetActionPlanContext();
+            db = DataHandlerFactory.DataHandlerFactory.GetActionPlanContext();
         }
 
         public void EditActionPlan()

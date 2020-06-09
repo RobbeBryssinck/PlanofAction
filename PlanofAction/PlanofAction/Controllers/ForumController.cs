@@ -23,14 +23,14 @@ namespace PlanofAction.Controllers
 
         public ForumController()
         {
-            forumCategory = Factory.GetForumCategory();
-            forumCategoryCollection = Factory.GetForumCategoryCollection();
-            forumThread = Factory.GetForumThread();
-            forumThreadCollection = Factory.GetForumThreadCollection();
-            forumPost = Factory.GetForumPost();
-            forumPostCollection = Factory.GetForumPostCollection();
-            account = Factory.GetAccount();
-            accountCollection = Factory.GetAccountCollection();
+            forumCategory = LogicFactory.LogicFactory.GetForumCategory();
+            forumCategoryCollection = LogicFactory.LogicFactory.GetForumCategoryCollection();
+            forumThread = LogicFactory.LogicFactory.GetForumThread();
+            forumThreadCollection = LogicFactory.LogicFactory.GetForumThreadCollection();
+            forumPost = LogicFactory.LogicFactory.GetForumPost();
+            forumPostCollection = LogicFactory.LogicFactory.GetForumPostCollection();
+            account = LogicFactory.LogicFactory.GetAccount();
+            accountCollection = LogicFactory.LogicFactory.GetAccountCollection();
         }
 
         [HttpGet]

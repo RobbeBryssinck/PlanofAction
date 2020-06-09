@@ -19,12 +19,12 @@ namespace Logic
 
         public ForumPost()
         {
-            db = Factory.GetForumPostContext();
+            db = DataHandlerFactory.DataHandlerFactory.GetForumPostContext();
         }
 
         public void EditPost()
         {
-            IForumPostDto forumPostDto = Factory.GetForumPostDto();
+            IForumPostDto forumPostDto = DataHandlerFactory.DataHandlerFactory.GetForumPostDto();
             forumPostDto.PostID = PostID;
             forumPostDto.PostMessage = PostMessage;
             db.EditForumPost(forumPostDto);

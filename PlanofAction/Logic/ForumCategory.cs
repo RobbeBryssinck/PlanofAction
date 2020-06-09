@@ -16,7 +16,7 @@ namespace Logic
 
         public ForumCategory()
         {
-            db = Factory.GetForumCategoryContext();
+            db = DataHandlerFactory.DataHandlerFactory.GetForumCategoryContext();
         }
 
         public void DeleteForumCategory()
@@ -26,7 +26,7 @@ namespace Logic
 
         public void EditForumCategory()
         {
-            IForumCategoryDto forumCategoryDto = Factory.GetForumCategoryDto();
+            IForumCategoryDto forumCategoryDto = DataHandlerFactory.DataHandlerFactory.GetForumCategoryDto();
             forumCategoryDto.ForumCategoryID = ForumCategoryID;
             forumCategoryDto.ForumCategoryString = ForumCategoryString;
             db.EditForumCategory(forumCategoryDto);

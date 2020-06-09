@@ -18,8 +18,8 @@ namespace PlanofAction.Controllers
 
         public ActionPlansController()
         {
-            actionPlan = Factory.GetActionPlan();
-            actionPlanCollection = Factory.GetActionPlanCollection();
+            actionPlan = LogicFactory.LogicFactory.GetActionPlan();
+            actionPlanCollection = LogicFactory.LogicFactory.GetActionPlanCollection();
         }
 
         [HttpGet]

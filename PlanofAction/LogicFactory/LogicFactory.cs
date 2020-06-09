@@ -6,7 +6,7 @@ using System.Text;
 
 namespace LogicFactory
 {
-    public static class Factory
+    public static class LogicFactory
     {
         public static IAccount GetAccount()
         {
@@ -25,7 +25,7 @@ namespace LogicFactory
 
         public static IActionPlanCollection GetActionPlanCollection()
         {
-            return new ActionPlanCollection();
+            return new ActionPlanCollection(DataHandlerFactory.DataHandlerFactory.GetActionPlanContext());
         }
 
         public static IForumCategory GetForumCategory()

@@ -10,24 +10,12 @@ namespace DataHandler.Context
 {
     public class ForumThreadContext : IForumThreadContext
     {
-        public string connectionString { get; set; }
-
-        public ForumThreadContext()
-        {
-            connectionString = ConnectionStringValue.GetConnectionString();
-        }
-
-        private MySqlConnection GetConnection()
-        {
-            return new MySqlConnection(connectionString);
-        }
-
         public List<IForumThreadDto> GetForumThreads(int categoryID)
         {
             string command = "SELECT * FROM thread WHERE ForumCategoryID={0};";
             List<IForumThreadDto> threads = new List<IForumThreadDto>();
 
-            using (MySqlConnection conn = GetConnection())
+            using (MySqlConnection conn = Connection.GetConnection())
             {
                 conn.Open();
                 MySqlCommand cmd = new MySqlCommand(string.Format(command, categoryID), conn);
@@ -62,7 +50,7 @@ namespace DataHandler.Context
             string command = "SELECT * FROM thread WHERE ThreadID='{0}';";
             ForumThreadDto thread = new ForumThreadDto();
 
-            using (MySqlConnection conn = GetConnection())
+            using (MySqlConnection conn = Connection.GetConnection())
             {
                 conn.Open();
                 MySqlCommand cmd = new MySqlCommand(string.Format(command, threadID.ToString()), conn);
@@ -89,7 +77,7 @@ namespace DataHandler.Context
         {
             string command = "INSERT INTO `thread` (`AccountID`, `ForumCategoryID`, `ThreadTitle`, `ThreadMessage`, `ThreadDateCreated`) VALUES ({0}, '{1}', '{2}', '{3}', '{4}');";
 
-            using (MySqlConnection conn = GetConnection())
+            using (MySqlConnection conn = Connection.GetConnection())
             {
                 conn.Open();
                 MySqlCommand cmd = new MySqlCommand(string.Format(command, forumThreadDto.AccountID, forumThreadDto.ForumCategoryID,
@@ -105,7 +93,7 @@ namespace DataHandler.Context
         {
             string command = "DELETE FROM thread WHERE ThreadID={0};";
 
-            using (MySqlConnection conn = GetConnection())
+            using (MySqlConnection conn = Connection.GetConnection())
             {
                 conn.Open();
                 MySqlCommand cmd = new MySqlCommand(string.Format(command, threadID), conn);
@@ -118,7 +106,7 @@ namespace DataHandler.Context
         {
             string command = "UPDATE thread SET ThreadMessage='{0}' WHERE ThreadID={1};";
 
-            using (MySqlConnection conn = GetConnection())
+            using (MySqlConnection conn = Connection.GetConnection())
             {
                 conn.Open();
                 MySqlCommand cmd = new MySqlCommand(string.Format(command, forumThreadDto.ThreadMessage,

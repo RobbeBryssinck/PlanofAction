@@ -9,6 +9,7 @@ using DataHandlerFactory;
 using DataHandlerInterfaces;
 using LogicInterfaces;
 using DataHandler.Models;
+using DataHandler.Context;
 
 namespace Logic.Tests
 {
@@ -27,6 +28,7 @@ namespace Logic.Tests
                 var cls = mock.Create<ActionPlanCollection>();
                 var expected = GetActionPlans();
                 var actual = cls.InstantiateActionPlans();
+
 
                 Assert.IsTrue(actual != null);
                 Assert.AreEqual(expected.Count, actual.Count);

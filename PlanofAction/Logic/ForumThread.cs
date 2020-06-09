@@ -19,7 +19,7 @@ namespace Logic
 
         public ForumThread()
         {
-            db = Factory.GetForumThreadContext();
+            db = DataHandlerFactory.DataHandlerFactory.GetForumThreadContext();
         }
 
         public void DeleteForumThread()
@@ -29,7 +29,7 @@ namespace Logic
 
         public void EditForumThread()
         {
-            IForumThreadDto forumThreadDto = Factory.GetForumThreadDto();
+            IForumThreadDto forumThreadDto = DataHandlerFactory.DataHandlerFactory.GetForumThreadDto();
             forumThreadDto.ThreadID = ThreadID;
             forumThreadDto.ThreadMessage = ThreadMessage;
             db.EditThread(forumThreadDto);
