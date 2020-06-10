@@ -13,7 +13,7 @@
             <form asp-action="CreateCategory">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
-                    <label asp-for="ForumCategoryString" class="control-label"></label>
+                    <label asp-for="ForumCategoryString" class="control-label">Forum category name</label>
                     <input asp-for="ForumCategoryString" class="form-control" />
                     <span asp-validation-for="ForumCategoryString" class="text-danger"></span>
                 </div>
