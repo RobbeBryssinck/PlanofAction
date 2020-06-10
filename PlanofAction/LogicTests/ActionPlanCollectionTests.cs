@@ -5,11 +5,8 @@ using System.Collections.Generic;
 using System.Text;
 using Moq;
 using Autofac.Extras.Moq;
-using DataHandlerFactory;
 using DataHandlerInterfaces;
-using LogicInterfaces;
 using DataHandler.Models;
-using DataHandler.Context;
 
 namespace Logic.Tests
 {
@@ -17,57 +14,58 @@ namespace Logic.Tests
     public class ActionPlanCollectionTests
     {
         [TestMethod()]
-        public void InstantiateActionPlansTest()
+        public void InstantiateActionPlans_4ActionPlans_AreEqual()
         {
-            using (var mock = AutoMock.GetLoose())
-            {
-                mock.Mock<IActionPlanContext>()
-                    .Setup(x => x.GetActionPlans())
-                    .Returns(GetActionPlans());
+            var mock = new Mock<IActionPlanContext>();
+            mock.Setup(x => x.GetActionPlans()).Returns(GetActionPlans(false));
 
-                var cls = mock.Create<ActionPlanCollection>();
-                var expected = GetActionPlans();
-                var actual = cls.InstantiateActionPlans();
+            var actionPlanCollection = new ActionPlanCollection(mock.Object);
+            var actualValue = actionPlanCollection.InstantiateActionPlans();
 
+            Assert.AreEqual(actualValue.Count, 4);
+        }
+        
+        [TestMethod()]
+        public void InstantiateActionPlans_0ActionPlans_AreEqual()
+        {
+            var mock = new Mock<IActionPlanContext>();
+            mock.Setup(x => x.GetActionPlans()).Returns(GetActionPlans(true));
 
-                Assert.IsTrue(actual != null);
-                Assert.AreEqual(expected.Count, actual.Count);
-            }
+            var actionPlanCollection = new ActionPlanCollection(mock.Object);
+            var actualValue = actionPlanCollection.InstantiateActionPlans();
+
+            Assert.AreEqual(actualValue.Count, 0);
         }
 
         [TestMethod()]
-        public void ActionPlanCollectionTest()
+        public void GetActionPlan_IDIs2_AreEqual()
         {
-            Assert.Fail();
+            var mock = new Mock<IActionPlanContext>();
+            mock.Setup(x => x.GetActionPlans()).Returns(GetActionPlans(false));
+
+            var actionPlanCollection = new ActionPlanCollection(mock.Object);
+            var actualValue = actionPlanCollection.GetActionPlan(2);
+
+            Assert.AreEqual(actualValue.ActionPlanID, 2);
         }
 
         [TestMethod()]
-        public void CreateActionPlanTest()
+        public void GetActionPlan_IDIs5_IsNull()
         {
-            Assert.Fail();
+            var mock = new Mock<IActionPlanContext>();
+            mock.Setup(x => x.GetActionPlans()).Returns(GetActionPlans(false));
+
+            var actionPlanCollection = new ActionPlanCollection(mock.Object);
+            var actualValue = actionPlanCollection.GetActionPlan(5);
+
+            Assert.IsNull(actualValue);
         }
 
-        [TestMethod()]
-        public void GetActionPlansTest()
+        private List<IActionPlanDto> GetActionPlans(bool isEmpty)
         {
-            Assert.Fail();
-        }
+            if (isEmpty)
+                return new List<IActionPlanDto>();
 
-        [TestMethod()]
-        public void GetActionPlanTest()
-        {
-            using (var mock = AutoMock.GetLoose())
-            {
-                mock.Mock<IActionPlanContext>()
-                    .Setup(x => x.GetActionPlans())
-                    .Returns(GetActionPlans());
-
-                var cls = mock.Create<ActionPlanCollection>();
-            }
-        }
-
-        private List<IActionPlanDto> GetActionPlans()
-        {
             List<IActionPlanDto> actionPlans = new List<IActionPlanDto>
             {
                 new ActionPlanDto
