@@ -1,9 +1,13 @@
-﻿@{
+﻿@model NoForumThreadsViewModel
+
+@{
     ViewData["Title"] = "No forum threads";
 }
 
 <div class="container">
-    <h1>No forum threads</h1>
+    <h1>No forum threads in the category "@Model.ForumCategoryString"</h1>
     <p>This category contains no forum threads.</p>
+    <a asp-controller="Forum" asp-action="Create">Create the first post in this category!</a>
+    <br />
     <a href="/Forum/Index">Return to forum</a>
 </div>

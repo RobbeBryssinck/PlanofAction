@@ -31,7 +31,6 @@ namespace PlanofAction.Controllers
 
             if (loginAttempt)
                 return Content("Login succeeded!");
-
             else
                 return Content("Login Failed");
         }

@@ -128,14 +128,16 @@ namespace PlanofAction.Controllers
             model.ForumCategory = forumCategoryCollection.GetForumCategory(forumCategoryID);
 
             if (model.ForumThreads[0].ThreadID == -1)
-                return RedirectToAction("NoForumThreads");
+            {
+                NoForumThreadsViewModel noForumModel = new NoForumThreadsViewModel()
+                {
+                    ForumCategoryID = model.ForumCategory.ForumCategoryID,
+                    ForumCategoryString = model.ForumCategory.ForumCategoryString
+                };
+                return View("NoForumThreads", noForumModel);
+            }
             else
                 return View(model);
-        }
-
-        public IActionResult NoForumThreads()
-        {
-            return View();
         }
 
         [HttpGet]
