@@ -13,9 +13,9 @@ namespace Logic
         private IForumThreadContext db;
         private List<IForumThread> forumThreads;
 
-        public ForumThreadCollection()
+        public ForumThreadCollection(IForumThreadContext forumThreadContext)
         {
-            db = DataHandlerFactory.DataHandlerFactory.GetForumThreadContext();
+            db = forumThreadContext;
             forumThreads = new List<IForumThread>();
         }
 
@@ -24,7 +24,7 @@ namespace Logic
             List<IForumThreadDto> forumThreadDtos = db.GetForumThreads(categoryID);
             foreach (var thread in forumThreadDtos)
             {
-                forumThreads.Add(new ForumThread()
+                forumThreads.Add(new ForumThread(DataHandlerFactory.DataHandlerFactory.GetForumThreadContext())
                 {
                     ThreadID = thread.ThreadID,
                     AccountID = thread.AccountID,
@@ -40,7 +40,7 @@ namespace Logic
         public IForumThread GetForumThread(int threadID)
         {
             IForumThreadDto forumThreadDto = db.GetForumThread(threadID);
-            IForumThread forumThread = new ForumThread()
+            IForumThread forumThread = new ForumThread(DataHandlerFactory.DataHandlerFactory.GetForumThreadContext())
             {
                 AccountID = forumThreadDto.AccountID,
                 ForumCategoryID = forumThreadDto.ForumCategoryID,

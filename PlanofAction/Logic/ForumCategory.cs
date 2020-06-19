@@ -14,9 +14,9 @@ namespace Logic
         public int ForumCategoryID { get; set; }
         public string ForumCategoryString { get; set; }
 
-        public ForumCategory()
+        public ForumCategory(IForumCategoryContext forumCategoryContext)
         {
-            db = DataHandlerFactory.DataHandlerFactory.GetForumCategoryContext();
+            db = forumCategoryContext;
         }
 
         public void DeleteForumCategory()

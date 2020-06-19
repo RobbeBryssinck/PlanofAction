@@ -13,14 +13,14 @@ namespace Logic
         private IForumCategoryContext db { get; set; }
         private List<IForumCategory> ForumCategories { get; set; }
 
-        public ForumCategoryCollection()
+        public ForumCategoryCollection(IForumCategoryContext forumCategoryContext)
         {
             ForumCategories = new List<IForumCategory>();
-            db = DataHandlerFactory.DataHandlerFactory.GetForumCategoryContext();
+            db = forumCategoryContext;
             List<IForumCategoryDto> forumCategoryDtos = db.GetForumCategories();
             foreach (IForumCategoryDto forumCategoryDto in forumCategoryDtos)
             {
-                ForumCategories.Add(new ForumCategory()
+                ForumCategories.Add(new ForumCategory(DataHandlerFactory.DataHandlerFactory.GetForumCategoryContext())
                 {
                     ForumCategoryID = forumCategoryDto.ForumCategoryID,
                     ForumCategoryString = forumCategoryDto.ForumCategoryString

@@ -14,9 +14,9 @@ namespace Logic
         private IAccountContext accountdb;
         private List<IForumPost> forumPosts;
 
-        public ForumPostCollection()
+        public ForumPostCollection(IForumPostContext forumPostContext)
         {
-            db = DataHandlerFactory.DataHandlerFactory.GetForumPostContext();
+            db = forumPostContext;
             accountdb = DataHandlerFactory.DataHandlerFactory.GetAccountContext();
             forumPosts = new List<IForumPost>();
         }
@@ -27,7 +27,7 @@ namespace Logic
             foreach (var forumPostDto in forumPostDtos)
             {
                 IAccountDto accountDto = accountdb.GetAccount(forumPostDto.AccountID);
-                IAccount account = new Account()
+                IAccount account = new Account(DataHandlerFactory.DataHandlerFactory.GetAccountContext())
                 {
                     AccountID = accountDto.AccountID,
                     Username = accountDto.Username,
@@ -38,7 +38,7 @@ namespace Logic
                     DateJoined = accountDto.DateJoined,
                 };
 
-                forumPosts.Add(new ForumPost()
+                forumPosts.Add(new ForumPost(DataHandlerFactory.DataHandlerFactory.GetForumPostContext())
                 {
                     PostID = forumPostDto.PostID,
                     ThreadID = forumPostDto.ThreadID,
@@ -54,7 +54,7 @@ namespace Logic
         public IForumPost GetForumPost(int postID)
         {
             IForumPostDto forumPostDto = db.GetForumPost(postID);
-            IForumPost forumPost = new ForumPost()
+            IForumPost forumPost = new ForumPost(DataHandlerFactory.DataHandlerFactory.GetForumPostContext())
             {
                 PostID = forumPostDto.PostID,
                 ThreadID = forumPostDto.ThreadID,

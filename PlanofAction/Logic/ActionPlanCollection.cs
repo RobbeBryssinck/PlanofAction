@@ -24,7 +24,7 @@ namespace Logic
             List<IActionPlanDto> actionPlanDtos = db.GetActionPlans();
             foreach (IActionPlanDto actionPlanDto in actionPlanDtos)
             {
-                actionPlans.Add(new ActionPlan()
+                actionPlans.Add(new ActionPlan(DataHandlerFactory.DataHandlerFactory.GetActionPlanContext())
                 {
                     ActionPlanID = actionPlanDto.ActionPlanID,
                     AccountID = actionPlanDto.AccountID,

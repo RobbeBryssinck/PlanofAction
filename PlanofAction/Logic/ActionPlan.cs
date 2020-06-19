@@ -17,9 +17,9 @@ namespace Logic
         public string PlanCategory { get; set; }
         public DateTime PlanDateCreated { get; set; }
 
-        public ActionPlan()
+        public ActionPlan(IActionPlanContext actionPlanContext)
         {
-            db = DataHandlerFactory.DataHandlerFactory.GetActionPlanContext();
+            db = actionPlanContext;
         }
 
         public void EditActionPlan()

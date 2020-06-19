@@ -17,9 +17,9 @@ namespace Logic
         public DateTime PostDateCreated { get; set; }
         public IAccount Account { get; set; }
 
-        public ForumPost()
+        public ForumPost(IForumPostContext forumPostContext)
         {
-            db = DataHandlerFactory.DataHandlerFactory.GetForumPostContext();
+            db = forumPostContext;
         }
 
         public void EditPost()

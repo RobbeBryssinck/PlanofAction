@@ -12,14 +12,14 @@ namespace Logic
         private IAccountContext db;
         private List<IAccount> accounts;
 
-        public AccountCollection()
+        public AccountCollection(IAccountContext accountContext)
         {
             accounts = new List<IAccount>();
-            db = DataHandlerFactory.DataHandlerFactory.GetAccountContext();
+            db = accountContext;
             List<IAccountDto> accountDtos = db.GetAccounts();
             foreach (var account in accountDtos)
             {
-                accounts.Add(new Account()
+                accounts.Add(new Account(DataHandlerFactory.DataHandlerFactory.GetAccountContext())
                 {
                     AccountID = account.AccountID,
                     Username = account.Username,
@@ -40,7 +40,7 @@ namespace Logic
         public IAccount GetAccount(int accountID)
         {
             IAccountDto accountDto = db.GetAccount(accountID);
-            IAccount account = new Account()
+            IAccount account = new Account(DataHandlerFactory.DataHandlerFactory.GetAccountContext())
             {
                 AccountID = accountDto.AccountID,
                 DateJoined = accountDto.DateJoined,

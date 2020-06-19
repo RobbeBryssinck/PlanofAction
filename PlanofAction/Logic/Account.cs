@@ -16,9 +16,9 @@ namespace Logic
         public string ProfilePicture { get; set; }
         public string DateJoined { get; set; }
 
-        public Account()
+        public Account(IAccountContext accountContext)
         {
-            db = DataHandlerFactory.DataHandlerFactory.GetAccountContext();
+            db = accountContext;
         }
 
         public bool LoginQuery(string username, string password)

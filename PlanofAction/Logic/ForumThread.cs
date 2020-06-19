@@ -17,9 +17,9 @@ namespace Logic
         public string ThreadMessage { get; set; }
         public DateTime ThreadDateCreated { get; set; }
 
-        public ForumThread()
+        public ForumThread(IForumThreadContext forumThreadContext)
         {
-            db = DataHandlerFactory.DataHandlerFactory.GetForumThreadContext();
+            db = forumThreadContext;
         }
 
         public void DeleteForumThread()
